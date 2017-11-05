@@ -35,15 +35,15 @@
                     <div class="right-bar">
 
                         <ul class="flat-socials">
-
-
-                            <li><a href="/register" class="fancybox fancybox.ajax"><i class="fa fa-user"></i><span> Register</span></a>
+                            <?php if (!Session::has('user')) {?>
+                            <li><a href="/register" class="fancybox fancybox.ajax"><i class="fa fa-user"></i><span> Register</span></a></li>
+                            <li><a href="/login" ><i class="fa fa-lock"></i><span> Log In</span></a></li>
+                            <?php } else {?>
+                            <li><a href="/my-profile" class="fancybox fancybox.ajax"><i class="fa fa-user"></i><span> My Profile</span></a>
+                            <li><a href="/logout" class="fancybox fancybox.ajax"><i class="fa fa-sign-out"></i><span> logout</span></a>
+                            <?php }?>
+                            <li><a href="/cart" class="fancybox fancybox.ajax"><i class="fa fa-shopping-cart"></i><span> Cart (0)</span></a>
                             </li>
-                            <li><a href="/login" target="_blank"><i class="fa fa-lock"></i><span> Log In</span></a>
-                            </li>
-
-                            <li><a href="/cart" class="fancybox fancybox.ajax"><i
-                                            class="fa fa-shopping-cart"></i><span>Cart (0)</span></a></li>
 
 
                         </ul>
@@ -120,7 +120,8 @@
                                         <li class="mega-menu-sub">
                                             <ul>
                                                 <li><a href="/course/Agile">Agile &amp; Scrum</a></li>
-                                                <li><a href="/course/#">PRINCE2<sup>®</sup> Foundation Practitioner</a></li>
+                                                <li><a href="/course/#">PRINCE2<sup>®</sup> Foundation Practitioner</a>
+                                                </li>
                                                 <li><a href="/course/#" title="">CAPM®</a></li>
 
                                             </ul>

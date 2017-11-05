@@ -1,15 +1,15 @@
 <?php
 
-Route::group(['namespace' => 'Modules\Home\Http\Controllers'], function () {
+Route::group(['middleware' => 'web', 'namespace' => 'Modules\Home\Http\Controllers'], function () {
 
-    Route::get('/login', 'HomeController@login');
-    Route::get('/register', 'HomeController@register');
+	Route::get('/', 'HomeController@index');
+    Route::any('/register', 'HomeController@register');
+    Route::any('/login', 'HomeController@login');
     Route::get('/logout', 'HomeController@logout');
+    Route::get('/course/{courseID}', 'CourseController@index');
 
-    Route::group(['middleware' => 'web'], function () {
-        Route::get('/', 'HomeController@index');
-        Route::get('/cart', 'HomeController@cart');
-
-        Route::get('/course/{courseID}', 'CourseController@index');
+    Route::group(['middleware' => 'auth'], function () {
+        Route::get('/my-profile', 'UserController@myProfile');
+        Route::get('/cart', 'UserController@cart');
     });
 });

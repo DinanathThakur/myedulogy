@@ -1,5 +1,5 @@
 @extends('home::layouts.master')
-
+@section('title','Course')
 @section('content')
     <div class="page-title parallax parallax4">
         <div class="overlay"></div>

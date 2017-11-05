@@ -1,5 +1,7 @@
 @extends('home::layouts.master')
 
+@section('title','Online Training')
+
 @section('content')
 
 <div class="page-title parallax parallax4"> 

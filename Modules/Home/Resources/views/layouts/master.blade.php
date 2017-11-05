@@ -3,7 +3,7 @@
     <head>
     	@include('home::layouts.head-script')
     	@yield('head-content')
-    	<!-- @yield('title','Edulogy | Online Training') -->
+        <title>{{env('APP_NAME')}} | @yield('title')</title>
     </head>
     <body class="header-sticky">
         <div class="boxed">
