@@ -7,6 +7,17 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
+                <form action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post" name="_xclick">
+<input type="hidden" name="cmd" value="_xclick" /> 
+<input type="hidden" name="business" value="raushank3-business@globussoft.in" /> 
+<input type="hidden" name="currency_code" value="USD" />
+ <input type="hidden" name="item_name" value="normal" /> 
+<input type="hidden" name="custom" value="1/" /> 
+<input type="hidden" name="amount" value="1" /> 
+<input type="hidden" name="return" value="http://localhost.myedulogy.com/" /> 
+<input type="hidden" name="cancel_return" value="http://localhost.myedulogy.com/" /> 
+<input type="image" alt="Make payments with PayPal - it's fast, free and secure!" name="submit" src="http://www.paypalobjects.com/en_US/i/btn/btn_buynow_LG.gif" />
+</form>
                 @if ($errors->any())
                     <div class="alert alert-danger">
                         <ul>

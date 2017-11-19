@@ -12,8 +12,9 @@ use Validator;
 
 class HomeController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
+        // dd($request->all());
         return view('home::home.index');
     }
 
