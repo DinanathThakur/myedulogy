@@ -6,7 +6,9 @@
         <title>{{env('APP_NAME')}} | @yield('title')</title>
     </head>
     <body class="header-sticky">
-        <div class="boxed">
+        <div id="preloader">
+        <div id="status">&nbsp;</div>
+    </div>
             @include('home::layouts.header')
 
             
@@ -15,7 +17,6 @@
       
         @include('home::layouts.footer')
       
-      </div>
         @yield('page-script')
         @include('home::layouts.footer-script')
     </body>

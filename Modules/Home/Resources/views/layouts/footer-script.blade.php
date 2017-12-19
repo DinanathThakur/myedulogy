@@ -1,28 +1,51 @@
-<!-- Javascript -->
-<script type="text/javascript" src="/assets/javascript/jquery.min.js"></script>
-<script type="text/javascript" src="/assets/javascript/bootstrap.min.js"></script>
-<script type="text/javascript" src="/assets/javascript/jquery.easing.js"></script>
-<script type="text/javascript" src="/assets/javascript/owl.carousel.js"></script>
-<script type="text/javascript" src="/assets/javascript/jquery-waypoints.js"></script>
-<script type="text/javascript" src="/assets/javascript/jquery-countTo.js"></script>
-<script type="text/javascript" src="/assets/javascript/parallax.js"></script>
-<script type="text/javascript" src="/assets/javascript/jquery.cookie.js"></script>
-<script type="text/javascript" src="/assets/javascript/jquery-validate.js"></script>
-<script type="text/javascript" src="/assets/javascript/main.js"></script>
-
-
-<!-- Revolution Slider -->
-<script type="text/javascript" src="/assets/revolution/js/jquery.themepunch.tools.min.js"></script>
-<script type="text/javascript" src="/assets/revolution/js/jquery.themepunch.revolution.min.js"></script>
-<script type="text/javascript" src="/assets/revolution/js/slider.js"></script>
-
-<!-- SLIDER REVOLUTION 5.0 EXTENSIONS  (Load Extensions only on Local File Systems !  The following part can be removed on Server for On Demand Loading) -->
-<script type="text/javascript" src="/assets/revolution/js/extensions/revolution.extension.actions.min.js"></script>
-<script type="text/javascript" src="/assets/revolution/js/extensions/revolution.extension.carousel.min.js"></script>
-<script type="text/javascript" src="/assets/revolution/js/extensions/revolution.extension.kenburn.min.js"></script>
-<script type="text/javascript" src="/assets/revolution/js/extensions/revolution.extension.layeranimation.min.js"></script>
-<script type="text/javascript" src="/assets/revolution/js/extensions/revolution.extension.migration.min.js"></script>
-<script type="text/javascript" src="/assets/revolution/js/extensions/revolution.extension.navigation.min.js"></script>
-<script type="text/javascript" src="/assets/revolution/js/extensions/revolution.extension.parallax.min.js"></script>
-<script type="text/javascript" src="/assets/revolution/js/extensions/revolution.extension.slideanims.min.js"></script>
-<script type="text/javascript" src="/assets/revolution/js/extensions/revolution.extension.video.min.js"></script>
+<!--==================
+		JS Files
+	===================-->
+    <!-- jQuery -->
+	<script src="/assets/js/jquery-1.12.0.min.js"></script>
+	<!-- Bootstrap -->
+	<script src="/assets/js/assets/bootstrap.min.js"></script>
+	<!-- Owl Carousel -->
+	<script src="/assets/js/assets/owl.carousel.min.js"></script>
+	<!-- Revolution Slider -->
+	<script src="/assets/js/assets/revolution/jquery.themepunch.revolution.min.js"></script>
+	<script src="/assets/js/assets/revolution/jquery.themepunch.tools.min.js"></script>
+	<!-- Magnific Popup -->
+	<script src="/assets/js/assets/jquery.magnific-popup.min.js"></script>
+	<!-- Countdown JS -->
+	<script src="/assets/js/assets/jquery.syotimer.min.js"></script>
+	<!-- Sticky JS -->
+	<script src="/assets/js/assets/jquery.sticky.js"></script>
+	<!-- Slick Carousel -->
+	<script src="/assets/js/assets/slick.min.js"></script>
+	<!-- Mean Menu -->
+	<script src="/assets/js/assets/jquery.meanmenu.min.js"></script>
+	<!-- Mail JS -->
+	<script src="/assets/js/assets/mail.js"></script>
+	<!-- Custom JS -->
+	<script src="/assets/js/plugins.js"></script>
+	<script src="/assets/js/custom.js"></script>
+	<!--Start of Tawk.to Script-->
+<script type="text/javascript">
+var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+(function(){
+var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+s1.async=true;
+s1.src='https://embed.tawk.to/596768d66edc1c10b0345d2b/default';
+s1.charset='UTF-8';
+s1.setAttribute('crossorigin','*');
+s0.parentNode.insertBefore(s1,s0);
+})();
+</script>
+<!--End of Tawk.to Script-->
+<script type="text/javascript">
+    window.doorbellOptions = {
+        appKey: '7HI2Q8wACpctacCo6t6mVboOyTbQZe3EfFMLdegp8AjvmZ448DLTL0AUJ71FfI3x'
+    };
+    (function(w, d, t) {
+        var hasLoaded = false;
+        function l() { if (hasLoaded) { return; } hasLoaded = true; window.doorbellOptions.windowLoaded = true; var g = d.createElement(t);g.id = 'doorbellScript';g.type = 'text/javascript';g.async = true;g.src = 'https://embed.doorbell.io/button/7496?t='+(new Date().getTime());(d.getElementsByTagName('head')[0]||d.getElementsByTagName('body')[0]).appendChild(g); }
+        if (w.attachEvent) { w.attachEvent('onload', l); } else if (w.addEventListener) { w.addEventListener('load', l, false); } else { l(); }
+        if (d.readyState == 'complete') { l(); }
+    }(window, document, 'script'));
+</script>
