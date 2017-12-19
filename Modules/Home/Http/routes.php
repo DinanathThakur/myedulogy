@@ -3,6 +3,9 @@
 Route::group(['middleware' => 'web', 'namespace' => 'Modules\Home\Http\Controllers'], function () {
 
 	Route::get('/', 'HomeController@index');
+    Route::any('/about-us', 'HomeController@aboutUs');
+    Route::any('/contact-us', 'HomeController@contactUs');
+    Route::any('/accreditation', 'HomeController@accreditation');
     Route::any('/register', 'HomeController@register');
     Route::any('/login', 'HomeController@login');
     Route::get('/logout', 'HomeController@logout');

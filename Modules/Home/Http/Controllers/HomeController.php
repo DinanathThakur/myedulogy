@@ -14,8 +14,22 @@ class HomeController extends Controller
 {
     public function index(Request $request)
     {
-        // dd($request->all());
         return view('home::home.index');
+    }
+
+    public function aboutUs(Request $request)
+    {
+        return view('home::home.about-us');
+    }
+
+    public function contactUs(Request $request)
+    {
+        return view('home::home.contact-us');
+    }
+
+    public function accreditation(Request $request)
+    {
+        return view('home::home.accreditation');
     }
 
     public function login(Request $request)
