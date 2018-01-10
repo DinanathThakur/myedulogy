@@ -1,12 +1,33 @@
-<div id="preloader"> <div id="status">&nbsp;</div> </div>
-<header id="header-style02" class="header-style03">
+<header>
+    <!-- Header Top -->
+    <div class="header-top header-top-dark">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-6 col-xs-12 header-top-left">
+                    <ul class="list-unstyled">
+                        <li><i class="fa fa-phone"></i>  <a href="tel:+2034852989" title="Phone number">+1 210 401 5100</a></li>
+                        <li><i class="fa fa-envelope"></i> <a href="mailto:info@edulogy.com" title="Email address"> info@edulogy.com</a></li>
+                    </ul>
+                </div>
+                <div class="col-sm-6 col-xs-12 header-top-right">
+                    <ul class="list-unstyled">
+                        @unless (Auth::check())
+                        <li><a href="#">Register</a></li>
+                        <li><a href="#" class="apply-btn" >Login</a></li>
+                        @endunless
+                        <li><a href="#">Cart (0)</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div><!-- Ends: .header-top -->
     <div class="main-menu">
         <div class="container">
             <div class="row">
                 <!-- Main Menu -->
                 <div class="col-sm-12">
                     <nav class="navbar" id="main-nav">
-                        <div class="containers">
+                        <div class="container">
                             <div class="navbar-header">
                                 <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#edulight-navbar-collapse" aria-expanded="false">
                                     <span class="sr-only">Toggle navigation</span>
@@ -15,7 +36,7 @@
                                     <span class="icon-bar"></span>
                                 </button>
                                 <!-- Change Logo Here -->
-                                <a class="navbar-brand" href="/"><img src="/assets/images/logo-inverse.png" alt="EduLight"></a>
+                                <a class="navbar-brand" href="/"><img src="/assets/images/logo.jpg" alt="EduLight"></a>
                             </div><!-- End .navbar-header -->
 
                             <!-- Fullscreen search -->
@@ -281,7 +302,7 @@
                                         <li> <a href="/accreditation">Accreditation</a> </li>
                                         <li> <a href="#">Blog</a> </li>
                                         <li> <a href="/contact-us">Contact</a> </li><!-- End Contact -->
-                                        <li><a href="/login">Login</a></li>
+                                        <li><a href="#">Enroll Now</a></li>
                                     </ul>
                                 </div><!-- .navbar-collapse -->
                             </div><!-- Ends: .nav-container -->

@@ -5,9 +5,12 @@
         @yield('head-content')
         <title>{{env('APP_NAME')}} | @yield('title')</title>
     </head>
-    <body class="header-sticky">
-        <div id="preloader"> <div id="status">&nbsp;</div> </div>
+    <body class="{{ Request::is('/') ? "" : "inner-page"}}">
+        @if (Request::is('/'))
         @include('home::layouts.header')
+        @else
+        @include('home::layouts.common-header')
+        @endif
         @yield('content')
         @include('home::layouts.footer')
         @yield('page-script')

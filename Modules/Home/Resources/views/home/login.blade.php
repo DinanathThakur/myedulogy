@@ -31,17 +31,17 @@
                                     <div class="form-group">
                                         <input type="password" name="password" id="password" class="form-control input-lg" placeholder="Password">
                                     </div><br>
-                                    <div class="form-group" style="height:30px;">
+                                    <!-- <div class="form-group" style="height:30px;">
                                         <span class="button-checkbox">
                                             <a href="" class="btn btn-link pull-right">Forgot Password?</a>
                                         </span>
-                                    </div>
+                                    </div> -->
                                     <div class="row">
                                         <div class="col-xs-6 col-sm-6 col-md-6">
                                             <input class="btn btn-lg btn-new btn-success btn-block" value="Sign In">
                                         </div>
                                         <div class="col-xs-6 col-sm-6 col-md-6">
-                                            <a href="" class="btn btn-lg btn-primary btn-new btn-block">Register</a>
+                                            <a href="/register" class="btn btn-lg btn-primary btn-new btn-block">Register</a>
                                         </div>
                                     </div>
                                 </fieldset>

@@ -22,44 +22,44 @@
 17. 404 Page
 18. Coming Soon
 19. Blog
-	19.1	Blog One Style
-	19.2	Blog Two Style
-	19.3	Blog Three Style
-	19.4	Blog Four Style
-	19.5	Blog Five Style
-	19.6	Blog Six Style
-	19.7	Blog Seven Style
-	19.8	Blog Eight Style
-	19.9	Blog Nine Style
-	19.10	Blog Details
+    19.1    Blog One Style
+    19.2    Blog Two Style
+    19.3    Blog Three Style
+    19.4    Blog Four Style
+    19.5    Blog Five Style
+    19.6    Blog Six Style
+    19.7    Blog Seven Style
+    19.8    Blog Eight Style
+    19.9    Blog Nine Style
+    19.10   Blog Details
 20. Course
-	20.1	Course One
-	20.2	Course Two
-	20.3	Course Five
-	20.4	Course Six
-	20.5	Single Course
+    20.1    Course One
+    20.2    Course Two
+    20.3    Course Five
+    20.4    Course Six
+    20.5    Single Course
 21. Events
-	21.1	Event One
-	21.2	Event Three
-	21.3	Event Details
+    21.1    Event One
+    21.2    Event Three
+    21.3    Event Details
 22. Teachers Page
-	22.1	Teacher One
-	22.2	Teacher Two
-	22.3	Teacher Four
-	22.4	Teacher Six
-	22.5	Teacher Seven
+    22.1    Teacher One
+    22.2    Teacher Two
+    22.3    Teacher Four
+    22.4    Teacher Six
+    22.5    Teacher Seven
 23. About Us Page
 24. Teacher Single Page
 25. Become A Teacher
 26. FAQ
 27. Portfolio Page
-28.	Contact
-	28.1	Contact One
-	28.2	Contact Two
-	28.3	Contact Three
+28. Contact
+    28.1    Contact One
+    28.2    Contact Two
+    28.3    Contact Three
 29. Forum Page
 30. Shop
-	30.1	Product Details
+    30.1    Product Details
 31. Helper Classes
 ------------------------------------------------------------------- */
 
@@ -74,12 +74,12 @@ html {
 ::-moz-selection {
     background: #ffaa30;
     text-shadow: none;
-	color: #fff;
+    color: #fff;
 }
 ::selection {
     background: #ffaa30;
     text-shadow: none;
-	color: #fff;
+    color: #fff;
 }
 hr {
     display: block;
@@ -108,7 +108,7 @@ textarea {
 a:focus{outline: 0;}
 *:focus{outline:none;}
 input, textarea{
-	box-shadow: none;
+    box-shadow: none;
 }
 h1, h2, h3, h4, h5, h6 {
     color: #323232;
@@ -146,7 +146,7 @@ figure {
 }
 
 iframe{
-	border: 0 none;
+    border: 0 none;
 }
 
 .el-btn-regular {
@@ -249,28 +249,28 @@ iframe{
 }
 /* -------- Pre Loader -------- */
 #preloader {
-	position: fixed;
-	top:0;
-	left:0;
-	right:0;
-	bottom:0;
-	background-color:#fefefe;
-	z-index:99999;
+    position: fixed;
+    top:0;
+    left:0;
+    right:0;
+    bottom:0;
+    background-color:#fefefe;
+    z-index:99999;
 }
 
 #status {
-	width:200px;
-	height:200px;
-	position:absolute;
-	left:50%;
-	top:50%;
-	background-image:url('../images/preloader.gif');
-	background-repeat:no-repeat;
-	background-position:center;
-	margin:-100px 0 0 -100px;
+    width:200px;
+    height:200px;
+    position:absolute;
+    left:50%;
+    top:50%;
+    background-image:url('../images/preloader.gif');
+    background-repeat:no-repeat;
+    background-position:center;
+    margin:-100px 0 0 -100px;
 }
 /* ==============================
-	Home Main Version
+    Home Main Version
 ================================ */
 /* Header */
 
@@ -647,7 +647,7 @@ header .header-top-dark .header-top-right ul li a.apply-btn:hover {
 
 
 /* ===============================
-	Home Page Version 01
+    Home Page Version 01
 ================================ */
 header .header-top {
     background: #3c3d41;
@@ -890,7 +890,7 @@ header .main-menu nav.navbar .navbar-collapse ul.navbar-nav li.mega-menu ul.mega
     border-left: 0;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.13);
     width: 505px;
-    min-height: 382px;
+    min-height: 462px;
     z-index: 1;
     background: #fff;
     visibility: hidden;
@@ -1019,7 +1019,7 @@ header#header-style02.header-sticky .is-sticky .main-menu nav.navbar .navbar-col
     left: 0;
     z-index: 121;
     background-color: rgba(0,0,0,0.8);
-	cursor: url(../images/mouse-cross.png), auto;
+    cursor: url(../images/mouse-cross.png), auto;
 }
 
 .search-wrap .search-inner {
@@ -1040,7 +1040,7 @@ header#header-style02.header-sticky .is-sticky .main-menu nav.navbar .navbar-col
     position: relative;
     -webkit-animation: slideInUp .3s;
             animation: slideInUp .3s;
-	background: #fff;
+    background: #fff;
 }
 
 .search-wrap .form-control {
@@ -1048,7 +1048,7 @@ header#header-style02.header-sticky .is-sticky .main-menu nav.navbar .navbar-col
     border-top: none;
     border-left: none;
     border-right: none;
-	border-bottom: none;
+    border-bottom: none;
     font-family: 'Raleway', sans-serif;
     font-size: 20px;
     margin-bottom: 0;
@@ -1056,25 +1056,25 @@ header#header-style02.header-sticky .is-sticky .main-menu nav.navbar .navbar-col
     position: relative;
     box-shadow: none;
     border-radius: 0;
-	transition:.3s ease;
-	font-weight: 300;
-	padding: 0 0 0 15px;
-	display: table-cell;
-	vertical-align: top;
-	width: 87.77%;
+    transition:.3s ease;
+    font-weight: 300;
+    padding: 0 0 0 15px;
+    display: table-cell;
+    vertical-align: top;
+    width: 87.77%;
 }
 .search-field-holder > button {
-	background: rgba(0, 0, 0, 0) none repeat scroll 0 0;
-	border: 0 none;
-	color: #696969;
-	display: table-cell;
-	font-size: 21px;
-	position: absolute;
-	vertical-align: top;
-	width: 66px;
-	height: 66px;
-	right: 0;
-	top: 0;
+    background: rgba(0, 0, 0, 0) none repeat scroll 0 0;
+    border: 0 none;
+    color: #696969;
+    display: table-cell;
+    font-size: 21px;
+    position: absolute;
+    vertical-align: top;
+    width: 66px;
+    height: 66px;
+    right: 0;
+    top: 0;
 }
 .search-wrap input.form-control, .search-wrap input.form-control:focus {
     background-color: #fff;
@@ -1129,10 +1129,10 @@ input.main-search-input:-ms-input-placeholder {
     font-size: 30px;
     color: #424242;
     cursor: pointer;
-	transition:0.3s ease;
+    transition:0.3s ease;
 }
 #search-close:hover{
-	color:#ffaa30;
+    color:#ffaa30;
 }
 .mobile-links li > a {
     padding: 15px 0 15px 15px;
@@ -1167,8 +1167,8 @@ input.main-search-input:-ms-input-placeholder {
     background-color: transparent;
 }
 header .main-menu nav.navbar .navbar-collapse ul.navbar-nav li.nav-right{
-	margin-right:0;
-	padding:0;
+    margin-right:0;
+    padding:0;
 }
 
 
@@ -2317,7 +2317,7 @@ footer .widget.subscribe .widget-content form button {
 
 
 /* ==============================
-	Home Page Version 02
+    Home Page Version 02
 ================================ */
 /* Header */
 #header-style02 {
@@ -3073,7 +3073,7 @@ footer .widget.subscribe .widget-content form button {
 
 
 /* ==============================
-	Home Page Version 03
+    Home Page Version 03
 ================================ */
 
 .home {
@@ -3689,7 +3689,7 @@ footer .widget.subscribe .widget-content form button {
 
 
 /* ==============================
-	Home Page Version 04
+    Home Page Version 04
 ================================ */
 
 .home04 {
@@ -4122,7 +4122,7 @@ footer .widget.subscribe .widget-content form button {
 
 
 /* ==============================
-	Kindergarten Version 01
+    Kindergarten Version 01
 ================================ */
 
 body.kids-school {
@@ -4946,7 +4946,7 @@ footer.footer02 .widget.subscribe form button {
 
 
 /* ==============================
-	Kindergarten Version 02
+    Kindergarten Version 02
 ================================ */
 /* Header */
 
@@ -5732,7 +5732,7 @@ header.header-kg .main-menu nav.navbar .nav-container .menu-search {
 
 
 /* ==============================
-	Home Page Version 06
+    Home Page Version 06
 ================================ */
 
 .header-top-border span {
@@ -6435,7 +6435,7 @@ header.header-kg .main-menu nav.navbar .nav-container .menu-search {
 
 
 /* ==============================
-	Home Page Version 07
+    Home Page Version 07
 ================================ */
 
 .section-header04 h2 {
@@ -6802,7 +6802,7 @@ header.header-kg .main-menu nav.navbar .nav-container .menu-search {
 
 
 /* ==============================
-	Home Page Version 08
+    Home Page Version 08
 ================================ */
 /* Slider Bottom */
 
@@ -7310,7 +7310,7 @@ header.header-kg .main-menu nav.navbar .nav-container .menu-search {
 
 
 /* ==============================
-	Home Page Version 09
+    Home Page Version 09
 ================================ */
 /* Slider */
 
@@ -7852,7 +7852,7 @@ header.header-kg .main-menu nav.navbar .nav-container .menu-search {
 
 
 /* ==============================
-	Home Page Version 10
+    Home Page Version 10
 ================================ */
 /* About */
 
@@ -7902,12 +7902,12 @@ header.header-kg .main-menu nav.navbar .nav-container .menu-search {
     background: #fff;
 }
 .why-choose-us .wcu-content ul li {
-	color: #fff;
+    color: #fff;
 font-family: 'Raleway', sans-serif;
-	font-size: 23px;
-	font-weight: 600;
-	margin-bottom: 45px;
-	text-transform: uppercase;
+    font-size: 23px;
+    font-weight: 600;
+    margin-bottom: 45px;
+    text-transform: uppercase;
 }
 .why-choose-us .wcu-content ul li:last-child {
     margin-bottom: 0;
@@ -8215,7 +8215,7 @@ font-family: 'Raleway', sans-serif;
 
 
 /* ==============================
-	Home Page Version 11
+    Home Page Version 11
 ================================ */
 /* Header */
 
@@ -9015,7 +9015,7 @@ font-family: 'Raleway', sans-serif;
 
 
 /* ==============================
-	Home Page Version 12
+    Home Page Version 12
 ================================ */
 /* About */
 
@@ -9373,7 +9373,7 @@ font-family: 'Raleway', sans-serif;
 
 
 /* ==============================
-	Home Page Version 13
+    Home Page Version 13
 ================================ */
 /* Header */
 
@@ -9759,7 +9759,7 @@ font-family: 'Raleway', sans-serif;
 
 
 /* ==============================
-	404 Page
+    404 Page
 ================================ */
 
 .error404 {
@@ -9837,7 +9837,7 @@ font-family: 'Raleway', sans-serif;
 
 
 /* ==============================
-	Coming Soon
+    Coming Soon
 ================================ */
 
 html,
@@ -9995,7 +9995,7 @@ body {
 
 
 /* ===============================
-	Blog One Style
+    Blog One Style
 ================================ */
 .inner-page .page-header {
     padding: 80px 0;
@@ -10312,7 +10312,7 @@ body {
 
 
 /* ===============================
-	Blog Two Style
+    Blog Two Style
 ================================ */
 /* Blog Page Content */
 
@@ -10366,7 +10366,7 @@ body {
 
 
 /* ===============================
-	Blog Three Style
+    Blog Three Style
 ================================ */
 
 .blog-wrapper .blog-three-content .carousel-item .course-single {
@@ -10465,7 +10465,7 @@ body {
 
 
 /* ===============================
-	Blog Four Style
+    Blog Four Style
 ================================ */
 
 .blog-wrapper.blog .blog-four-content .blog-posts .single-blog {
@@ -10474,7 +10474,7 @@ body {
 
 
 /* ===============================
-	Blog Five Style
+    Blog Five Style
 ================================ */
 
 .blog-wrapper.blog .blog-five-content .blog-posts02 .col-sm-6:nth-child(3) .single-blog,
@@ -10484,7 +10484,7 @@ body {
 
 
 /* ===============================
-	Blog Six Style
+    Blog Six Style
 ================================ */
 
 .blog-wrapper.blog02 .blog-six-content .blog-posts .single-blog {
@@ -10499,7 +10499,7 @@ body {
 
 
 /* ===============================
-	Blog Seven Style
+    Blog Seven Style
 ================================ */
 
 .blog-wrapper.blog06 .blog-seven-content .single-blog {
@@ -10563,7 +10563,7 @@ body {
 
 
 /* ===============================
-	Blog Eight Style
+    Blog Eight Style
 ================================ */
 
 .blog-wrapper.blog07 {
@@ -10695,7 +10695,7 @@ body {
 
 
 /* ===============================
-	Blog Nine Style
+    Blog Nine Style
 ================================ */
 
 .blog-wrapper.blog11 {
@@ -10713,7 +10713,7 @@ body {
 
 
 /* ===============================
-	Blog Details Style
+    Blog Details Style
 ================================ */
 
 .blog-wrapper .blog-details-wrapper .blog-image img {
@@ -10861,7 +10861,7 @@ body {
 
 
 /* ================================
-	Courses One Style
+    Courses One Style
 ================================== */
 
 .all-course-wrapper,
@@ -10901,7 +10901,7 @@ body {
 
 
 /* ================================
-	Courses Two Style
+    Courses Two Style
 ================================== */
 
 .all-course-wrapper .course-style02-wrapper .course-single {
@@ -11037,7 +11037,7 @@ body {
 
 
 /* ================================
-	Courses Five Style
+    Courses Five Style
 ================================== */
 
 .all-course-wrapper.course-wrapper .course-style04 {
@@ -11046,7 +11046,7 @@ body {
 
 
 /* ================================
-	Courses Six Style
+    Courses Six Style
 ================================== */
 
 .all-course-wrapper .course-six-wrapper .course-single {
@@ -11130,7 +11130,7 @@ body {
 
 
 /* ================================
-	Single Course Style
+    Single Course Style
 ================================== */
 
 .single-course-wrapper {
@@ -11842,7 +11842,7 @@ body {
 
 
 /* ================================
-	Events One Style
+    Events One Style
 ================================== */
 
 .all-course-wrapper .events-block .col-sm-12:last-child .event2-single {
@@ -11851,7 +11851,7 @@ body {
 
 
 /* ================================
-	Events Three Style
+    Events Three Style
 ================================== */
 
 .all-course-wrapper.events11 .events-list .col-sm-12:last-child .event-single-row {
@@ -11860,7 +11860,7 @@ body {
 
 
 /* ================================
-	Event Details Style
+    Event Details Style
 ================================== */
 
 .event-details-wrapper .single-event-inner h2.event-title {
@@ -11991,7 +11991,7 @@ body {
 
 
 /* ================================
-	Teachers One Style
+    Teachers One Style
 ================================== */
 
 .all-teachers-wrapper.teachers .teachers-block .row:last-child .teacher-single {
@@ -12000,7 +12000,7 @@ body {
 
 
 /* ================================
-	Teachers Two Style
+    Teachers Two Style
 ================================== */
 
 .all-teachers-wrapper .teachers-two-wrapper .teacher-single-box {
@@ -12096,7 +12096,7 @@ body {
 
 
 /* ================================
-	Teachers Four Style
+    Teachers Four Style
 ================================== */
 
 .all-teachers-wrapper .teachers-four-wrapper .teacher-single {
@@ -12188,7 +12188,7 @@ body {
 
 
 /* ================================
-	Teachers Six Style
+    Teachers Six Style
 ================================== */
 
 .all-teachers-wrapper .teachers-six-wrapper .instructor-single {
@@ -12222,7 +12222,7 @@ body {
 
 
 /* ================================
-	Teachers Seven Style
+    Teachers Seven Style
 ================================== */
 
 .all-teachers-wrapper .kg-teachers-wrapper .teacher-single-inner {
@@ -12231,7 +12231,7 @@ body {
 
 
 /* ================================
-	About Us Page Style
+    About Us Page Style
 ================================== */
 
 .about-page-services {
@@ -12257,7 +12257,7 @@ body {
 
 
 /* ================================
-	Teacher Single Page Style
+    Teacher Single Page Style
 ================================== */
 
 .teacher-details-wrapper {
@@ -12373,7 +12373,7 @@ body {
 
 
 /* ================================
-	Become A Teacher Page Style
+    Become A Teacher Page Style
 ================================== */
 
 .teacher-registration-wrapper {
@@ -12503,7 +12503,7 @@ body {
 
 
 /* ================================
-	FAQ Page Style
+    FAQ Page Style
 ================================== */
 
 .faq-wrapper {
@@ -12601,7 +12601,7 @@ body {
 
 
 /* ================================
-	Portfolio Page Style
+    Portfolio Page Style
 ================================== */
 
 .portfolio-wrapper {
@@ -12700,7 +12700,7 @@ body {
 
 
 /* ================================
-	Contact One Style
+    Contact One Style
 ================================== */
 
 .contact-wrapper {
@@ -12767,7 +12767,7 @@ body {
 
 
 /* ================================
-	Contact Two Style
+    Contact Two Style
 ================================== */
 
 .contact-wrapper .contact-two-top h3 {
@@ -12864,7 +12864,7 @@ body {
 
 
 /* ================================
-	Contact Three Style
+    Contact Three Style
 ================================== */
 
 .contact-wrapper .contact-three-header h2 {
@@ -12907,8 +12907,8 @@ body {
 }
 .contact-wrapper .contact-map iframe {
     pointer-events: none;
-	width: 100%;
-	border: 0 none;
+    width: 100%;
+    border: 0 none;
 }
 .contact-wrapper .contact-three-form {
     background: #ffaa30;
@@ -12950,7 +12950,7 @@ body {
 
 
 /* ================================
-	Forum Page Style
+    Forum Page Style
 ================================== */
 
 .forum-wrapper .forum-search {
@@ -13056,9 +13056,9 @@ body {
     cursor: pointer;
 }
 .shop-area .product-column .single-product{
-	margin-bottom:30px;
-	padding-bottom:15px;
-	border-bottom:1px solid #eee;
+    margin-bottom:30px;
+    padding-bottom:15px;
+    border-bottom:1px solid #eee;
 }
 .shop-area .product-column .single-product figure{
     position: relative;
@@ -13305,10 +13305,10 @@ body {
     padding-right: 18px;
 }
 .product-details .product-tabs .tab-content .tab-pane .review-area .review-inner .review-single .author-review .review-meta ul li:first-child, .product-details .product-tabs .tab-content .tab-pane .review-area .review-inner .review-single .author-review .review-meta ul li:nth-child(3){
-	color: #ffaa30;
+    color: #ffaa30;
 }
 .product-details .product-tabs .tab-content .tab-pane .review-area .review-inner .review-single .author-review .review-meta ul li:nth-child(2){
-	font-weight: 400;
+    font-weight: 400;
 }
 .product-details .product-tabs .tab-content .tab-pane .review-area .review-inner .review-single .author-review .review-meta ul li:first-child:before, .product-details .product-tabs .tab-content .tab-pane .review-area .review-inner .review-single .author-review .review-meta ul li:nth-child(2):before{
     position: absolute;
@@ -13412,7 +13412,7 @@ body {
     color: #fff;
     font-weight: 500;
     font-size: 16px;
-	text-transform: uppercase;
+    text-transform: uppercase;
 }
 .related-products h2{
     margin: 0 0 50px 0;
@@ -13422,9 +13422,9 @@ body {
     text-transform: uppercase;
 }
 .related-products .product-column .single-product{
-	margin-bottom:30px;
-	padding-bottom:15px;
-	border-bottom:1px solid #eee;
+    margin-bottom:30px;
+    padding-bottom:15px;
+    border-bottom:1px solid #eee;
 }
 .related-products .product-column .single-product figure{
     position: relative;
@@ -13536,8 +13536,8 @@ body {
    Helper classes
    ========================================================================== */
 .nopadding{
-	padding-left: 0;
-	padding-right: 0;
+    padding-left: 0;
+    padding-right: 0;
 }
 .hidden {
     display: none !important;
@@ -13806,7 +13806,7 @@ min-height:120px;
     text-transform: uppercase;
 }
 .enroll-options ul li span{
-	display: inline-block;
+    display: inline-block;
 }
 .enroll-options ul a.text-danger {
     color: #e64143;
@@ -13897,8 +13897,8 @@ h2.courepage-intro-text {
     -webkit-box-shadow: 0 3px 0 -1px #ebebeb;
 }
 .title-padding{
-	padding: 30px 0px;
-	color: #fff;
+    padding: 30px 0px;
+    color: #fff;
 }
 ul.flat-list li {
     padding: 6px 0 6px 24px;
@@ -13910,44 +13910,44 @@ ul.flat-list li {
     color: #fff;
 }
 .requestpopup .form-control{
-	height: 34px !important;
+    height: 34px !important;
 }
 input[type="button"],
 input[type="reset"],
 input[type="submit"] {
-	font-family: "Montserrat", sans-serif;
-	font-size: 14px;	
-	text-transform: uppercase;		
+    font-family: "Montserrat", sans-serif;
+    font-size: 14px;    
+    text-transform: uppercase;      
     color: #ffffff;
-  	background-image: none;
-  	height: 50px;
-  	background-color: #ffaa30;
-  	line-height: 50px;
-  	padding: 0 24px 0 32px;
-  	/*padding: 6px 8px;*/
-  	cursor: pointer;
-  	/*letter-spacing: 1px;*/
-  	white-space: nowrap;
-  	border: none;
-  	-webkit-border-radius: 3px;
- 	   -moz-border-radius: 3px;
+    background-image: none;
+    height: 50px;
+    background-color: #ffaa30;
+    line-height: 50px;
+    padding: 0 24px 0 32px;
+    /*padding: 6px 8px;*/
+    cursor: pointer;
+    /*letter-spacing: 1px;*/
+    white-space: nowrap;
+    border: none;
+    -webkit-border-radius: 3px;
+       -moz-border-radius: 3px;
         -ms-border-radius: 3px;
          -o-border-radius: 3px;
             border-radius: 3px;
    display: inline-block;
-   	-webkit-transition: all 0.3s ease-in-out;
-		-moz-transition: all 0.3s ease-in-out;
-		-ms-transition: all 0.3s ease-in-out;
-		 -o-transition: all 0.3s ease-in-out;
-		    transition: all 0.3s ease-in-out;
+    -webkit-transition: all 0.3s ease-in-out;
+        -moz-transition: all 0.3s ease-in-out;
+        -ms-transition: all 0.3s ease-in-out;
+         -o-transition: all 0.3s ease-in-out;
+            transition: all 0.3s ease-in-out;
 }
 
 button:hover,
 input[type="button"]:hover,
 input[type="reset"]:hover,
 input[type="submit"]:hover {
-	background-color: #fff;
-	border-color: #222;
+    background-color: #fff;
+    border-color: #222;
 }
 
 select,
@@ -13965,21 +13965,21 @@ input[type="email"],
 input[type="url"],
 input[type="search"],
 input[type="tel"],
-input[type="color"] {	
-	border: 1px solid #e5e5e5;
-  	height: 50px;
-  	padding: 20px;  	
-  	font-size: 12px;
-  	line-height: 19px;
-  	color: #333333;
-  	max-width: 100%;
-  	margin-bottom: 10px;
-  	-webkit-transition: all 0.3s ease-in-out;
-	   -moz-transition: all 0.3s ease-in-out;
-		-ms-transition: all 0.3s ease-in-out;
-		 -o-transition: all 0.3s ease-in-out;
-			transition: all 0.3s ease-in-out;
-	width: 100%;
+input[type="color"] {   
+    border: 1px solid #e5e5e5;
+    height: 50px;
+    padding: 20px;      
+    font-size: 12px;
+    line-height: 19px;
+    color: #333333;
+    max-width: 100%;
+    margin-bottom: 10px;
+    -webkit-transition: all 0.3s ease-in-out;
+       -moz-transition: all 0.3s ease-in-out;
+        -ms-transition: all 0.3s ease-in-out;
+         -o-transition: all 0.3s ease-in-out;
+            transition: all 0.3s ease-in-out;
+    width: 100%;
     padding: 12px 35px;
     padding-top: 12px;
     padding-right: 35px;
@@ -14002,44 +14002,44 @@ input[type="url"]:focus,
 input[type="search"]:focus,
 input[type="tel"]:focus,
 input[type="color"]:focus {
-	border: 1px solid #ffaa30;
-	-webkit-box-shadow: none;
-	   -moz-box-shadow: none;
-			box-shadow: none;
+    border: 1px solid #ffaa30;
+    -webkit-box-shadow: none;
+       -moz-box-shadow: none;
+            box-shadow: none;
 }
 
 textarea {
-	width: 100%;
-	height: 200px;
-	padding: 14px 20px;
+    width: 100%;
+    height: 200px;
+    padding: 14px 20px;
 }
 
 input[type="checkbox"] {
-	display: inline;
+    display: inline;
 }
 
 textarea:-moz-placeholder,
 textarea::-moz-placeholder,
 input:-moz-placeholder,
-input::-moz-placeholder {	
-	font-size: 12px;
-  	line-height: 19px;	
-	color: #b1b1b1;
-	opacity: 1;
+input::-moz-placeholder {   
+    font-size: 12px;
+    line-height: 19px;  
+    color: #b1b1b1;
+    opacity: 1;
 }
 
 input:-ms-input-placeholder {
-	font-size: 12px;
-  	line-height: 19px;
-	color: #b1b1b1;
+    font-size: 12px;
+    line-height: 19px;
+    color: #b1b1b1;
 }
 
 textarea::-webkit-input-placeholder,
 input::-webkit-input-placeholder {
-	font-size: 12px;
-  	line-height: 19px;
-	color: #b1b1b1;
-	opacity: 1;
+    font-size: 12px;
+    line-height: 19px;
+    color: #b1b1b1;
+    opacity: 1;
 }
 
 @-webkit-keyframes pop-scale { 0% { -webkit-transform: scale(0.7) } 100% { -webkit-transform: scale(1) } }
@@ -14048,9 +14048,9 @@ input::-webkit-input-placeholder {
 
 /* bootstrap resetting elements */
 .btn {
-	background-image: none;
-	padding: 6px 8px;
-	    font-size: 12px;
+    background-image: none;
+    padding: 6px 8px;
+        font-size: 12px;
 }
 
 textarea, 
@@ -14074,13 +14074,13 @@ input[type="color"],
 .navbar .nav > .active > a, 
 .navbar .nav > .active > a:hover, 
 .navbar .nav > .active > a:focus {
-	-webkit-appearance: none;
-	text-shadow: none;
-	-webkit-box-shadow: none;
-	   -moz-box-shadow: none;
-	     -o-box-shadow: none;
-	        box-shadow: none;
-	color: #333333;
+    -webkit-appearance: none;
+    text-shadow: none;
+    -webkit-box-shadow: none;
+       -moz-box-shadow: none;
+         -o-box-shadow: none;
+            box-shadow: none;
+    color: #333333;
 }
 header .main-menu nav.navbar .nav-container.nav-course{
 float: left;
