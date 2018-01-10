@@ -281,7 +281,12 @@
                                         <li> <a href="/accreditation">Accreditation</a> </li>
                                         <li> <a href="#">Blog</a> </li>
                                         <li> <a href="/contact-us">Contact</a> </li><!-- End Contact -->
+                                        @if (!Auth::check())
                                         <li><a href="/login">Login</a></li>
+                                        @else
+                                        <li><a href="/user/my-profile">My Profile</a></li>
+                                        @endif
+                                        
                                     </ul>
                                 </div><!-- .navbar-collapse -->
                             </div><!-- Ends: .nav-container -->

@@ -11,10 +11,12 @@
                 </div>
                 <div class="col-sm-6 col-xs-12 header-top-right">
                     <ul class="list-unstyled">
-                        @unless (Auth::check())
-                        <li><a href="#">Register</a></li>
-                        <li><a href="#" class="apply-btn" >Login</a></li>
-                        @endunless
+                        @if (!Auth::check())
+                        <li><a href="/register">Register</a></li>
+                        <li><a href="/login" class="apply-btn" >Login</a></li>
+                        @else
+                        <li><a href="/user/my-profile" class="apply-btn" >My Profile</a></li>
+                        @endif
                         <li><a href="#">Cart (0)</a></li>
                     </ul>
                 </div>
