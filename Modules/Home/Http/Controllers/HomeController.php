@@ -14,6 +14,15 @@ class HomeController extends Controller
 {
     public function index(Request $request)
     {
+        $user = User::create([
+            'firstName' =>'test',
+            'lastName' => 'testing',
+            'email' => 'test@gmail.com',
+            'password' => bcrypt('dina'),
+            'role' => 2,
+            'userName' => 'dinanath',
+            'profilePic' => '/assets/images/avatar-placeholder.jpg',
+        ]);
         return view('home::home.index');
     }
 
