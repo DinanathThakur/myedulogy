@@ -284,7 +284,7 @@
                                         @if (!Auth::check())
                                         <li><a href="/login">Login</a></li>
                                         @else
-                                        <li><a href="/user/my-profile">My Profile</a></li>
+                                        <li><a href="/my-profile">My Profile</a></li>
                                         @endif
                                         
                                     </ul>

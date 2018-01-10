@@ -15,7 +15,8 @@
                         <li><a href="/register">Register</a></li>
                         <li><a href="/login" class="apply-btn" >Login</a></li>
                         @else
-                        <li><a href="/user/my-profile" class="apply-btn" >My Profile</a></li>
+                        <li><a href="/my-profile" class="apply-btn" >My Profile</a></li>
+                        <li><a href="/logout" >Logout</a></li>
                         @endif
                         <li><a href="#">Cart (0)</a></li>
                     </ul>

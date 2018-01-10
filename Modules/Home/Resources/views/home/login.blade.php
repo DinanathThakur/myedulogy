@@ -23,13 +23,13 @@
                 <div class="contact-two-bottom">
                     <div class="row">
                         <div class="col-sm-12">
-                            <form role="form" id="ajax-contact" method="post" action="">
+                            <form role="form" method="post" action="">
                                 <fieldset>
                                     <div class="form-group">
-                                        <input type="email" name="email" id="email" class="form-control input-lg" placeholder="Email Address">
+                                        <input type="email" name="email" id="email" class="form-control input-lg" placeholder="Email Address" required="">
                                     </div>
                                     <div class="form-group">
-                                        <input type="password" name="password" id="password" class="form-control input-lg" placeholder="Password">
+                                        <input type="password" name="password" id="password" class="form-control input-lg" placeholder="Password" required="">
                                     </div><br>
                                     <!-- <div class="form-group" style="height:30px;">
                                         <span class="button-checkbox">
@@ -38,7 +38,7 @@
                                     </div> -->
                                     <div class="row">
                                         <div class="col-xs-6 col-sm-6 col-md-6">
-                                            <input class="btn btn-lg btn-new btn-success btn-block" value="Sign In">
+                                            <button class="btn btn-lg btn-new btn-success btn-block" type="submit">Sign In</button>
                                         </div>
                                         <div class="col-xs-6 col-sm-6 col-md-6">
                                             <a href="/register" class="btn btn-lg btn-primary btn-new btn-block">Register</a>

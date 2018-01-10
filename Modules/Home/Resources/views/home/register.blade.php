@@ -31,31 +31,30 @@
                                 </ul>
                             </div>
                             @endif
-                            <form role="form" id="ajax-contact" method="post" action="">
+                            <form role="form"  method="post" action="">
                                 <fieldset>
                                     <form class="" method="post">
                                         <div class="form-group">
                                             <label for="firstName">First Name:</label>
-                                            <input type="firstName" class="form-control input-lg" id="firstName" placeholder="Enter firstName" name="firstName">
+                                            <input type="firstName" class="form-control input-lg" id="firstName" placeholder="Enter firstName" name="firstName" required="">
                                         </div>
                                         <div class="form-group">
                                             <label for="lastName">Last Name:</label>
-                                            <input type="lastName" class="form-control input-lg" id="lastName" placeholder="Enter lastName" name="lastName">
+                                            <input type="lastName" class="form-control input-lg" id="lastName" placeholder="Enter lastName" name="lastName" required="">
                                         </div>
                                         <div class="form-group">
                                             <label for="userName">UserName:</label>
-                                            <input type="userName" class="form-control input-lg" id="userName" placeholder="Enter userName" name="userName">
+                                            <input type="userName" class="form-control input-lg" id="userName" placeholder="Enter userName" name="userName" required="">
                                         </div>
                                         <div class="form-group">
                                             <label for="email">Email:</label>
-                                            <input type="email" class="form-control input-lg" id="email" placeholder="Enter email" name="email">
+                                            <input type="email" class="form-control input-lg" id="email" placeholder="Enter email" name="email" required="">
                                         </div>
                                         <div class="form-group">
                                             <label for="pwd">Password:</label>
-                                            <input type="password" class="form-control input-lg" id="pwd" placeholder="Enter password" name="password">
+                                            <input type="password" class="form-control input-lg" id="pwd" placeholder="Enter password" name="password" required="">
                                         </div>
-
-                                        <input class="btn btn-lg btn-new btn-success btn-block" value="Sign In">
+                                        <button class="btn btn-lg btn-new btn-success btn-block" type="submit">Register</button>
                                     </form>
                                 </fieldset>
                             </form>

@@ -107,7 +107,7 @@ class HomeController extends Controller
                         'profilePic' => '/assets/images/avatar-placeholder.jpg',
                     ]);
                     if ($user) {
-                        Auth::login($user);
+                        Auth::attempt(['email' => $request['email'], 'password' => $request['password']]);
                         $objModelUsers = User::getInstance();
                         $userDetails = $objModelUsers->getUserById(Auth::id());
                         Session::put('user', $userDetails['original']);
@@ -130,6 +130,7 @@ class HomeController extends Controller
 
     public function logout()
     {
+        Auth::logout();
         Session::forget('user');
         return redirect('/');
     }
