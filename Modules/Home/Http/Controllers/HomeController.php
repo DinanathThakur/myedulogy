@@ -83,10 +83,9 @@ class HomeController extends Controller
             $rules = array(
                 'firstName' => 'required|max:255',
                 'lastName' => 'required|max:255',
-                'email' => 'required|email|max:255|unique:users',
+                'email' => 'required|email|max:255|unique:users,email',
+                'userName' => 'required|max:255|unique:users,userName',
                 'password' => 'required',
-//                'password_confirm' => 'required|same:password',
-                //                'terms_and_policy' => 'accepted'
             );
 
             $validator = Validator::make($request->all(), $rules);
