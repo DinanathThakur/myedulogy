@@ -21,6 +21,12 @@ class HomeController extends Controller
         return view('home::home.about-us');
     }
 
+    public function success(Request $request)
+    {
+        print_r($request->all());
+        dd($request);
+    }
+
     public function contactUs(Request $request)
     {
         return view('home::home.contact-us');

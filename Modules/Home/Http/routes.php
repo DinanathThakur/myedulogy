@@ -7,6 +7,7 @@ Route::group(['middleware' => 'web', 'namespace' => 'Modules\Home\Http\Controlle
     Route::any('/contact-us', 'HomeController@contactUs');
     Route::any('/accreditation', 'HomeController@accreditation');
     Route::any('/register', 'HomeController@register');
+    Route::any('/success', 'HomeController@success');
     Route::any('/login', 'HomeController@login');
     Route::get('/logout', 'HomeController@logout');
     Route::get('/course/{courseID}', 'CourseController@index');
