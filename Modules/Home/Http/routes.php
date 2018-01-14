@@ -6,6 +6,7 @@ Route::group(['middleware' => 'web', 'namespace' => 'Modules\Home\Http\Controlle
     Route::any('/about-us', 'HomeController@aboutUs');
     Route::any('/contact-us', 'HomeController@contactUs');
     Route::any('/accreditation', 'HomeController@accreditation');
+    Route::any('/test-paypal', 'HomeController@testPayPal');
     Route::any('/register', 'HomeController@register');
     Route::any('/success', 'HomeController@success');
     Route::any('/login', 'HomeController@login');

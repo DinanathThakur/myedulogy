@@ -21,6 +21,10 @@ class HomeController extends Controller
         return view('home::home.about-us');
     }
 
+    public function testPayPal(Request $request)
+    {
+        return view('home::home.test-paypal');
+    }
     public function success(Request $request)
     {
         print_r($request->all());
