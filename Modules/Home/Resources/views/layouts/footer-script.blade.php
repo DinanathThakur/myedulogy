@@ -1,4 +1,3 @@
-<script src="/assets/js/jquery-1.12.0.min.js"></script>
 <script src="/assets/js/assets/bootstrap.min.js"></script>
 <script src="/assets/js/assets/owl.carousel.min.js"></script>
 <script src="/assets/js/assets/revolution/jquery.themepunch.revolution.min.js"></script>
@@ -11,6 +10,8 @@
 <script src="/assets/js/assets/mail.js"></script>
 <script src="/assets/js/plugins.js"></script>
 <script src="/assets/js/custom.js"></script>
+<script src="/assets/js/blockUI.js"></script>
+<script src="/assets/plugins/toastr/toastr.min.js"></script>
 
 <!--Start of Tawk.to Script-->
 <script type="text/javascript">
@@ -31,6 +32,7 @@
     };
     (function (w, d, t) {
         var hasLoaded = false;
+
         function l() {
             if (hasLoaded) {
                 return;
@@ -44,6 +46,7 @@
             g.src = 'https://embed.doorbell.io/button/7496?t=' + (new Date().getTime());
             (d.getElementsByTagName('head')[0] || d.getElementsByTagName('body')[0]).appendChild(g);
         }
+
         if (w.attachEvent) {
             w.attachEvent('onload', l);
         } else if (w.addEventListener) {
@@ -55,4 +58,33 @@
             l();
         }
     }(window, document, 'script'));
+
+    $(document).ready(function (e) {
+
+        $.ajax({
+            url: '/ajaxHandler',
+            method: "POST",
+            dataType: 'json',
+            data: {method: 'getCartCount'},
+            success: function (result) {
+                if (result) {
+                    $('#cart-count').text(result.data);
+                }
+            }
+        });
+    });
+    $(document.body).on('click', '#get-cart-details', function (e) {
+        $.ajax({
+            url: '/ajaxHandler',
+            method: "POST",
+            dataType: 'json',
+            data: {method: 'getCartDetails'},
+            success: function (result) {
+                if (result && result.data) {
+                    $('#cart-details-modal').modal('show');
+                }
+            }
+        });
+    });
+
 </script>

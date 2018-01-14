@@ -5,20 +5,22 @@
             <div class="row">
                 <div class="col-sm-6 col-xs-12 header-top-left">
                     <ul class="list-unstyled">
-                        <li><i class="fa fa-phone"></i>  <a href="tel:+2034852989" title="Phone number">+1 210 401 5100</a></li>
-                        <li><i class="fa fa-envelope"></i> <a href="mailto:info@edulogy.com" title="Email address"> info@edulogy.com</a></li>
+                        <li><i class="fa fa-phone"></i> <a href="tel:+2034852989" title="Phone number">+1 210 401
+                                5100</a></li>
+                        <li><i class="fa fa-envelope"></i> <a href="mailto:info@edulogy.com" title="Email address">
+                                info@edulogy.com</a></li>
                     </ul>
                 </div>
                 <div class="col-sm-6 col-xs-12 header-top-right">
                     <ul class="list-unstyled">
                         @if (!Auth::check())
-                        <li><a href="/register">Register</a></li>
-                        <li><a href="/login" class="apply-btn" >Login</a></li>
+                            <li><a href="/register">Register</a></li>
+                            <li><a href="/login" class="apply-btn">Login</a></li>
                         @else
-                        <li><a href="/my-profile" class="apply-btn" >My Profile</a></li>
-                        <li><a href="/logout" >Logout</a></li>
+                            <li><a href="/my-profile" class="apply-btn">My Profile</a></li>
+                            <li><a href="/logout">Logout</a></li>
                         @endif
-                        <li><a href="#">Cart (0)</a></li>
+                        <li><a href="javascript:;" id="get-cart-details">Cart (<span id="cart-count">0</span>)</a></li>
                     </ul>
                 </div>
             </div>
@@ -32,7 +34,8 @@
                     <nav class="navbar" id="main-nav">
                         <div class="container">
                             <div class="navbar-header">
-                                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#edulight-navbar-collapse" aria-expanded="false">
+                                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                                        data-target="#edulight-navbar-collapse" aria-expanded="false">
                                     <span class="sr-only">Toggle navigation</span>
                                     <span class="icon-bar"></span>
                                     <span class="icon-bar"></span>
@@ -48,12 +51,13 @@
                                     <div class="search-cell">
                                         <form method="get">
                                             <div class="search-field-holder">
-                                                <input type="search" class="form-control main-search-input" placeholder="Search ...">
+                                                <input type="search" class="form-control main-search-input"
+                                                       placeholder="Search ...">
                                                 <button type="submit"><i class="fa fa-search"></i></button>
-                                            </div>            
+                                            </div>
                                         </form>
                                     </div>
-                                </div>        
+                                </div>
                             </div> <!-- end fullscreen search -->
 
                             <div class="nav-container">
@@ -73,10 +77,12 @@
                                 <div class="collapse navbar-collapse" id="edulight-navbar-collapse">
                                     <ul class="nav navbar-nav">
                                         <li class="dropdown">
-                                            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-bars"></i> Courses</a>
+                                            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i
+                                                        class="fa fa-bars"></i> Courses</a>
                                             <ul class="dropdown-menu">
                                                 <!-- <li><a href="#">Course Categories</a></li>  -->
-                                                <li class="mega-menu dropdown-submenu"><a href="#">Project Management</a>
+                                                <li class="mega-menu dropdown-submenu"><a href="#">Project
+                                                        Management</a>
                                                     <i class="fa fa-angle-right"></i>
                                                     <ul class="mega-menu-block list-unstyled dropdown-menu">
                                                         <li>
@@ -99,7 +105,8 @@
                                                         </li>
                                                     </ul>
                                                 </li>
-                                                <li class="mega-menu dropdown-submenu"><a href="#">IT Service & Architecture</a>
+                                                <li class="mega-menu dropdown-submenu"><a href="#">IT Service &
+                                                        Architecture</a>
                                                     <i class="fa fa-angle-right"></i>
                                                     <ul class="mega-menu-block list-unstyled dropdown-menu">
                                                         <li>
@@ -114,7 +121,8 @@
 
                                                                 </span>
                                                                 <span class="mega-content-block-second">
-                                                                    <img src="/assets/images/megamenu.jpg" alt="" class="img-responsive" />
+                                                                    <img src="/assets/images/megamenu.jpg" alt=""
+                                                                         class="img-responsive"/>
 
                                                                 </span>
                                                             </div>
@@ -130,11 +138,13 @@
                                                                 <span class="mega-content-block">
                                                                     <a href="#">Bigdata Hadoop Architect</a>
                                                                     <a href="#">Business Analytics Expert</a>
-                                                                    <a href="#" title="">Big Hadoop Solution Architect</a>
+                                                                    <a href="#"
+                                                                       title="">Big Hadoop Solution Architect</a>
                                                                     <a href="#" title="">Integrated Programme in Big Data& Data Science </a>
                                                                     <a href="#" title="">Big Data Hadoop and Spark Developer </a>
                                                                     <a href="#" title="">Data Science Certification Training & Programming</a>
-                                                                    <a href="#" title="">Data Science with SAS Training </a>
+                                                                    <a href="#"
+                                                                       title="">Data Science with SAS Training </a>
                                                                     <a href="#" title="">Data Science with Python</a>
                                                                 </span>
                                                                 <span class="mega-content-block-second">
@@ -162,7 +172,8 @@
                                                                     <a href="#" title="">Comptia Security </a>
                                                                 </span>
                                                                 <span class="mega-content-block-second">
-                                                                    <img src="/assets/images/megamenu.jpg" alt="" class="img-responsive" />
+                                                                    <img src="/assets/images/megamenu.jpg" alt=""
+                                                                         class="img-responsive"/>
                                                                 </span>
                                                             </div>
                                                         </li>
@@ -210,7 +221,8 @@
                                                                     <a href="#" title="">PMI -Agile Certified Practitioner </a>								
                                                                 </span>
                                                                 <span class="mega-content-block-second">
-                                                                    <img src="/assets/images/megamenu.jpg" alt="" class="img-responsive" />
+                                                                    <img src="/assets/images/megamenu.jpg" alt=""
+                                                                         class="img-responsive"/>
                                                                 </span>
                                                             </div>
                                                         </li>
@@ -230,10 +242,12 @@
                                                                     <a href="#" title="">AWS Devops Architect</a>
                                                                     <a href="#" title="">AWS Technical Essential</a>
                                                                     <a href="#" title="">Microsoft Azure Developer Solution Architect</a>
-                                                                    <a href="#" title="">Implementing Microsoft Azure</a>															
+                                                                    <a href="#"
+                                                                       title="">Implementing Microsoft Azure</a>
                                                                 </span>
                                                                 <span class="mega-content-block-second">
-                                                                    <img src="/assets/images/megamenu.jpg" alt="" class="img-responsive" />
+                                                                    <img src="/assets/images/megamenu.jpg" alt=""
+                                                                         class="img-responsive"/>
 
                                                                 </span>
                                                             </div>
@@ -252,7 +266,8 @@
                                                                     <a href="#">Quality Management System</a>
                                                                     <a href="#" title="">Quality Assurance</a>
                                                                     <a href="#" title="">Quality Control</a>
-                                                                    <a href="#" title="">Internal Audit ISO 9001-2015</a>
+                                                                    <a href="#"
+                                                                       title="">Internal Audit ISO 9001-2015</a>
                                                                     <a href="#" title="">Lead Auditor</a>
                                                                     <a href="#" title="">Intro to Six Sigma</a>
                                                                     <a href="SixSigma.html" title="">Lean Six Sigma Green Belt</a>
@@ -262,11 +277,13 @@
                                                                 </span>
                                                                 <span class="mega-content-block-second">
                                                                     <a href="#">Lean Six Sigma Application in IT</a>
-                                                                    <a href="#" title="">Lean Six Sigma in Health Care</a>
+                                                                    <a href="#"
+                                                                       title="">Lean Six Sigma in Health Care</a>
                                                                     <a href="#" title="">Certified Tester Foundation</a>
                                                                     <a href="#" title="">Kaizen</a>
                                                                     <a href="#" title="">Safety Management</a>
-                                                                    <a href="#" title="">Health and Safety Management</a>
+                                                                    <a href="#"
+                                                                       title="">Health and Safety Management</a>
                                                                     <a href="#" title="">Problem Solving Techniques</a>
 
                                                                 </span>
@@ -292,7 +309,8 @@
 
                                                                 </span>
                                                                 <span class="mega-content-block-second">
-                                                                    <img src="/assets/images/megamenu.jpg" alt="" class="img-responsive" />
+                                                                    <img src="/assets/images/megamenu.jpg" alt=""
+                                                                         class="img-responsive"/>
 
                                                                 </span>
                                                             </div>
@@ -301,10 +319,10 @@
                                                 </li>
                                             </ul>
                                         </li><!-- End Pages -->
-                                        <li> <a href="/about-us">About Us</a> </li>
-                                        <li> <a href="/accreditation">Accreditation</a> </li>
-                                        <li> <a href="#">Blog</a> </li>
-                                        <li> <a href="/contact-us">Contact</a> </li><!-- End Contact -->
+                                        <li><a href="/about-us">About Us</a></li>
+                                        <li><a href="/accreditation">Accreditation</a></li>
+                                        <li><a href="#">Blog</a></li>
+                                        <li><a href="/contact-us">Contact</a></li><!-- End Contact -->
                                         <li><a href="#">Enroll Now</a></li>
                                     </ul>
                                 </div><!-- .navbar-collapse -->
@@ -316,3 +334,23 @@
         </div>
     </div><!-- Ends: .main-menu -->
 </header><!-- ends: Header -->
+<div id="cart-details-modal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">My Cart</h4>
+            </div>
+            <div class="modal-body">
+                <p>Cart details goes here.</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary">Proceed to Pay</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+
+    </div>
+</div>

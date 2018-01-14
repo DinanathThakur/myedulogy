@@ -1,9 +1,11 @@
 <?php
+
 namespace Modules\Home\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Session;
 use Modules\Home\Entities\User;
@@ -11,6 +13,14 @@ use Validator;
 
 class HomeController extends Controller
 {
+
+    private $cookieName = 'cartDetails';
+    private $courses = [
+        'c-1' => ['category' => 'classroom', 'currency' => 'USD', 'price' => 1599.000],
+        'c-2' => ['category' => 'classroom', 'currency' => 'USD', 'price' => 12999.000],
+        'c-3' => ['category' => 'classroom', 'currency' => 'USD', 'price' => 999.000],
+    ];
+
     public function index(Request $request)
     {
         return view('home::home.index');
@@ -25,8 +35,10 @@ class HomeController extends Controller
     {
         return view('home::home.test-paypal');
     }
+
     public function success(Request $request)
     {
+        echo "<pre>";
         print_r($request->all());
         dd($request);
     }
@@ -55,7 +67,7 @@ class HomeController extends Controller
                 'email' => 'required|email',
                 'password' => 'required',
             ], ['email.required' => 'Please enter email-id',
-                'password.required' => 'Please enter a password']
+                    'password.required' => 'Please enter a password']
             );
             if (Auth::attempt(['email' => $email, 'password' => $password])) {
 
@@ -147,6 +159,59 @@ class HomeController extends Controller
     {
         die("cart page");
         // return view('home::home.logout');
+    }
+
+    public function ajaxHandler(Request $request)
+    {
+        $response = ['status' => 'error', 'msg' => 'Something went wrong...', 'data' => null];
+        $method = $request['method'];
+        switch ($method) {
+            case 'addToCart':
+                $courseID = $request['id'];
+                $cartDetails = isset($_COOKIE[$this->cookieName]) ? json_decode($_COOKIE[$this->cookieName], true) : [];
+
+                $cartDetails = array_merge($cartDetails, [$courseID => isset($cartDetails[$courseID]) ? ($cartDetails[$courseID] + 1) : 1]);
+                setcookie($this->cookieName, json_encode($cartDetails), time() + (86400 * 30), "/");
+                $response = ['status' => 'success', 'msg' => 'Cart count', 'data' => array_sum($cartDetails)];
+                break;
+
+            case 'getCartCount':
+                $cartDetails = isset($_COOKIE[$this->cookieName]) ? json_decode($_COOKIE[$this->cookieName], true) : [];
+//                if (Auth::check()) {
+//                    $count = 0;
+//
+//                } elseif ($cartDetails = $_COOKIE[$this->cookieName]) {
+//                    $cartDetails = json_decode($cartDetails, true);
+//                    $count = array_sum($cartDetails);
+//                }
+                $response = ['status' => 'success', 'msg' => 'Cart count', 'data' => array_sum($cartDetails)];
+
+                break;
+
+            case 'getCartDetails':
+
+                $cartDetails = isset($_COOKIE[$this->cookieName]) ? json_decode($_COOKIE[$this->cookieName], true) : [];
+
+
+                if (!empty($cartDetails)) {
+                    foreach ($this->courses as $id => $course) {
+
+                    }
+                }
+
+                $response = ['status' => 'success', 'msg' => 'Cart details', 'data' => $cartDetails];
+                break;
+
+            default:
+                break;
+        }
+
+        header('Content-Type: application/json');
+
+        if (isset($response['status']) && $response['status'] === 'error') {
+            header('HTTP/1.1 500 Internal Server error');
+        }
+        echo json_encode($response);
     }
 
 }

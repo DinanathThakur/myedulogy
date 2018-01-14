@@ -20,3 +20,6 @@
 <link rel="stylesheet" href="/assets/css/assets/slick.css">
 <link rel="stylesheet" href="/assets/css/style.css">
 <link rel="stylesheet" href="/assets/css/assets/responsive.css">
+<link rel="stylesheet" href="/assets/plugins/toastr/toastr.min.css">
+
+<script src="/assets/js/jquery-1.12.0.min.js"></script>

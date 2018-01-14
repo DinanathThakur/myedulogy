@@ -58,12 +58,12 @@
                                                         <li>
                                                             <div class="mega-menu-content clearfix">
                                                                 <span class="mega-content-block">
-                                                                    <a href="pmp.html">PMP<sup>®</sup> Certification</a>
-                                                                    <a href="prince2foundation.html">PRINCE2<sup>®</sup> Foundation Practitioner</a>
-                                                                    <a href="capm-certification.html" title="">CAPM<sup>®</sup> Certification</a>
+                                                                    <a href="/course/pmp">PMP<sup>®</sup> Certification</a>
+                                                                    <a href="/courseprince2foundation">PRINCE2<sup>®</sup> Foundation Practitioner</a>
+                                                                    <a href="/course/capm-certification" title="">CAPM<sup>®</sup> Certification</a>
                                                                     <a href="#" title="">PMP PLUS</a>
                                                                     <a href="#" title="">Project Management Expert</a>
-                                                                    <a href="PMP-ACP.html" title="">PMI-RMP<sup>®</sup> Certification</a>
+                                                                    <a href="/course/PMP-ACP" title="">PMI-RMP<sup>®</sup> Certification</a>
                                                                     <a href="#" title="">CBAP<sup>®</sup>-Certified Business Analysis Professional</a>
                                                                     <a href="#" title="">CCBA<sup>®</sup>-Certification of Competency in Business Analysis</a>
                                                                 </span>
@@ -81,12 +81,12 @@
                                                         <li>
                                                             <div class="mega-menu-content clearfix">
                                                                 <span class="mega-content-block">
-                                                                    <a href="ITIL.html">ITIL Foundation </a>
-                                                                    <a href="ITIL.html">ITIL Intermediate Capability & Life Cycle Module </a>
+                                                                    <a href="/course/ITIL">ITIL Foundation </a>
+                                                                    <a href="/course/ITIL">ITIL Intermediate Capability & Life Cycle Module </a>
                                                                     <a href="#" title="">ITIL Expert</a>
                                                                     <a href="#" title="">ITIL Practitioner </a>
-                                                                    <a href="Devops.html" title="">Devops</a>
-                                                                    <a href="TOGAF.html" title="">TOGAF 9</a>
+                                                                    <a href="/course/Devops" title="">Devops</a>
+                                                                    <a href="/course/TOGAF" title="">TOGAF 9</a>
 
                                                                 </span>
                                                                 <span class="mega-content-block-second">
