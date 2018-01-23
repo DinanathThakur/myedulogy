@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Storage;
 use Modules\Home\Entities\User;
 use Validator;
 
@@ -16,9 +17,9 @@ class HomeController extends Controller
 
     private $cookieName = 'cartDetails';
     private $courses = [
-        'c-1' => ['category' => 'classroom', 'currency' => 'USD', 'price' => 1599.000],
-        'c-2' => ['category' => 'classroom', 'currency' => 'USD', 'price' => 12999.000],
-        'c-3' => ['category' => 'classroom', 'currency' => 'USD', 'price' => 999.000],
+        'c-1' => ['name' => 'PMP 4 days', 'category' => 'classroom', 'currency' => 'USD', 'price' => 5.000],
+        'c-2' => ['name' => 'PMP 1 month', 'category' => 'classroom', 'currency' => 'USD', 'price' => 12.000],
+        'c-3' => ['name' => 'PMP 1 year', 'category' => 'classroom', 'currency' => 'USD', 'price' => 50.000],
     ];
 
     public function index(Request $request)
@@ -38,9 +39,29 @@ class HomeController extends Controller
 
     public function success(Request $request)
     {
-        echo "<pre>";
-        print_r($request->all());
-        dd($request);
+        Storage::disk('local')->put(microtime(true) . '.json', json_encode($request->all()));
+        unset($_COOKIE[$this->cookieName]);
+        return view('home::home.payment-response');
+    }
+
+    public function payment(Request $request)
+    {
+        $cartDetails = isset($_COOKIE[$this->cookieName]) ? json_decode($_COOKIE[$this->cookieName], true) : [];
+        $finalData = [];
+        $finalPrice = $price = 0;
+        foreach ($cartDetails as $courseID => $quantity) {
+            if (isset($this->courses[$courseID])) {
+                $price = intval($this->courses[$courseID]['price'] * $quantity);
+                $finalPrice += $price;
+                $finalData[$courseID] = [
+                    'quantity' => $quantity,
+                    'name' => $this->courses[$courseID]['name'],
+                    'price' => intval($this->courses[$courseID]['price'] * $quantity)
+                ];
+            }
+        }
+
+        return view('home::home.payment', ['orderData' => $finalData, 'finalPrice' => $finalPrice]);
     }
 
     public function contactUs(Request $request)
@@ -193,13 +214,34 @@ class HomeController extends Controller
                 $cartDetails = isset($_COOKIE[$this->cookieName]) ? json_decode($_COOKIE[$this->cookieName], true) : [];
 
 
+                $finalData = [];
                 if (!empty($cartDetails)) {
-                    foreach ($this->courses as $id => $course) {
-
+                    foreach ($cartDetails as $courseID => $quantity) {
+                        if (isset($this->courses[$courseID])) {
+                            $finalData[$courseID] = [
+                                'quantity' => $quantity,
+                                'name' => $this->courses[$courseID]['name'],
+                                'price' => $this->courses[$courseID]['price'],
+                                'subTotal' => intval($this->courses[$courseID]['price'] * $quantity)
+                            ];
+                        }
                     }
                 }
 
-                $response = ['status' => 'success', 'msg' => 'Cart details', 'data' => $cartDetails];
+                $response = ['status' => 'success', 'msg' => 'Cart details', 'data' => $finalData];
+                break;
+
+
+            case 'removeFromCart':
+                $cid = $request['cid'];
+
+                $cartDetails = isset($_COOKIE[$this->cookieName]) ? json_decode($_COOKIE[$this->cookieName], true) : [];
+
+                unset($cartDetails[$cid]);
+                setcookie($this->cookieName, json_encode($cartDetails), time() + (86400 * 30), "/");
+
+                $response = ['status' => 'success', 'msg' => 'Removed from cart', 'data' => array_sum($cartDetails)];
+
                 break;
 
             default:

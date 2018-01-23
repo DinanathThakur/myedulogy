@@ -81,8 +81,36 @@
             data: {method: 'getCartDetails'},
             success: function (result) {
                 if (result && result.data) {
+                    console.log(result.data);
+                    var toAppend = '';
+                    $.each(result.data, function (i, v) {
+                        toAppend += '<tr>';
+                        toAppend += '<td>' + v['quantity'] + '</td>';
+                        toAppend += '<td>' + v['name'] + '</td>';
+                        toAppend += '<td>' + v['price'] + '</td>';
+                        toAppend += '<td>' + v['subTotal'] + '</td>';
+                        toAppend += '<td><button class="btn btn-xs btn-danger remove-from-cart" data-cid="' + i + '">X</button></td>';
+                        toAppend += '</tr>';
+                    });
+
+                    $('#cart-tbody').empty().append(toAppend);
                     $('#cart-details-modal').modal('show');
                 }
+            }
+        });
+    });
+
+    $(document.body).on('click', '.remove-from-cart', function (e) {
+        var obj = $(this);
+        var cid = obj.data('cid');
+        $.ajax({
+            url: '/ajaxHandler',
+            method: "POST",
+            dataType: 'json',
+            data: {method: 'removeFromCart', cid: cid},
+            success: function (result) {
+                $('#cart-count').text(result.data);
+                obj.parents('tr').remove();
             }
         });
     });

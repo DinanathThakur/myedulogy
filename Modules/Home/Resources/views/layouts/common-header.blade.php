@@ -88,12 +88,14 @@
                                                         <li>
                                                             <div class="mega-menu-content clearfix">
                                                                 <span class="mega-content-block">
-                                                                    <a href="pmp.html">PMP<sup>®</sup> Certification</a>
-                                                                    <a href="prince2foundation.html">PRINCE2<sup>®</sup> Foundation Practitioner</a>
-                                                                    <a href="capm-certification.html" title="">CAPM<sup>®</sup> Certification</a>
+                                                                    <a href="/course/pmp">PMP<sup>®</sup> Certification</a>
+                                                                    <a href="/courseprince2foundation">PRINCE2<sup>®</sup> Foundation Practitioner</a>
+                                                                    <a href="/course/capm-certification"
+                                                                       title="">CAPM<sup>®</sup> Certification</a>
                                                                     <a href="#" title="">PMP PLUS</a>
                                                                     <a href="#" title="">Project Management Expert</a>
-                                                                    <a href="PMP-ACP.html" title="">PMI-RMP<sup>®</sup> Certification</a>
+                                                                    <a href="/course/PMP-ACP"
+                                                                       title="">PMI-RMP<sup>®</sup> Certification</a>
                                                                     <a href="#" title="">CBAP<sup>®</sup>-Certified Business Analysis Professional</a>
                                                                     <a href="#" title="">CCBA<sup>®</sup>-Certification of Competency in Business Analysis</a>
                                                                 </span>
@@ -344,10 +346,28 @@
                 <h4 class="modal-title">My Cart</h4>
             </div>
             <div class="modal-body">
-                <p>Cart details goes here.</p>
+                <div class="panel panel-success">
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                            <tr>
+                                <th>Participant</th>
+                                <th>Item Detail</th>
+                                <th>Price(USD)</th>
+                                <th>Subtotal(USD)</th>
+                                <th>Remove</th>
+                            </tr>
+                            </thead>
+                            <tbody id="cart-tbody"></tbody>
+                        </table>
+                    </div>
+                </div>
+
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-primary">Proceed to Pay</button>
+                <a href="/payment">
+                    <button type="button" class="btn btn-primary">Place order</button>
+                </a>
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
             </div>
         </div>

@@ -13,6 +13,7 @@ Route::group(['middleware' => 'web', 'namespace' => 'Modules\Home\Http\Controlle
     Route::get('/logout', 'HomeController@logout');
     Route::get('/course/{courseID}', 'CourseController@index');
     Route::any('/ajaxHandler', 'HomeController@ajaxHandler');
+    Route::any('/payment', 'HomeController@payment');
 
     Route::group(['middleware' => 'auth'], function () {
         Route::get('/my-profile', 'UserController@myProfile');
