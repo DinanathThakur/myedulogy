@@ -359,6 +359,15 @@
                             </tr>
                             </thead>
                             <tbody id="cart-tbody"></tbody>
+                            <thead>
+                            <tr>
+                                <th></th>
+                                <th>Total</th>
+                                <th></th>
+                                <th id="total-cart-value">0</th>
+                                <th></th>
+                            </tr>
+                            </thead>
                         </table>
                     </div>
                 </div>

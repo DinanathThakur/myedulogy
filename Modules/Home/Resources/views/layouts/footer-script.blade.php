@@ -92,7 +92,7 @@
                         toAppend += '<td><button class="btn btn-xs btn-danger remove-from-cart" data-cid="' + i + '">X</button></td>';
                         toAppend += '</tr>';
                     });
-
+                    $('#total-cart-value').text(result.finalPrice);
                     $('#cart-tbody').empty().append(toAppend);
                     $('#cart-details-modal').modal('show');
                 }

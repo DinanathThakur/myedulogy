@@ -215,20 +215,24 @@ class HomeController extends Controller
 
 
                 $finalData = [];
+                $finalPrice = $price = 0;
                 if (!empty($cartDetails)) {
                     foreach ($cartDetails as $courseID => $quantity) {
                         if (isset($this->courses[$courseID])) {
+                            $price = $this->courses[$courseID]['price'];
+                            $subTotal = intval($price * $quantity);
+                            $finalPrice += $subTotal;
                             $finalData[$courseID] = [
                                 'quantity' => $quantity,
                                 'name' => $this->courses[$courseID]['name'],
-                                'price' => $this->courses[$courseID]['price'],
-                                'subTotal' => intval($this->courses[$courseID]['price'] * $quantity)
+                                'price' => $price,
+                                'subTotal' => $subTotal
                             ];
                         }
                     }
                 }
 
-                $response = ['status' => 'success', 'msg' => 'Cart details', 'data' => $finalData];
+                $response = ['status' => 'success', 'msg' => 'Cart details', 'data' => $finalData, 'finalPrice' => $finalPrice];
                 break;
 
 
