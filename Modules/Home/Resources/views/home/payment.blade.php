@@ -1,5 +1,5 @@
 @extends('home::layouts.master')
-@section('title','Register')
+@section('title','Payment')
 @section('content')
     <section class="page-header">
         <div class="container">
@@ -39,7 +39,7 @@
                             </div>
                         </div>
                         <div class="panel-footer text-right">
-                            <form action="https://www.paypal.com/cgi-bin/webscr" method="post">
+                            <form action="https://www.sandbox.paypal.com/webscr" method="post">
                                 <input type="hidden" value="_xclick" name="cmd">
                                 <input type="hidden" value="dina@merchant.com" name="business">
                                 <input type="hidden" value="USD" name="currency_code">
