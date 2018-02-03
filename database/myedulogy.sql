@@ -28,7 +28,21 @@ CREATE TABLE IF NOT EXISTS `category` (
   UNIQUE KEY `category` (`category`)
 ) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
 
--- Data exporting was unselected.
+-- Dumping data for table edulogy.category: ~8 rows (approximately)
+DELETE FROM `category`;
+/*!40000 ALTER TABLE `category` DISABLE KEYS */;
+INSERT INTO `category` (`id`, `category`, `priority`, `status`, `createdAt`, `updatedAt`) VALUES
+	(1, 'Project Management', 1, 'A', '2018-02-03 15:28:03', '2018-02-03 15:28:04'),
+	(2, 'IT Service & Architecture', 2, 'A', '2018-02-03 15:29:42', '2018-02-03 15:29:43'),
+	(3, 'Big Data and Analytics', 3, 'A', '2018-02-03 15:30:11', '2018-02-03 15:30:11'),
+	(4, 'Cyber Security', 4, 'A', '2018-02-03 15:30:30', '2018-02-03 15:30:33'),
+	(5, 'Digital Marketing', 5, 'A', '2018-02-03 15:30:51', '2018-02-03 15:30:51'),
+	(6, 'Agile and Scrum', 6, 'A', '2018-02-03 15:31:16', '2018-02-03 15:31:16'),
+	(7, 'Cloud Computing', 7, 'A', '2018-02-03 15:31:32', '2018-02-03 15:31:32'),
+	(8, 'Quality Management', 8, 'A', '2018-02-03 15:31:51', '2018-02-03 15:31:52'),
+	(9, 'Business Productivity Tools', 9, 'A', '2018-02-03 15:32:07', '2018-02-03 15:32:08');
+/*!40000 ALTER TABLE `category` ENABLE KEYS */;
+
 -- Dumping structure for table edulogy.courses
 CREATE TABLE IF NOT EXISTS `courses` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
@@ -52,7 +66,13 @@ CREATE TABLE IF NOT EXISTS `courses` (
   CONSTRAINT `FK_courses_category` FOREIGN KEY (`category`) REFERENCES `category` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
--- Data exporting was unselected.
+-- Dumping data for table edulogy.courses: ~1 rows (approximately)
+DELETE FROM `courses`;
+/*!40000 ALTER TABLE `courses` DISABLE KEYS */;
+INSERT INTO `courses` (`id`, `category`, `courseName`, `shortTitle`, `longTitle`, `title`, `mainDescription`, `otherDescription`, `shortTitleVisibility`, `ratings`, `priority`, `userEnrolled`, `status`, `createdAt`, `updatedAt`, `img`) VALUES
+	(1, 1, ' PMP®  Certification', '', '', '', 'The PMP certification is the global gold standard for project management professionals. Skilled and certified practitioners of project management are in high demand by employers in all industries.This PMP course online is designed to teach you the full scope of project management processes, and help you pass the PMP certification exam on your first attempt. Join the community of more than 500,000 PMPs in 185 countries and get PMP certified today!', NULL, 'Y', 0.00, 0, 0, 'A', '2018-02-03 15:37:07', '2018-02-03 17:10:06', '/assets/images/courses/pmp.jpg');
+/*!40000 ALTER TABLE `courses` ENABLE KEYS */;
+
 -- Dumping structure for table edulogy.password_resets
 CREATE TABLE IF NOT EXISTS `password_resets` (
   `email` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
@@ -62,7 +82,11 @@ CREATE TABLE IF NOT EXISTS `password_resets` (
   KEY `password_resets_token_index` (`token`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
--- Data exporting was unselected.
+-- Dumping data for table edulogy.password_resets: ~0 rows (approximately)
+DELETE FROM `password_resets`;
+/*!40000 ALTER TABLE `password_resets` DISABLE KEYS */;
+/*!40000 ALTER TABLE `password_resets` ENABLE KEYS */;
+
 -- Dumping structure for table edulogy.sub_courses
 CREATE TABLE IF NOT EXISTS `sub_courses` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
@@ -85,7 +109,13 @@ CREATE TABLE IF NOT EXISTS `sub_courses` (
   CONSTRAINT `FK_sub_courses_courses` FOREIGN KEY (`courseID`) REFERENCES `courses` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
--- Data exporting was unselected.
+-- Dumping data for table edulogy.sub_courses: ~0 rows (approximately)
+DELETE FROM `sub_courses`;
+/*!40000 ALTER TABLE `sub_courses` DISABLE KEYS */;
+INSERT INTO `sub_courses` (`id`, `courseID`, `name`, `startDate`, `endDate`, `startTime`, `endTime`, `type`, `price`, `offerType`, `offerPrice`, `offerExpireOn`, `status`, `createdAt`, `updatedAt`) VALUES
+	(2, 1, '', '2018-02-03 21:19:12', '2018-03-03 21:19:13', '21:19:17', '22:20:18', 'C', 1799.00, 'F', 150.00, '2019-02-03 21:19:31', 'A', '2018-02-03 21:19:36', '2018-02-03 23:15:53');
+/*!40000 ALTER TABLE `sub_courses` ENABLE KEYS */;
+
 -- Dumping structure for table edulogy.users
 CREATE TABLE IF NOT EXISTS `users` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
@@ -110,7 +140,14 @@ CREATE TABLE IF NOT EXISTS `users` (
   UNIQUE KEY `username` (`userName`)
 ) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
--- Data exporting was unselected.
+-- Dumping data for table edulogy.users: ~2 rows (approximately)
+DELETE FROM `users`;
+/*!40000 ALTER TABLE `users` DISABLE KEYS */;
+INSERT INTO `users` (`id`, `firstName`, `lastName`, `userName`, `email`, `password`, `remember_token`, `created_at`, `updated_at`, `signup_token`, `profilePic`, `role`, `status`, `status_set_by`, `reset_code`, `device_id`, `login_token`) VALUES
+	(5, 'Dinanath', 'Thakur', 'kumardina', 'kumardina023@gmail.com', '$2y$10$ld/lyfxE/fHIZdfoHqkzsu514lBl3xq/cuLJmJQIHKiz7AE8/jfzS', 'w7aSQ7KB7DvcbaKjetEShthSFprgu43WmHDf3w866EdCG8x7UVssbgQs3467', '2018-02-03 08:09:58', '2018-02-03 08:09:58', NULL, '/assets/images/avatar-placeholder.jpg', 2, 1, 0, NULL, NULL, NULL),
+	(6, 'Edulogy', 'Admin', 'myedulogy.admin', 'admini@myedulogy.com', '$2y$10$sGI11q1vxe6rZdHzRm.6gOsNg5YEW6q4n50ZspWNdQOVze.47I7Au', '5HC75d9w5llc2dnkGVLOoMnR8m4uSFpKhLkP18nerghDWndXxAcQi8e4UZUe', '2018-02-03 08:11:41', '2018-02-03 08:11:41', NULL, '/assets/images/avatar-placeholder.jpg', 1, 1, 0, NULL, NULL, NULL);
+/*!40000 ALTER TABLE `users` ENABLE KEYS */;
+
 -- Dumping structure for table edulogy.usersmeta
 CREATE TABLE IF NOT EXISTS `usersmeta` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
@@ -127,7 +164,11 @@ CREATE TABLE IF NOT EXISTS `usersmeta` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
--- Data exporting was unselected.
+-- Dumping data for table edulogy.usersmeta: ~0 rows (approximately)
+DELETE FROM `usersmeta`;
+/*!40000 ALTER TABLE `usersmeta` DISABLE KEYS */;
+/*!40000 ALTER TABLE `usersmeta` ENABLE KEYS */;
+
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
 /*!40014 SET FOREIGN_KEY_CHECKS=IF(@OLD_FOREIGN_KEY_CHECKS IS NULL, 1, @OLD_FOREIGN_KEY_CHECKS) */;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
