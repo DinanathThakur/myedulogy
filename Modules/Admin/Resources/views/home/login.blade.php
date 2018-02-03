@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>{{env('APP_NAME')}} | Admin-Login</title>
+    <title>{{env('APP_NAME')}} - Admin | Login</title>
 
     <!-- Bootstrap -->
     <link href="/admin-assets/plugins/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -17,6 +17,7 @@
     <link href="/admin-assets/plugins/nprogress/nprogress.css" rel="stylesheet">
     <!-- Animate.css -->
     <link href="/admin-assets/plugins/animate.css/animate.min.css" rel="stylesheet">
+    <link rel="icon" href="/assets/images/favicon.ico" type="image/x-icon">
 
     <!-- Custom Theme Style -->
     <link href="/admin-assets/css/custom.min.css" rel="stylesheet">

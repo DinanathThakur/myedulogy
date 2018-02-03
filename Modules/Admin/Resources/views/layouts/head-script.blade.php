@@ -3,7 +3,7 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="icon" href="/admin-assets/images/favicon.ico" type="image/ico" />
+<link rel="icon" href="/assets/images/favicon.ico" type="image/x-icon">
 
 <!-- Bootstrap -->
 <link href="/admin-assets/plugins/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
