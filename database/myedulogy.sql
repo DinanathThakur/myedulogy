@@ -28,7 +28,7 @@ CREATE TABLE IF NOT EXISTS `category` (
   UNIQUE KEY `category` (`category`)
 ) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
 
--- Dumping data for table edulogy.category: ~8 rows (approximately)
+-- Dumping data for table edulogy.category: ~9 rows (approximately)
 DELETE FROM `category`;
 /*!40000 ALTER TABLE `category` DISABLE KEYS */;
 INSERT INTO `category` (`id`, `category`, `priority`, `status`, `createdAt`, `updatedAt`) VALUES
@@ -109,7 +109,7 @@ CREATE TABLE IF NOT EXISTS `sub_courses` (
   CONSTRAINT `FK_sub_courses_courses` FOREIGN KEY (`courseID`) REFERENCES `courses` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
--- Dumping data for table edulogy.sub_courses: ~0 rows (approximately)
+-- Dumping data for table edulogy.sub_courses: ~1 rows (approximately)
 DELETE FROM `sub_courses`;
 /*!40000 ALTER TABLE `sub_courses` DISABLE KEYS */;
 INSERT INTO `sub_courses` (`id`, `courseID`, `name`, `startDate`, `endDate`, `startTime`, `endTime`, `type`, `price`, `offerType`, `offerPrice`, `offerExpireOn`, `status`, `createdAt`, `updatedAt`) VALUES
@@ -145,7 +145,7 @@ DELETE FROM `users`;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
 INSERT INTO `users` (`id`, `firstName`, `lastName`, `userName`, `email`, `password`, `remember_token`, `created_at`, `updated_at`, `signup_token`, `profilePic`, `role`, `status`, `status_set_by`, `reset_code`, `device_id`, `login_token`) VALUES
 	(5, 'Dinanath', 'Thakur', 'kumardina', 'kumardina023@gmail.com', '$2y$10$ld/lyfxE/fHIZdfoHqkzsu514lBl3xq/cuLJmJQIHKiz7AE8/jfzS', 'w7aSQ7KB7DvcbaKjetEShthSFprgu43WmHDf3w866EdCG8x7UVssbgQs3467', '2018-02-03 08:09:58', '2018-02-03 08:09:58', NULL, '/assets/images/avatar-placeholder.jpg', 2, 1, 0, NULL, NULL, NULL),
-	(6, 'Edulogy', 'Admin', 'myedulogy.admin', 'admini@myedulogy.com', '$2y$10$sGI11q1vxe6rZdHzRm.6gOsNg5YEW6q4n50ZspWNdQOVze.47I7Au', '5HC75d9w5llc2dnkGVLOoMnR8m4uSFpKhLkP18nerghDWndXxAcQi8e4UZUe', '2018-02-03 08:11:41', '2018-02-03 08:11:41', NULL, '/assets/images/avatar-placeholder.jpg', 1, 1, 0, NULL, NULL, NULL);
+	(7, 'Edulogy', 'Admin', 'admin', 'admin@myedulogy.com', '$2y$10$IwrfPrng8dRVkySM49ZXSO7sptiurSqU.U7MVeo3hjz9DeggAVyAC', NULL, '2018-02-03 20:48:33', '2018-02-03 20:48:33', NULL, '/assets/images/avatar-placeholder.jpg', 1, 1, 0, NULL, NULL, NULL);
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 
 -- Dumping structure for table edulogy.usersmeta
