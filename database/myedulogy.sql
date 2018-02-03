@@ -1,7 +1,7 @@
 -- --------------------------------------------------------
 -- Host:                         127.0.0.1
--- Server version:               5.7.21 - MySQL Community Server (GPL)
--- Server OS:                    Win64
+-- Server version:               10.1.19-MariaDB - mariadb.org binary distribution
+-- Server OS:                    Win32
 -- HeidiSQL Version:             9.5.0.5196
 -- --------------------------------------------------------
 
@@ -26,24 +26,31 @@ CREATE TABLE IF NOT EXISTS `category` (
   `updatedAt` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
   UNIQUE KEY `category` (`category`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
 
 -- Data exporting was unselected.
 -- Dumping structure for table edulogy.courses
 CREATE TABLE IF NOT EXISTS `courses` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `category` int(11) unsigned NOT NULL DEFAULT '0',
   `courseName` varchar(255) NOT NULL,
+  `shortTitle` varchar(255) NOT NULL,
+  `longTitle` varchar(255) NOT NULL,
+  `title` varchar(255) NOT NULL,
   `mainDescription` text,
   `otherDescription` text,
+  `shortTitleVisibility` char(1) NOT NULL DEFAULT 'Y',
   `ratings` float(5,2) DEFAULT '0.00',
-  `priorit` tinyint(2) DEFAULT '0',
+  `priority` tinyint(2) DEFAULT '0',
   `userEnrolled` int(11) NOT NULL DEFAULT '0',
   `status` char(1) NOT NULL DEFAULT 'A',
   `createdAt` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updatedAt` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `img` varchar(255) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  PRIMARY KEY (`id`),
+  KEY `FK_courses_category` (`category`),
+  CONSTRAINT `FK_courses_category` FOREIGN KEY (`category`) REFERENCES `category` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
 -- Data exporting was unselected.
 -- Dumping structure for table edulogy.password_resets
@@ -59,6 +66,7 @@ CREATE TABLE IF NOT EXISTS `password_resets` (
 -- Dumping structure for table edulogy.sub_courses
 CREATE TABLE IF NOT EXISTS `sub_courses` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `courseID` int(11) unsigned NOT NULL DEFAULT '0',
   `name` varchar(255) NOT NULL,
   `startDate` datetime NOT NULL,
   `endDate` datetime NOT NULL,
@@ -67,12 +75,15 @@ CREATE TABLE IF NOT EXISTS `sub_courses` (
   `type` char(1) NOT NULL DEFAULT 'C',
   `price` float(10,2) NOT NULL DEFAULT '0.00',
   `offerType` char(1) DEFAULT NULL,
+  `offerPrice` float(10,2) NOT NULL DEFAULT '0.00',
   `offerExpireOn` datetime DEFAULT NULL,
   `status` char(1) NOT NULL DEFAULT 'A',
   `createdAt` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updatedAt` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  PRIMARY KEY (`id`),
+  KEY `FK_sub_courses_courses` (`courseID`),
+  CONSTRAINT `FK_sub_courses_courses` FOREIGN KEY (`courseID`) REFERENCES `courses` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
 -- Data exporting was unselected.
 -- Dumping structure for table edulogy.users
@@ -97,7 +108,7 @@ CREATE TABLE IF NOT EXISTS `users` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `users_email_unique` (`email`),
   UNIQUE KEY `username` (`userName`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- Data exporting was unselected.
 -- Dumping structure for table edulogy.usersmeta

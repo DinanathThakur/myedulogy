@@ -3,45 +3,50 @@
 @section('content')
     <section class="page-header">
         <div class="container">
-            <div class="row">
-                <div class="col-sm-12">
-                    <ul class="list-unstyled">
-                        <li><a href="#">Home</a></li>
-                        <li><a href="#">Courses</a></li>
-                        <li class="active">PMP@ Training Course</li>
-                    </ul>
+            @if(isset($courseDetails)&& $courseDetails->courseName!='')
+                <div class="row">
+                    <div class="col-sm-12">
+                        <ul class="list-unstyled">
+                            <li><a href="/">Home</a></li>
+                            <li><a href="javascript:;">Courses</a></li>
+                            <li class="active">{{$courseDetails->courseName}}</li>
+                        </ul>
+                    </div>
                 </div>
-            </div>
-            <div class="row">
-                <div class="col-sm-12 title_courses"><br>
-                    <h1 class="titlefont">PMP<sup>®</sup> Certification Training Course </h1>
-                    <div class="row">
-                        <div class="col-sm-8 ">
-                            <p><label style=" color:#F47A00;"><i class="fa fa-star"></i><i class="fa fa-star"></i><i
-                                            class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i></label>
-                                <a id="scrollToRating" style="color:#FFF">156 ratings</a> | <span style="color:#FFF">3764 students enrolled </span>
-                            </p>
+                <div class="row">
+                    <div class="col-sm-12 title_courses"><br>
+                        <h1 class="titlefont">{{$courseDetails->courseName}}</h1>
+                        <div class="row">
+                            <div class="col-sm-8 ">
+                                <p>
+                                    <label style=" color:#F47A00;">
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                    </label>
+                                    <a id="scrollToRating" style="color:#FFF">{{$courseDetails->ratings}} ratings</a> |
+                                    <span style="color:#FFF">{{$courseDetails->userEnrolled}} students enrolled </span>
+                                </p>
+                                <h2 class="courepage-intro-text">{{$courseDetails->mainDescription}}</h2>
+                            </div>
 
-                            <h2 class="courepage-intro-text">The PMP certification is the global gold standard for
-                                project management professionals. Skilled and certified practitioners of project
-                                management are in high demand by employers in all industries.This PMP course online is
-                                designed to teach you the full scope of project management processes, and help you pass
-                                the PMP certification exam on your first attempt.
-                                Join the community of more than 500,000 PMPs in 185 countries and get PMP certified
-                                today!</h2>
-                        </div>
+                            <div class="col-sm-4">
+                                <img src="{{$courseDetails->img!=''? $courseDetails->img:'/assets/images/courses/pmp.jpg'}}"
+                                     width="300" height="200"
+                                     class="img-responsive"
+                                     style="padding-left:20px;"><br>
 
-                        <div class="col-sm-4">
-
-                            <img src="/assets/images/courses/pmp.jpg" width="300" height="200" class="img-responsive"
-                                 style="padding-left:20px;"><br>
+                            </div>
 
                         </div>
 
                     </div>
-
                 </div>
-            </div>
+            @else
+                <h3>No soch course found...</h3>
+            @endif
         </div>
     </section><!-- Ends: .page-header -->
 
@@ -58,449 +63,141 @@
 
                             <div class="section-schedule" id="detail-schedule">
                                 <h3>Classroom and Online Training Courses </h3>
-
                                 <div role="tabpanel" class="bg-white-rounded border-round">
                                     <!-- Nav tabs -->
                                     <ul class="nav nav-justified nav-list-tabs" role="tablist">
-                                        <li role="presentation" class="active"><a href="#classroom" aria-controls="home"
-                                                                                  role="tab" data-toggle="tab"
-                                                                                  aria-expanded="true">Classroom</a>
-                                        </li>
-                                        <li role="presentation" class=""><a href="#virtual" aria-controls="profile"
-                                                                            role="tab" data-toggle="tab"
-                                                                            aria-expanded="false">Online Classes</a>
+                                        <li role="presentation" class="active">
+                                            <a href="#classroom" aria-controls="home" role="tab" data-toggle="tab" aria-expanded="true">Classroom</a> </li>
+                                        <li role="presentation" class="">
+                                            <a href="#virtual" aria-controls="profile" role="tab" data-toggle="tab" aria-expanded="false">Online Classes</a> 
                                         </li>
 
                                     </ul>
                                     <!-- Tab panes -->
                                     <div class="tab-content col-text">
                                         <div role="tabpanel" class="tab-pane fade active in" id="classroom">
+
                                             <div class="bg-white-rounded border-round" id="schedule_div">
-                                                <div class="clearfix table-head text-uppercase hidden-xs">
-                                                    <div class="col-sm-3 table-caption"><i class="fa fa-calendar"></i>
-                                                        Date
-                                                    </div>
-                                                    <div class="col-sm-3 table-caption"><i
-                                                                class="fa fa-clock-o fa-low-size"></i> time
-                                                    </div>
-                                                    <div class="col-sm-2 table-caption type-course"><i
-                                                                class="fa fa-th-list"></i> course type
-                                                    </div>
-                                                    <div class="col-sm-2 table-caption"><i class="fa fa-tags"></i> price
-                                                    </div>
-                                                    <div class="col-sm-2 table-caption"><i class="fa fa-user"></i>
-                                                        register
-                                                    </div>
-                                                </div>
-
-                                                <div itemscope="" itemtype="http://schema.org/Product">
-                                                    <div class="clearfix table-body Classroom">
-                                                        <div class="col-sm-3 table-caption">
-                                                            <div class="clearfix">
-                                                                <div class="visible-xs xs-title"><i
-                                                                            class="fa fa-calendar fa-low-size"></i>&nbsp;
-                                                                    Date :
-                                                                </div>
-                                                                <div class="xs-caption">
-                                                                    <div class="text-capitalize schedule-date">Oct 24 -
-                                                                        Oct 27
-                                                                    </div>
-                                                                    <div class="color-gray text-capitalize"> ( 4 Days
-                                                                        )
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-sm-3 table-caption">
-                                                            <div class="clearfix">
-                                                                <div class="visible-xs xs-title"><i
-                                                                            class="fa fa-clock-o fa-low-size"></i>&nbsp;
-                                                                    time :
-                                                                </div>
-                                                                <div class="xs-caption"> 09:00 AM - 06:00 PM</div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-sm-2 table-caption type-course">
-                                                            <div class="clearfix">
-                                                                <div class="visible-xs xs-title"> type :</div>
-                                                                <div class="xs-caption"> Classroom</div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-sm-2 table-caption">
-                                                            <div class="clearfix">
-                                                                <div class="visible-xs xs-title"> price :</div>
-                                                                <div class="xs-caption">
-                                                                    <strike class="color-gray"> USD 1799.00 </strike>
-                                                                    <div class="schedule-price">USD 1599.00</div>
-                                                                    <div><span class="color-gray">valid till :</span> 10
-                                                                        Oct
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-sm-2 table-caption text-center ">
-                                                            <button type="button" class="btn btn-danger enroll-now"
-                                                                    data-id="c-1">ENROLL NOW
-                                                            </button>
-                                                        </div>
+                                                @if(isset($courses['C']) && !empty($courses['C']))
+                                                    <div class="clearfix table-head text-uppercase hidden-xs">
+                                                        <div class="col-sm-3 table-caption"><i class="fa fa-calendar"></i> Date </div>
+                                                        <div class="col-sm-3 table-caption"><i class="fa fa-clock-o fa-low-size"></i> time </div>
+                                                        <div class="col-sm-2 table-caption type-course"><i class="fa fa-th-list"></i> course type </div>
+                                                        <div class="col-sm-2 table-caption"><i class="fa fa-tags"></i> price </div>
+                                                        <div class="col-sm-2 table-caption"><i class="fa fa-user"></i> register </div>
                                                     </div>
 
-                                                    <div class="clearfix table-body Virtual schedule_toggle"
-                                                         style="display: block;">
-                                                        <div class="col-sm-3 table-caption">
-                                                            <div class="clearfix">
-                                                                <div class="visible-xs xs-title"><i
-                                                                            class="fa fa-calendar fa-low-size"></i>&nbsp;
-                                                                    Date :
-                                                                </div>
-                                                                <div class="xs-caption">
-                                                                    <div class="text-capitalize schedule-date">Nov 14 -
-                                                                        Nov 17
-                                                                    </div>
-                                                                    <div class="color-gray text-capitalize"> ( 4 Days
-                                                                        )
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-sm-3 table-caption">
-                                                            <div class="clearfix">
-                                                                <div class="visible-xs xs-title"><i
-                                                                            class="fa fa-clock-o fa-low-size"></i>&nbsp;
-                                                                    time :
-                                                                </div>
-                                                                <div class="xs-caption"> 07:30 PM - 11:30 PM</div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-sm-2 table-caption type-course">
-                                                            <div class="clearfix">
-                                                                <div class="visible-xs xs-title"> type :</div>
-                                                                <div class="xs-caption">
-                                                                    <div class="xs-caption"> Classroom</div>
-                                                                    <br>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-sm-2 table-caption">
-                                                            <div class="clearfix">
-                                                                <div class="visible-xs xs-title"> price :</div>
-                                                                <div class="xs-caption">
-                                                                    <strike class="color-gray"> USD 1999.00 </strike>
-                                                                    <div class="schedule-price">USD 1499.00</div>
-                                                                    <div><span class="color-gray">valid till :</span> 06
-                                                                        Nov
+                                                    <div itemscope="" itemtype="http://schema.org/Product">
+                                                        @foreach($courses['C'] as $course)
+
+                                                            <div class="clearfix table-body Classroom schedule_toggle">
+                                                                <div class="col-sm-3 table-caption">
+                                                                    <div class="clearfix">
+                                                                        <div class="visible-xs xs-title"><i class="fa fa-calendar fa-low-size"></i>&nbsp; Date : </div>
+                                                                        <div class="xs-caption">
+                                                                            <div class="text-capitalize schedule-date">
+                                                                                {{date('M d', strtotime($course->startDate)).' - '. date('M d', strtotime($course->endDate))}}
+                                                                            </div>
+                                                                            <div class="color-gray text-capitalize">
+                                                                                ( {{date_diff(date_create($course->startDate),date_create($course->endDate),true)->format("%a Days")}} )
+                                                                            </div>
+                                                                        </div>
                                                                     </div>
                                                                 </div>
+                                                                <div class="col-sm-3 table-caption">
+                                                                    <div class="clearfix">
+                                                                        <div class="visible-xs xs-title"><i class="fa fa-clock-o fa-low-size"></i>&nbsp; time : </div>
+                                                                        <div class="xs-caption"> {{date('h:i A', strtotime($course->startTime)).' - '.date('h:i A', strtotime($course->endTime))}}
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-sm-2 table-caption type-course">
+                                                                    <div class="clearfix">
+                                                                        <div class="visible-xs xs-title"> type :</div>
+                                                                        <div class="xs-caption"> Classroom</div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-sm-2 table-caption">
+                                                                    <div class="clearfix">
+                                                                        <div class="visible-xs xs-title"> price :</div>
+                                                                        <div class="xs-caption">
+                                                                            <strike class="color-gray"> USD {{number_format($course->price,2)}} </strike>
+                                                                            <div class="schedule-price"> USD {{number_format($course->price-$course->offerPrice,2)}} </div>
+                                                                            <div> <span class="color-gray">valid till :</span> {{date('d M', strtotime($course->offerExpireOn))}} </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-sm-2 table-caption text-center ">
+                                                                    <button type="button"class="btn btn-danger enroll-now"data-id="{{$course->id}}">ENROLL NOW </button>
+                                                                </div>
                                                             </div>
-                                                        </div>
-                                                        <div class="col-sm-2 table-caption text-center ">
-                                                            <button type="button" class="btn btn-danger enroll-now"
-                                                                    data-id="c-2">ENROLL NOW
-                                                            </button>
-                                                        </div>
+                                                        @endforeach
                                                     </div>
-
-                                                    <div class="clearfix table-body Classroom schedule_toggle"
-                                                         style="display: block;">
-                                                        <div class="col-sm-3 table-caption">
-                                                            <div class="clearfix">
-                                                                <div class="visible-xs xs-title"><i
-                                                                            class="fa fa-calendar fa-low-size"></i>&nbsp;
-                                                                    Date :
-                                                                </div>
-                                                                <div class="xs-caption">
-                                                                    <div class="text-capitalize schedule-date">Dec 12 -
-                                                                        Dec 15
-                                                                    </div>
-                                                                    <div class="color-gray text-capitalize"> ( 4 Days
-                                                                        )
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-sm-3 table-caption">
-                                                            <div class="clearfix">
-                                                                <div class="visible-xs xs-title"><i
-                                                                            class="fa fa-clock-o fa-low-size"></i>&nbsp;
-                                                                    time :
-                                                                </div>
-                                                                <div class="xs-caption"> 09:00 AM - 06:00 PM</div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-sm-2 table-caption type-course">
-                                                            <div class="clearfix">
-                                                                <div class="visible-xs xs-title"> type :</div>
-                                                                <div class="xs-caption"> Classroom</div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-sm-2 table-caption">
-                                                            <div class="clearfix">
-                                                                <div class="visible-xs xs-title"> price :</div>
-                                                                <div class="xs-caption">
-                                                                    <strike class="color-gray"> USD 1799.00 </strike>
-                                                                    <div class="schedule-price">USD 1599.00</div>
-                                                                    <div><span class="color-gray">valid till :</span> 24
-                                                                        Nov
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-sm-2 table-caption text-center ">
-                                                            <button type="button" class="btn btn-danger enroll-now"
-                                                                    data-id="c-3">ENROLL NOW
-                                                            </button>
-                                                        </div>
-                                                    </div>
-
-
-                                                </div>
-
-
+                                                @else
+                                                    <h3 class="text-center">No course found</h3>
+                                                @endif
                                             </div>
+
+
                                         </div>
                                         <div role="tabpanel" class="tab-pane fade" id="virtual">
                                             <div class="bg-white-rounded border-round">
-                                                <div class="clearfix table-head text-uppercase hidden-xs">
-                                                    <div class="col-sm-3 table-caption"><i class="fa fa-calendar"></i>
-                                                        Date
+                                                @if(isset($courses['O']) && !empty($courses['O']))
+                                                    <div class="clearfix table-head text-uppercase hidden-xs">
+                                                        <div class="col-sm-3 table-caption"><i class="fa fa-calendar"></i> Date </div>
+                                                        <div class="col-sm-3 table-caption"><i class="fa fa-clock-o fa-low-size"></i> time </div>
+                                                        <div class="col-sm-2 table-caption type-course"><i class="fa fa-th-list"></i> course type </div>
+                                                        <div class="col-sm-2 table-caption"><i class="fa fa-tags"></i> price </div>
+                                                        <div class="col-sm-2 table-caption"><i class="fa fa-user"></i> register </div>
                                                     </div>
-                                                    <div class="col-sm-3 table-caption"><i
-                                                                class="fa fa-clock-o fa-low-size"></i> time
+                                                    <div itemscope="" itemtype="http://schema.org/Product">
+                                                        @foreach($courses['O'] as $course)
+                                                            <div class="clearfix table-body Classroom schedule_toggle">
+                                                                <div class="col-sm-3 table-caption">
+                                                                    <div class="clearfix">
+                                                                        <div class="visible-xs xs-title"><i class="fa fa-calendar fa-low-size"></i>&nbsp; Date : </div>
+                                                                        <div class="xs-caption">
+                                                                            <div class="text-capitalize schedule-date">
+                                                                                {{date('M d', strtotime($course->startDate)).' - '. date('M d', strtotime($course->endDate))}}
+                                                                            </div>
+                                                                            <div class="color-gray text-capitalize">
+                                                                                ( {{date_diff(date_create($course->startDate),date_create($course->endDate),true)->format("%a Days")}} )
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-sm-3 table-caption">
+                                                                    <div class="clearfix">
+                                                                        <div class="visible-xs xs-title"><i class="fa fa-clock-o fa-low-size"></i>&nbsp; time : </div>
+                                                                        <div class="xs-caption"> {{date('h:i A', strtotime($course->startTime)).' - '.date('h:i A', strtotime($course->endTime))}}
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-sm-2 table-caption type-course">
+                                                                    <div class="clearfix">
+                                                                        <div class="visible-xs xs-title"> type :</div>
+                                                                        <div class="xs-caption"> Classroom</div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-sm-2 table-caption">
+                                                                    <div class="clearfix">
+                                                                        <div class="visible-xs xs-title"> price :</div>
+                                                                        <div class="xs-caption">
+                                                                            <strike class="color-gray"> USD {{number_format($course->price,2)}} </strike>
+                                                                            <div class="schedule-price"> USD {{number_format($course->price-$course->offerPrice,2)}} </div>
+                                                                            <div> <span class="color-gray">valid till :</span> {{date('d M', strtotime($course->offerExpireOn))}} </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-sm-2 table-caption text-center ">
+                                                                    <button type="button"class="btn btn-danger enroll-now"data-id="c-1">ENROLL NOW </button>
+                                                                </div>
+                                                            </div>
+                                                        @endforeach
                                                     </div>
-                                                    <div class="col-sm-2 table-caption type-course"><i
-                                                                class="fa fa-th-list"></i> course type
-                                                    </div>
-                                                    <div class="col-sm-2 table-caption"><i class="fa fa-tags"></i> price
-                                                    </div>
-                                                    <div class="col-sm-2 table-caption"><i class="fa fa-user"></i>
-                                                        register
-                                                    </div>
-                                                </div>
-                                                <div itemscope="" itemtype="http://schema.org/Product">
-                                                    <div class="clearfix table-body Classroom">
-                                                        <div class="col-sm-3 table-caption">
-                                                            <div class="clearfix">
-                                                                <div class="visible-xs xs-title"><i
-                                                                            class="fa fa-calendar fa-low-size"></i>&nbsp;
-                                                                    Date :
-                                                                </div>
-                                                                <div class="xs-caption">
-                                                                    <div class="text-capitalize schedule-date">Sep 26 -
-                                                                        Sep 29
-                                                                    </div>
-                                                                    <div class="color-gray text-capitalize"> ( 4 Days
-                                                                        )
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-sm-3 table-caption">
-                                                            <div class="clearfix">
-                                                                <div class="visible-xs xs-title"><i
-                                                                            class="fa fa-clock-o fa-low-size"></i>&nbsp;
-                                                                    time :
-                                                                </div>
-                                                                <div class="xs-caption"> 09:00 AM - 06:00 PM</div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-sm-2 table-caption type-course">
-                                                            <div class="clearfix">
-                                                                <div class="visible-xs xs-title"> type :</div>
-                                                                <div class="xs-caption"> Virtual Classroom</div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-sm-2 table-caption">
-                                                            <div class="clearfix">
-                                                                <div class="visible-xs xs-title"> price :</div>
-                                                                <div class="xs-caption">
-                                                                    <strike class="color-gray"> USD 1299.00 </strike>
-                                                                    <div class="schedule-price">USD 999.00</div>
-                                                                    <div><span class="color-gray">valid till :</span> 19
-                                                                        Sep
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-sm-2 table-caption text-center ">
-                                                            <form action="#" id="add_to_cart_598946eb68b76"
-                                                                  method="post">
-                                                                <button type="submit" class="btn btn-danger"
-                                                                        data-currency="USD" data-category="Classroom"
-                                                                        data-price="12999.00">ENROLL NOW
-                                                                </button>
-                                                            </form>
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="clearfix table-body Classroom">
-                                                        <div class="col-sm-3 table-caption">
-                                                            <div class="clearfix">
-                                                                <div class="visible-xs xs-title"><i
-                                                                            class="fa fa-calendar fa-low-size"></i>&nbsp;
-                                                                    Date :
-                                                                </div>
-                                                                <div class="xs-caption">
-                                                                    <div class="text-capitalize schedule-date">Oct 24 -
-                                                                        Oct 27
-                                                                    </div>
-                                                                    <div class="color-gray text-capitalize"> ( 4 Days
-                                                                        )
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-sm-3 table-caption">
-                                                            <div class="clearfix">
-                                                                <div class="visible-xs xs-title"><i
-                                                                            class="fa fa-clock-o fa-low-size"></i>&nbsp;
-                                                                    time :
-                                                                </div>
-                                                                <div class="xs-caption"> 09:00 AM - 06:00 PM</div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-sm-2 table-caption type-course">
-                                                            <div class="clearfix">
-                                                                <div class="visible-xs xs-title"> type :</div>
-                                                                <div class="xs-caption">
-                                                                    Virtual Classroom
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-sm-2 table-caption">
-                                                            <div class="clearfix">
-                                                                <div class="visible-xs xs-title"> price :</div>
-                                                                <div class="xs-caption">
-                                                                    <strike class="color-gray"> USD 1299.00 </strike>
-                                                                    <div class="schedule-price">USD 999.00</div>
-                                                                    <div><span class="color-gray">valid till :</span> 10
-                                                                        Oct
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-sm-2 table-caption text-center ">
-                                                            <form action="#" id="#" method="post">
-                                                                <button type="submit" class="btn btn-danger"
-                                                                        data-currency="USD" data-category="Classroom"
-                                                                        data-price="12999.00">ENROLL NOW
-                                                                </button>
-                                                            </form>
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="clearfix table-body Virtual schedule_toggle"
-                                                         style="display: block;">
-                                                        <div class="col-sm-3 table-caption">
-                                                            <div class="clearfix">
-                                                                <div class="visible-xs xs-title"><i
-                                                                            class="fa fa-calendar fa-low-size"></i>&nbsp;
-                                                                    Date :
-                                                                </div>
-                                                                <div class="xs-caption">
-                                                                    <div class="text-capitalize schedule-date">Nov 14 -
-                                                                        Nov 17
-                                                                    </div>
-                                                                    <div class="color-gray text-capitalize"> ( 4 Days
-                                                                        )
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-sm-3 table-caption">
-                                                            <div class="clearfix">
-                                                                <div class="visible-xs xs-title"><i
-                                                                            class="fa fa-clock-o fa-low-size"></i>&nbsp;
-                                                                    time :
-                                                                </div>
-                                                                <div class="xs-caption"> 07:30 PM - 11:30 PM</div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-sm-2 table-caption type-course">
-                                                            <div class="clearfix">
-                                                                <div class="visible-xs xs-title"> type :</div>
-                                                                <div class="xs-caption">
-                                                                    <div class="xs-caption"> Virtual Classroom</div>
-                                                                    <br>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-sm-2 table-caption">
-                                                            <div class="clearfix">
-                                                                <div class="visible-xs xs-title"> price :</div>
-                                                                <div class="xs-caption">
-                                                                    <strike class="color-gray"> USD 1299.00 </strike>
-                                                                    <div class="schedule-price">USD 999.00</div>
-                                                                    <div><span class="color-gray">valid till :</span> 06
-                                                                        Nov
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-sm-2 table-caption text-center ">
-                                                            <form action="#" method="post">
-                                                                <button type="submit" class="btn btn-danger">ENROLL
-                                                                    NOW
-                                                                </button>
-                                                            </form>
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="clearfix table-body Classroom schedule_toggle"
-                                                         style="display: block;">
-                                                        <div class="col-sm-3 table-caption">
-                                                            <div class="clearfix">
-                                                                <div class="visible-xs xs-title"><i
-                                                                            class="fa fa-calendar fa-low-size"></i>&nbsp;
-                                                                    Date :
-                                                                </div>
-                                                                <div class="xs-caption">
-                                                                    <div class="text-capitalize schedule-date">Dec 12 -
-                                                                        Dec 15
-                                                                    </div>
-                                                                    <div class="color-gray text-capitalize"> ( 4 Days
-                                                                        )
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-sm-3 table-caption">
-                                                            <div class="clearfix">
-                                                                <div class="visible-xs xs-title"><i
-                                                                            class="fa fa-clock-o fa-low-size"></i>&nbsp;
-                                                                    time :
-                                                                </div>
-                                                                <div class="xs-caption"> 09:00 AM - 06:00 PM</div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-sm-2 table-caption type-course">
-                                                            <div class="clearfix">
-                                                                <div class="visible-xs xs-title"> type :</div>
-                                                                <div class="xs-caption"> Classroom</div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-sm-2 table-caption">
-                                                            <div class="clearfix">
-                                                                <div class="visible-xs xs-title"> price :</div>
-                                                                <div class="xs-caption">
-                                                                    <strike class="color-gray"> USD 1299.00 </strike>
-                                                                    <div class="schedule-price">USD 999.00</div>
-                                                                    <div><span class="color-gray">valid till :</span> 24
-                                                                        Nov
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-sm-2 table-caption text-center ">
-                                                            <form action="#" id="#" method="post">
-                                                                <button type="submit" class="btn btn-danger"
-                                                                        data-category="Classroom">ENROLL NOW
-                                                                </button>
-                                                            </form>
-                                                        </div>
-                                                    </div>
-
-
-                                                </div>
+                                                @else
+                                                    <h3 class="text-center">No course found</h3>
+                                                @endif
                                             </div>
                                         </div>
                                     </div>
