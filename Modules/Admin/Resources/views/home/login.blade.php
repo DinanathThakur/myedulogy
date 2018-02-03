@@ -10,13 +10,13 @@
     <title>{{env('APP_NAME')}} | Admin-Login</title>
 
     <!-- Bootstrap -->
-    <link href="/admin-assets/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/admin-assets/plugins/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Font Awesome -->
-    <link href="/admin-assets/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link href="/admin-assets/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet">
     <!-- NProgress -->
-    <link href="/admin-assets/nprogress/nprogress.css" rel="stylesheet">
+    <link href="/admin-assets/plugins/nprogress/nprogress.css" rel="stylesheet">
     <!-- Animate.css -->
-    <link href="/admin-assets/animate.css/animate.min.css" rel="stylesheet">
+    <link href="/admin-assets/plugins/animate.css/animate.min.css" rel="stylesheet">
 
     <!-- Custom Theme Style -->
     <link href="/admin-assets/css/custom.min.css" rel="stylesheet">
