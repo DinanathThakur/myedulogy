@@ -1,8 +1,8 @@
 -- --------------------------------------------------------
 -- Host:                         127.0.0.1
--- Server version:               10.1.13-MariaDB - mariadb.org binary distribution
--- Server OS:                    Win32
--- HeidiSQL Version:             9.4.0.5125
+-- Server version:               5.7.21 - MySQL Community Server (GPL)
+-- Server OS:                    Win64
+-- HeidiSQL Version:             9.5.0.5196
 -- --------------------------------------------------------
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -16,6 +16,36 @@
 CREATE DATABASE IF NOT EXISTS `edulogy` /*!40100 DEFAULT CHARACTER SET latin1 */;
 USE `edulogy`;
 
+-- Dumping structure for table edulogy.category
+CREATE TABLE IF NOT EXISTS `category` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `category` varchar(255) NOT NULL,
+  `priority` tinyint(2) NOT NULL DEFAULT '0',
+  `status` char(1) NOT NULL,
+  `createdAt` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updatedAt` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `category` (`category`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- Data exporting was unselected.
+-- Dumping structure for table edulogy.courses
+CREATE TABLE IF NOT EXISTS `courses` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `courseName` varchar(255) NOT NULL,
+  `mainDescription` text,
+  `otherDescription` text,
+  `ratings` float(5,2) DEFAULT '0.00',
+  `priorit` tinyint(2) DEFAULT '0',
+  `userEnrolled` int(11) NOT NULL DEFAULT '0',
+  `status` char(1) NOT NULL DEFAULT 'A',
+  `createdAt` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updatedAt` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `img` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- Data exporting was unselected.
 -- Dumping structure for table edulogy.password_resets
 CREATE TABLE IF NOT EXISTS `password_resets` (
   `email` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
@@ -25,22 +55,38 @@ CREATE TABLE IF NOT EXISTS `password_resets` (
   KEY `password_resets_token_index` (`token`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
--- Dumping data for table edulogy.password_resets: ~0 rows (approximately)
-/*!40000 ALTER TABLE `password_resets` DISABLE KEYS */;
-/*!40000 ALTER TABLE `password_resets` ENABLE KEYS */;
+-- Data exporting was unselected.
+-- Dumping structure for table edulogy.sub_courses
+CREATE TABLE IF NOT EXISTS `sub_courses` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) NOT NULL,
+  `startDate` datetime NOT NULL,
+  `endDate` datetime NOT NULL,
+  `startTime` time NOT NULL,
+  `endTime` time NOT NULL,
+  `type` char(1) NOT NULL DEFAULT 'C',
+  `price` float(10,2) NOT NULL DEFAULT '0.00',
+  `offerType` char(1) DEFAULT NULL,
+  `offerExpireOn` datetime DEFAULT NULL,
+  `status` char(1) NOT NULL DEFAULT 'A',
+  `createdAt` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updatedAt` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+-- Data exporting was unselected.
 -- Dumping structure for table edulogy.users
 CREATE TABLE IF NOT EXISTS `users` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `firstName` varchar(255) COLLATE utf8_unicode_ci NOT NULL COMMENT 'Only First name',
   `lastName` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `userName` varchar(50) COLLATE utf8_unicode_ci NOT NULL COMMENT 'unique',
   `email` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `password` varchar(60) COLLATE utf8_unicode_ci NOT NULL,
   `remember_token` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` timestamp NULL DEFAULT NULL,
   `signup_token` varchar(16) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `userName` varchar(50) COLLATE utf8_unicode_ci NOT NULL COMMENT 'unique',
   `profilePic` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `role` tinyint(1) NOT NULL DEFAULT '0' COMMENT '0=guest,1=admin,2=user',
   `status` tinyint(1) NOT NULL DEFAULT '0' COMMENT '0=pending, 1=active, 2=inactive, 3=rejected, 4=deleted',
@@ -51,16 +97,9 @@ CREATE TABLE IF NOT EXISTS `users` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `users_email_unique` (`email`),
   UNIQUE KEY `username` (`userName`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
--- Dumping data for table edulogy.users: ~2 rows (approximately)
-/*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` (`id`, `firstName`, `lastName`, `email`, `password`, `remember_token`, `created_at`, `updated_at`, `signup_token`, `userName`, `profilePic`, `role`, `status`, `status_set_by`, `reset_code`, `device_id`, `login_token`) VALUES
-	(1, 'Admin', 'Admin', 'admin@myedulogy.com', '$2y$10$mmgcEuwA6w4NUChZF52VjueNwbHbwfFSOmWKQZ8gweF1gliTAnZt6', NULL, '2017-11-05 14:12:54', NULL, NULL, 'admin', NULL, 1, 1, 0, NULL, NULL, NULL),
-	(2, 'Dinanath', 'Thakur', 'kumardina@gmail.com', '$2y$10$3vvrqi1DwT5JEiGiXHn1luB/m/kVV.ehFbdaD2NVVGueGuKpvuyf6', NULL, '2017-11-05 14:14:04', NULL, NULL, 'kumardina', NULL, 2, 1, 0, NULL, NULL, NULL),
-	(3, 'Dinanath', 'Thakur', 'kumardina023@gmail.com', '$2y$10$Ym1Cs9WnKlFLpX.DfRcS7OUbNcJqMIKk9x7AvxEYQHCSaDQ3jxerW', NULL, '2017-11-05 10:58:31', '2017-11-05 10:58:31', NULL, 'dina', '/assets/images/avatar-placeholder.jpg', 2, 0, 0, NULL, NULL, NULL);
-/*!40000 ALTER TABLE `users` ENABLE KEYS */;
-
+-- Data exporting was unselected.
 -- Dumping structure for table edulogy.usersmeta
 CREATE TABLE IF NOT EXISTS `usersmeta` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
@@ -77,10 +116,7 @@ CREATE TABLE IF NOT EXISTS `usersmeta` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
--- Dumping data for table edulogy.usersmeta: ~0 rows (approximately)
-/*!40000 ALTER TABLE `usersmeta` DISABLE KEYS */;
-/*!40000 ALTER TABLE `usersmeta` ENABLE KEYS */;
-
+-- Data exporting was unselected.
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
 /*!40014 SET FOREIGN_KEY_CHECKS=IF(@OLD_FOREIGN_KEY_CHECKS IS NULL, 1, @OLD_FOREIGN_KEY_CHECKS) */;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

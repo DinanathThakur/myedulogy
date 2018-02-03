@@ -2,71 +2,72 @@
 
 namespace Modules\Admin\Http\Controllers;
 
+
 use Illuminate\Http\Request;
-use Illuminate\Http\Response;
 use Illuminate\Routing\Controller;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Cookie;
+use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Storage;
+use Modules\Home\Entities\User;
+use Validator;
 
 class AdminController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     * @return Response
-     */
-    public function index()
+
+
+    public function login(Request $request)
     {
-        return view('admin::index');
+        // dd($request->all());
+
+        if (Session::has('admin') || $request->session()->has('admin')) {
+            return redirect('/admin/dashboard');
+        }
+        if ($request->isMethod('post')) {
+            $email = $request->input('email');
+            $password = $request->input('password');
+
+            $request->validate([
+                'email' => 'required|email',
+                'password' => 'required',
+            ], ['email.required' => 'Please enter email-id',
+                    'password.required' => 'Please enter a password']
+            );
+            if (Auth::attempt(['email' => $email, 'password' => $password])) {
+
+                $objModelUsers = User::getInstance();
+                $adminDetails = $objModelUsers->getUserById(Auth::id()); //THIS IS TO GET THE MODEL OBJECT
+
+                if ($adminDetails->role == 1) {
+
+                    Session::put('admin', $adminDetails->toArray());
+                    return redirect('/admin/dashboard');
+                } else {
+                    return redirect('/admin')->withErrors([
+                        'errMsg' => 'Invalid credentials.',
+                    ]);
+                }
+
+            } else {
+                return redirect('/admin')->withErrors([
+                    'errMsg' => 'Invalid credentials.',
+                ]);
+            }
+        }
+        return view('admin::home.login');
     }
 
-    /**
-     * Show the form for creating a new resource.
-     * @return Response
-     */
-    public function create()
+    public function logout()
     {
-        return view('admin::create');
+        Auth::logout();
+        Session::forget('admin');
+        return redirect('/admin');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     * @param  Request $request
-     * @return Response
-     */
-    public function store(Request $request)
+    public function dashboard(Request $request)
     {
+        return view('admin::admin.dashboard');
     }
 
-    /**
-     * Show the specified resource.
-     * @return Response
-     */
-    public function show()
-    {
-        return view('admin::show');
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     * @return Response
-     */
-    public function edit()
-    {
-        return view('admin::edit');
-    }
-
-    /**
-     * Update the specified resource in storage.
-     * @param  Request $request
-     * @return Response
-     */
-    public function update(Request $request)
-    {
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     * @return Response
-     */
-    public function destroy()
-    {
-    }
 }
