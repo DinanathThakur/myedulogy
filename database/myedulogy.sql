@@ -21,17 +21,17 @@ CREATE TABLE IF NOT EXISTS `category` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `category` varchar(255) NOT NULL,
   `priority` tinyint(2) NOT NULL DEFAULT '0',
-  `status` char(1) NOT NULL,
-  `createdAt` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `updatedAt` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `status` char(1) NOT NULL DEFAULT 'A',
+  `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
   UNIQUE KEY `category` (`category`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=latin1;
 
--- Dumping data for table edulogy.category: ~9 rows (approximately)
+-- Dumping data for table edulogy.category: ~10 rows (approximately)
 DELETE FROM `category`;
 /*!40000 ALTER TABLE `category` DISABLE KEYS */;
-INSERT INTO `category` (`id`, `category`, `priority`, `status`, `createdAt`, `updatedAt`) VALUES
+INSERT INTO `category` (`id`, `category`, `priority`, `status`, `created_at`, `updated_at`) VALUES
 	(1, 'Project Management', 1, 'A', '2018-02-03 15:28:03', '2018-02-03 15:28:04'),
 	(2, 'IT Service & Architecture', 2, 'A', '2018-02-03 15:29:42', '2018-02-03 15:29:43'),
 	(3, 'Big Data and Analytics', 3, 'A', '2018-02-03 15:30:11', '2018-02-03 15:30:11'),
@@ -40,7 +40,9 @@ INSERT INTO `category` (`id`, `category`, `priority`, `status`, `createdAt`, `up
 	(6, 'Agile and Scrum', 6, 'A', '2018-02-03 15:31:16', '2018-02-03 15:31:16'),
 	(7, 'Cloud Computing', 7, 'A', '2018-02-03 15:31:32', '2018-02-03 15:31:32'),
 	(8, 'Quality Management', 8, 'A', '2018-02-03 15:31:51', '2018-02-03 15:31:52'),
-	(9, 'Business Productivity Tools', 9, 'A', '2018-02-03 15:32:07', '2018-02-03 15:32:08');
+	(9, 'Business Productivity Tools', 9, 'A', '2018-02-03 15:32:07', '2018-02-03 15:32:08'),
+	(10, 'test', 0, 'A', '2018-02-04 04:41:20', '2018-02-04 04:41:20'),
+	(12, 'testing', 0, 'A', '2018-02-04 04:44:55', '2018-02-04 04:44:55');
 /*!40000 ALTER TABLE `category` ENABLE KEYS */;
 
 -- Dumping structure for table edulogy.courses
@@ -48,9 +50,9 @@ CREATE TABLE IF NOT EXISTS `courses` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `category` int(11) unsigned NOT NULL DEFAULT '0',
   `courseName` varchar(255) NOT NULL,
-  `shortTitle` varchar(255) NOT NULL,
-  `longTitle` varchar(255) NOT NULL,
-  `title` varchar(255) NOT NULL,
+  `shortTitle` varchar(255) DEFAULT NULL,
+  `longTitle` varchar(255) DEFAULT NULL,
+  `title` varchar(255) DEFAULT NULL,
   `mainDescription` text,
   `otherDescription` text,
   `shortTitleVisibility` char(1) NOT NULL DEFAULT 'Y',
@@ -58,18 +60,18 @@ CREATE TABLE IF NOT EXISTS `courses` (
   `priority` tinyint(2) DEFAULT '0',
   `userEnrolled` int(11) NOT NULL DEFAULT '0',
   `status` char(1) NOT NULL DEFAULT 'A',
-  `createdAt` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `updatedAt` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `img` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `FK_courses_category` (`category`),
   CONSTRAINT `FK_courses_category` FOREIGN KEY (`category`) REFERENCES `category` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
 -- Dumping data for table edulogy.courses: ~1 rows (approximately)
 DELETE FROM `courses`;
 /*!40000 ALTER TABLE `courses` DISABLE KEYS */;
-INSERT INTO `courses` (`id`, `category`, `courseName`, `shortTitle`, `longTitle`, `title`, `mainDescription`, `otherDescription`, `shortTitleVisibility`, `ratings`, `priority`, `userEnrolled`, `status`, `createdAt`, `updatedAt`, `img`) VALUES
+INSERT INTO `courses` (`id`, `category`, `courseName`, `shortTitle`, `longTitle`, `title`, `mainDescription`, `otherDescription`, `shortTitleVisibility`, `ratings`, `priority`, `userEnrolled`, `status`, `created_at`, `updated_at`, `img`) VALUES
 	(1, 1, ' PMP®  Certification', '', '', '', 'The PMP certification is the global gold standard for project management professionals. Skilled and certified practitioners of project management are in high demand by employers in all industries.This PMP course online is designed to teach you the full scope of project management processes, and help you pass the PMP certification exam on your first attempt. Join the community of more than 500,000 PMPs in 185 countries and get PMP certified today!', NULL, 'Y', 0.00, 0, 0, 'A', '2018-02-03 15:37:07', '2018-02-03 17:10:06', '/assets/images/courses/pmp.jpg');
 /*!40000 ALTER TABLE `courses` ENABLE KEYS */;
 
@@ -102,17 +104,17 @@ CREATE TABLE IF NOT EXISTS `sub_courses` (
   `offerPrice` float(10,2) NOT NULL DEFAULT '0.00',
   `offerExpireOn` datetime DEFAULT NULL,
   `status` char(1) NOT NULL DEFAULT 'A',
-  `createdAt` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `updatedAt` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
   KEY `FK_sub_courses_courses` (`courseID`),
   CONSTRAINT `FK_sub_courses_courses` FOREIGN KEY (`courseID`) REFERENCES `courses` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
--- Dumping data for table edulogy.sub_courses: ~1 rows (approximately)
+-- Dumping data for table edulogy.sub_courses: ~0 rows (approximately)
 DELETE FROM `sub_courses`;
 /*!40000 ALTER TABLE `sub_courses` DISABLE KEYS */;
-INSERT INTO `sub_courses` (`id`, `courseID`, `name`, `startDate`, `endDate`, `startTime`, `endTime`, `type`, `price`, `offerType`, `offerPrice`, `offerExpireOn`, `status`, `createdAt`, `updatedAt`) VALUES
+INSERT INTO `sub_courses` (`id`, `courseID`, `name`, `startDate`, `endDate`, `startTime`, `endTime`, `type`, `price`, `offerType`, `offerPrice`, `offerExpireOn`, `status`, `created_at`, `updated_at`) VALUES
 	(2, 1, '', '2018-02-03 21:19:12', '2018-03-03 21:19:13', '21:19:17', '22:20:18', 'C', 1799.00, 'F', 150.00, '2019-02-03 21:19:31', 'A', '2018-02-03 21:19:36', '2018-02-03 23:15:53');
 /*!40000 ALTER TABLE `sub_courses` ENABLE KEYS */;
 
@@ -138,7 +140,7 @@ CREATE TABLE IF NOT EXISTS `users` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `users_email_unique` (`email`),
   UNIQUE KEY `username` (`userName`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- Dumping data for table edulogy.users: ~2 rows (approximately)
 DELETE FROM `users`;
