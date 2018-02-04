@@ -28,7 +28,7 @@ CREATE TABLE IF NOT EXISTS `category` (
   UNIQUE KEY `category` (`category`)
 ) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=latin1;
 
--- Dumping data for table edulogy.category: ~10 rows (approximately)
+-- Dumping data for table edulogy.category: ~9 rows (approximately)
 DELETE FROM `category`;
 /*!40000 ALTER TABLE `category` DISABLE KEYS */;
 INSERT INTO `category` (`id`, `category`, `priority`, `status`, `created_at`, `updated_at`) VALUES
@@ -71,7 +71,7 @@ CREATE TABLE IF NOT EXISTS `courses` (
 DELETE FROM `courses`;
 /*!40000 ALTER TABLE `courses` DISABLE KEYS */;
 INSERT INTO `courses` (`id`, `category`, `courseName`, `shortTitle`, `longTitle`, `title`, `mainDescription`, `otherDescription`, `shortTitleVisibility`, `ratings`, `priority`, `userEnrolled`, `status`, `created_at`, `updated_at`, `img`) VALUES
-	(1, 1, ' PMP®  Certification', '', '', '', 'The PMP certification is the global gold standard for project management professionals. Skilled and certified practitioners of project management are in high demand by employers in all industries.This PMP course online is designed to teach you the full scope of project management processes, and help you pass the PMP certification exam on your first attempt. Join the community of more than 500,000 PMPs in 185 countries and get PMP certified today!', NULL, 'Y', 0.00, 0, 0, 'A', '2018-02-03 15:37:07', '2018-02-03 17:10:06', '/assets/images/courses/pmp.jpg');
+	(1, 1, 'test', '', '', '', 'The PMP certification is the global gold standard for project management professionals. Skilled and certified practitioners of project management are in high demand by employers in all industries.This PMP course online is designed to teach you the full scope of project management processes, and help you pass the PMP certification exam on your first attempt. Join the community of more than 500,000 PMPs in 185 countries and get PMP certified today!', NULL, 'Y', 0.00, 0, 0, 'D', '2018-02-03 15:37:07', '2018-02-04 19:16:17', '/assets/images/courses/pmp.jpg');
 /*!40000 ALTER TABLE `courses` ENABLE KEYS */;
 
 -- Dumping structure for table edulogy.password_resets
@@ -110,7 +110,7 @@ CREATE TABLE IF NOT EXISTS `sub_courses` (
   CONSTRAINT `FK_sub_courses_courses` FOREIGN KEY (`courseID`) REFERENCES `courses` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
--- Dumping data for table edulogy.sub_courses: ~0 rows (approximately)
+-- Dumping data for table edulogy.sub_courses: ~1 rows (approximately)
 DELETE FROM `sub_courses`;
 /*!40000 ALTER TABLE `sub_courses` DISABLE KEYS */;
 INSERT INTO `sub_courses` (`id`, `courseID`, `name`, `startDate`, `endDate`, `startTime`, `endTime`, `type`, `price`, `offerType`, `offerPrice`, `offerExpireOn`, `status`, `created_at`, `updated_at`) VALUES
