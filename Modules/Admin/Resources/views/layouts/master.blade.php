@@ -3,7 +3,7 @@
 <head>
     @include('admin::layouts.head-script')
     @yield('head-content')
-    <title>{{env('APP_NAME')}}-Admin | @yield('title')</title>
+    <title>{{env('APP_NAME')}} - Admin | @yield('title')</title>
 </head>
 <body class="nav-md">
 <div class="container body">

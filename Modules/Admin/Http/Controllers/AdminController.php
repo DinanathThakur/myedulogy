@@ -2,20 +2,15 @@
 
 namespace Modules\Admin\Http\Controllers;
 
-
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Session;
-use Illuminate\Support\Facades\Storage;
 use Modules\Home\Entities\User;
-use Validator;
 
 class AdminController extends Controller
 {
-
 
     public function login(Request $request)
     {
@@ -32,7 +27,7 @@ class AdminController extends Controller
                 'email' => 'required|email',
                 'password' => 'required',
             ], ['email.required' => 'Please enter email-id',
-                    'password.required' => 'Please enter a password']
+                'password.required' => 'Please enter a password']
             );
             if (Auth::attempt(['email' => $email, 'password' => $password])) {
 
@@ -68,6 +63,14 @@ class AdminController extends Controller
     public function dashboard(Request $request)
     {
         return view('admin::admin.dashboard');
+    }
+    public function manageCourse(Request $request)
+    {
+        return view('admin::course.index');
+    }
+    public function manageCategory(Request $request)
+    {
+        return view('admin::category.index');
     }
 
 }

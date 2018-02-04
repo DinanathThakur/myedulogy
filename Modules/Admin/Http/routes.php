@@ -8,6 +8,8 @@ Route::group(['middleware' => 'web', 'prefix' => 'admin', 'namespace' => 'Module
     Route::any('/ajaxHandler', 'AdminController@ajaxHandler');
 
     Route::get('/dashboard', 'AdminController@dashboard');
+    Route::get('/manage-categories', 'AdminController@manageCategory');
+    Route::get('/manage-courses', 'AdminController@manageCourse');
     Route::group(['middleware' => 'auth'], function () {
         Route::get('/my-profile', 'AdminController@myProfile');
     });
