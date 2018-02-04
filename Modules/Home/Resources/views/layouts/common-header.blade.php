@@ -24,6 +24,7 @@ array_walk($allCourse, function ($c) use (&$courseCategoryWise) {
                 <div class="col-sm-6 col-xs-12 header-top-right">
                     <ul class="list-unstyled">
                         @if (!Auth::check())
+                            {{--@if (!Auth::check() || !\Illuminate\Support\Facades\Session::has('user'))--}}
                             <li><a href="/register">Register</a></li>
                             <li><a href="/login" class="apply-btn">Login</a></li>
                         @else

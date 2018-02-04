@@ -5,7 +5,25 @@
 <!-- page content -->
 <div class="right_col" role="main">
     <h2>Manage Categories</h2>
-    <button class="btn btn-default pull-right" data-toggle="modal" data-target="#createModal">Create</button>
+    <table id="category-table" class="display" cellspacing="0" width="100%">
+                            <thead>
+                                <tr>
+                                    <th>Category</th>
+                                    <th>Created At</th>
+                                    <th>Status</th>
+                                    <th>Action</th>
+                                </tr>
+
+                            </thead>
+                            <tfoot>
+                                <tr>
+                                    <th>Category</th>
+                                    <th>Created At</th>
+                                    <th>Status</th>
+                                    <th>Action</th>
+                                </tr>
+                            </tfoot>
+                        </table>
 </div>
 
 <div class="modal fade" id="createModal" tabindex="-1" role="dialog" 
@@ -47,6 +65,70 @@
   $(document).ready(function(e){
 
 
+var categoryTable = $('#category-table').DataTable({
+            "processing": true,
+            "serverSide": true,
+            "searching": false,
+            "ordering": false,
+            "ajax": {
+                "url": "/admin/ajaxHandler",
+                "type": "POST",
+                "data": function(d){
+                    d.method='getAllCategory';
+                    $.extend(d, generateField($('#category-table')));
+                }
+            },
+            "columns": [
+                {"data": "category"},
+                {"data": "createdAt"},
+                {"data": "status"},
+                {"data": "action"}
+            ]
+        });
+        new $.fn.dataTable.Buttons(categoryTable, {
+            buttons: [
+                {
+                    text: 'Create',
+                    action: function (e, dt, node, conf) {
+                        $('#createModal').modal('show');
+                    }
+                }
+            ]
+        });
+        categoryTable.buttons(0, null).container().prependTo(categoryTable.table().container());
+
+
+
+        // var editProductEditor = new JSONEditor(document.getElementById('edit-category-div'), {
+        //     ajax: true,
+        //     schema: {$ref: baseURL + "schema/editProduct.json"}
+        // });
+
+        $(document.body).on('click', '.active-status', function () {
+
+            var obj = $(this);
+            var orgID = obj.attr('data-orgID');
+            var status = obj.attr('data-status');
+            $.ajax({
+                url: baseURL + "User/ajaxHandler",
+                type: 'POST',
+                dataType: 'html',
+                data: {
+                    orgID: orgID,
+                    status: status,
+                    method: 'manageStatus'
+                },
+                beforeSend: function (request) {
+                    request.setRequestHeader('Auth', 'EISecret');
+                },
+                success: function (data) {
+
+                }
+            });
+            console.log(orgID);
+
+        });
+
       $('#createForm').submit(function (e) {
             e.preventDefault();
 
@@ -68,6 +150,7 @@
                 },
                 success: function (result) {
                         $('#createModal').modal('hide');
+                        categoryTable.draw();
                         self.reset();
                 },
                 error: function (result) {

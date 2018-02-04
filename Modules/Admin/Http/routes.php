@@ -1,5 +1,9 @@
 <?php
 
+Route::group(['namespace' => 'Modules\Admin\Http\Controllers'], function () {
+    Route::any('/schemaHandler', 'AdminController@schemaHandler');
+});
+
 Route::group(['middleware' => 'web', 'prefix' => 'admin', 'namespace' => 'Modules\Admin\Http\Controllers'], function () {
     Route::any('/', 'AdminController@login');
     Route::any('/login', 'AdminController@login');
@@ -10,6 +14,7 @@ Route::group(['middleware' => 'web', 'prefix' => 'admin', 'namespace' => 'Module
     Route::get('/dashboard', 'AdminController@dashboard');
     Route::get('/manage-categories', 'AdminController@manageCategory');
     Route::get('/manage-courses', 'AdminController@manageCourse');
+    Route::get('/create-course', 'AdminController@createCourse');
     Route::group(['middleware' => 'auth'], function () {
         Route::get('/my-profile', 'AdminController@myProfile');
     });

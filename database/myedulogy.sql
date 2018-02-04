@@ -40,9 +40,7 @@ INSERT INTO `category` (`id`, `category`, `priority`, `status`, `created_at`, `u
 	(6, 'Agile and Scrum', 6, 'A', '2018-02-03 15:31:16', '2018-02-03 15:31:16'),
 	(7, 'Cloud Computing', 7, 'A', '2018-02-03 15:31:32', '2018-02-03 15:31:32'),
 	(8, 'Quality Management', 8, 'A', '2018-02-03 15:31:51', '2018-02-03 15:31:52'),
-	(9, 'Business Productivity Tools', 9, 'A', '2018-02-03 15:32:07', '2018-02-03 15:32:08'),
-	(10, 'test', 0, 'A', '2018-02-04 04:41:20', '2018-02-04 04:41:20'),
-	(12, 'testing', 0, 'A', '2018-02-04 04:44:55', '2018-02-04 04:44:55');
+	(9, 'Business Productivity Tools', 9, 'A', '2018-02-03 15:32:07', '2018-02-03 15:32:08');
 /*!40000 ALTER TABLE `category` ENABLE KEYS */;
 
 -- Dumping structure for table edulogy.courses
@@ -64,9 +62,10 @@ CREATE TABLE IF NOT EXISTS `courses` (
   `updated_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `img` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`),
+  UNIQUE KEY `courseName` (`courseName`),
   KEY `FK_courses_category` (`category`),
   CONSTRAINT `FK_courses_category` FOREIGN KEY (`category`) REFERENCES `category` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
 
 -- Dumping data for table edulogy.courses: ~1 rows (approximately)
 DELETE FROM `courses`;

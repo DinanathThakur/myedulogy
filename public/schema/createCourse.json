@@ -1,0 +1,62 @@
+{
+  "definitions": {},
+  "$schema": "create-course-schema",
+  "type": "object",
+  "id": "create-course",
+  "title": "Course Details",
+  "properties": {
+    "category": {
+      "$ref": "/schemaHandler?schema=selectCategory",
+      "propertyOrder": 1
+    },
+    "courseName": {
+      "type": "string",
+      "id": "/properties/courseName",
+      "title": "Course Name",
+      "minLength": 1,
+      "maxLength": 40,
+      "propertyOrder": 2
+    },
+    "mainDescription": {
+      "type": "string",
+      "id": "/properties/mainDescription",
+      "title": "Description",
+      "format": "textarea",
+      "propertyOrder": 3
+    },
+    "otherDescription": {
+      "type": "array",
+      "format": "table",
+      "title": "Other Description",
+      "uniqueItems": true,
+      "items": {
+        "type": "object",
+        "title": "Tab",
+        "properties": {
+          "tab": {
+            "type": "string",
+            "id": "/properties/tab",
+            "title": "Tab"
+          },
+          "visibility": {
+            "title": "Visibility",
+            "type": "boolean",
+            "format": "checkbox",
+            "default":true
+          },
+          "description": {
+            "title": "Description",
+            "type": "string",
+            "format": "html",
+            "options": {
+              "wysiwyg": true,
+              "sceditor_options": {
+                "width": "400px"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

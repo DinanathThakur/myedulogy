@@ -29,9 +29,10 @@ class CourseController extends Controller
             $courses = SubCourse::getInstance()->getRecordsWhere(['courseID' => $courseID, 'status' => 'A'])->all();
             $courseTypeWise = [];
             array_walk($courses, function ($course) use (&$courseTypeWise) {
-                $courseTypeWise[$course->type][]=$course;
+                $courseTypeWise[$course->type][] = $course;
             });
             $returnData['courses'] = $courseTypeWise;
+            $returnData['otherDescription'] = $returnData['courseDetails']->otherDescription ? json_decode($returnData['courseDetails']->otherDescription, true) : [];
         }
 //        dd($returnData);
         return view('home::course.index', $returnData);

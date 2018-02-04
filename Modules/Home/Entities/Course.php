@@ -27,10 +27,12 @@ class Course extends Model
         return $result;
     }
 
-    public function getRecordsWhere($where = [])
+    public function getRecordsWhere($where = [], $options = [])
     {
         $result = DB::table($this->table)
             ->where($where)
+            ->offset(isset($options['page']) ? $options['page'] : 0)
+            ->limit(isset($options['limit']) ? $options['limit'] : 999999999)
             ->get();
         return $result;
     }
@@ -59,6 +61,6 @@ class Course extends Model
 
     public function getByID($id)
     {
-        return Category::find($id);
+        return Course::find($id);
     }
 }

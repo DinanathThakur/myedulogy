@@ -21,6 +21,21 @@
 <!-- bootstrap-daterangepicker -->
 <link href="/admin-assets/plugins/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
 
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/selectize.js/0.12.1/css/selectize.bootstrap3.css">
+
 <!-- Custom Theme Style -->
 <link href="/admin-assets/css/custom.min.css" rel="stylesheet">
 <script src="/admin-assets/plugins/jquery/dist/jquery.min.js"></script>
+<script src="/assets/js/blockUI.js"></script>
+<link rel="stylesheet" href="/assets/plugins/toastr/toastr.min.css">
+<link rel="stylesheet" href="/admin-assets/plugins/dataTable/datatables.min.css">
+<link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.4.2/css/buttons.dataTables.min.css">
+<script type="text/javascript">
+	var APP_URL = {!! json_encode(url('/')) !!};
+</script>
+
+<style type="text/css">
+	.dataTables_wrapper .dt-buttons {
+    float: right;
+}
+</style>

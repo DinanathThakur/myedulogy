@@ -28,14 +28,49 @@
 <script src="/admin-assets/plugins/flot.curvedlines/curvedLines.js"></script>
 <!-- DateJS -->
 <script src="/admin-assets/plugins/DateJS/build/date.js"></script>
-<!-- JQVMap -->
-<script src="/admin-assets/plugins/jqvmap/dist/jquery.vmap.js"></script>
-<script src="/admin-assets/plugins/jqvmap/dist/maps/jquery.vmap.world.js"></script>
-<script src="/admin-assets/plugins/jqvmap/examples/js/jquery.vmap.sampledata.js"></script>
 <!-- bootstrap-daterangepicker -->
 <script src="/admin-assets/plugins/moment/min/moment.min.js"></script>
 <script src="/admin-assets/plugins/bootstrap-daterangepicker/daterangepicker.js"></script>
 
+<script src="/admin-assets/plugins/dataTable/datatables.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.4.2/js/dataTables.buttons.min.js"></script>
+
+
 <!-- Custom Theme Scripts -->
 <script src="/admin-assets/js/custom.min.js"></script>
-<script src="/assets/js/blockUI.js"></script>
+<script src="/assets/plugins/toastr/toastr.min.js"></script>
+<script src="/admin-assets/js/jsoneditor/jsoneditor.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/selectize.js/0.12.1/js/standalone/selectize.js"></script>
+<!-- Include the editors JS -->
+<script src="/admin-assets/plugins/sceditor/minified/sceditor.min.js"></script>
+
+<!-- Include the BBCode or XHTML formats -->
+<script src="/admin-assets/plugins/sceditor/minified/formats/bbcode.js"></script>
+<script src="/admin-assets/plugins/sceditor/minified/formats/xhtml.js"></script>
+
+<script>
+	
+	console.log(APP_URL);
+    function generateField(tableID) {
+        var inputContainer = tableID.find('.filter-data input, .filter-data select');
+        var formData = {};
+        $.each(inputContainer, function (i, v) {
+            formData[$(this).attr('name')] = $(this).val();
+        });
+        return formData;
+    }
+    function resetField(tableID) {
+    $.each(tableID.find('.filter-data input, .filter-data select'), function(i, v) {
+        $(this).val('');
+    });
+}
+$(document.body).on('click', '.filter-action', function() {
+    var obj = $(this);
+    var action = obj.data('action');
+    var tableID = obj.parents('table').attr('id');
+    if (action == 'cancel') {
+        resetField($('#' + tableID));
+    }
+    $('#' + tableID).DataTable().draw();
+});
+</script>

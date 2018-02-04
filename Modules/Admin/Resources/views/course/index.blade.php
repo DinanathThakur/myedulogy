@@ -2,94 +2,156 @@
 @section('title','Manage Courses')
 @section('content')
 
-<!-- page content -->
-<div class="right_col" role="main">
-    <h2>Manage Courses</h2>
-    <button class="btn btn-default pull-right" data-toggle="modal" data-target="#createModal">Create</button>
-</div>
-
-<!-- Modal -->
-<div class="modal fade" id="createModal" tabindex="-1" role="dialog" 
-     aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-          <form method="post" id="createForm">
-            <!-- Modal Header -->
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title">Create new course</h4>
-            </div>
-            <!-- Modal Body -->
-            <div class="modal-body">
-                  <div class="form-group">
-                    <label for="category">Category</label>
-                    <select class="form-control" required="" name="category">
-                    <option value="">Select a category...</option>
-                    @foreach($categories as $category)
-                        <option value="{{$category->id}}">{{$category->category}}</option>
-                    @endforeach
-                    </select>
-                  </div>
-                <div class="form-group">
-                    <label for="courseName">Name</label>
-                    <input type="text" class="form-control" id="courseName" name ="courseName" placeholder="Enter courseName" required="" />
-                </div>
-                <div class="form-group">
-                    <label for="category">Description</label>
-                    <textarea class="form-control" placeholder="Enter description" name="mainDescription" required=""></textarea>
-                </div>
-            </div>
-            
-            <!-- Modal Footer -->
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal"> Close </button>
-                <button type="submit" class="btn btn-primary"> Create </button>
-            </div>
-            </form>
-        </div>
+    <!-- page content -->
+    <div class="right_col" role="main">
+        <h2>Manage Courses</h2>
+            <table id="course-table" class="display" cellspacing="0" width="100%">
+                            <thead>
+                                <tr>
+                                    <th>Course Name</th>
+                                    <th>Category</th>
+                                    <th>Created At</th>
+                                    <th>Status</th>
+                                    <th>Action</th>
+                                </tr>
+                                <!-- <tr class="filter-data">
+                                    <th><input type="text" name="courseName" data-column="2" class="filter-column"></th>
+                                    <th>
+                                        <select name="category" class="filter-column">
+                                            <option value="">All</option>
+                                            <?php foreach ($categories as $id => $category) { ?>
+                                                <option value="<?php echo $id; ?>"><?php echo $category->category; ?></option>
+                                            <?php } ?>
+                                        </select>
+                                    </th>
+                                    <th></th>
+                                    <th>
+                                        <select name="status" data-column="4" class="filter-column">
+                                            <option value="">All</option>
+                                            <option value="A">Active</option>
+                                            <option value="D">In-Active</option>
+                                        </select>
+                                    </th>
+                                    <th>
+                                        <span class="btn btn-default btn-xs filter-action" data-action="apply" data-toggle="tooltip" data-placement="top" title="Apply Filter" ><i class="fa fa-search"></i></span>
+                                        <span class="btn btn-default btn-xs filter-action" data-action="cancel" data-toggle="tooltip" data-placement="top" title="Reset Filter" ><i class="fa fa-close"></i></span>
+                                    </th>
+                                </tr> -->
+                            </thead>
+                            <tfoot>
+                                <tr>
+                                    <th>Course Name</th>
+                                    <th>Category</th>
+                                    <th>Created At</th>
+                                    <th>Status</th>
+                                    <th>Action</th>
+                                </tr>
+                            </tfoot>
+                        </table>
     </div>
-</div>
-<!-- /page content -->
+
+
+  <div class="modal fade" id="edit-course-modal" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Update course</h4>
+        </div>
+        <div class="modal-body">
+          <form method="post" id="edit-course-form">
+            <div id="edit-course-div"></div>
+            <button id="edit-course-button" type="submit" class="btn btn-default">Submit</button>
+        </form>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+    <!-- /page content -->
 @stop
 
 
 @section('page-script')
 
-<script type="text/javascript">
-  
-  $(document).ready(function(e){
+    <script type="text/javascript">
+
+        $(document).ready(function (e) {
+        JSONEditor.defaults.options.theme = 'bootstrap3';
+        JSONEditor.defaults.options.disable_edit_json = true;
+        JSONEditor.defaults.options.disable_properties = true;
+        JSONEditor.defaults.options.disable_array_reorder = true;
+        JSONEditor.defaults.options.iconlib = 'fontawesome4';
+        JSONEditor.plugins.selectize.enable = true;
+
+        var courseTable = $('#course-table').DataTable({
+            "processing": true,
+            "serverSide": true,
+            "searching": false,
+            "ordering": false,
+            "ajax": {
+                "url": "/admin/ajaxHandler",
+                "type": "POST",
+                "data": function(d){
+                    d.method='getAllCourse';
+                    $.extend(d, generateField($('#course-table')));
+                }
+            },
+            "columns": [
+                // {"data": "id"},
+                {"data": "courseName"},
+                {"data": "category"},
+                {"data": "createdAt"},
+                {"data": "status"},
+                {"data": "action"}
+            ]
+        });
+        new $.fn.dataTable.Buttons(courseTable, {
+            buttons: [
+                {
+                    text: 'Create',
+                    action: function (e, dt, node, conf) {
+                        window.open(APP_URL + "/admin/create-course", '_blank');
+                    }
+                }
+            ]
+        });
+        courseTable.buttons(0, null).container().prependTo(courseTable.table().container());
 
 
-      $('#createForm').submit(function (e) {
-            e.preventDefault();
 
-            var self = this;
-            var formData = new FormData(this);
-            formData.append('method',"createCourse");
+        // var editProductEditor = new JSONEditor(document.getElementById('edit-course-div'), {
+        //     ajax: true,
+        //     schema: {$ref: baseURL + "schema/editProduct.json"}
+        // });
+
+        $(document.body).on('click', '.active-status', function () {
+
+            var obj = $(this);
+            var orgID = obj.attr('data-orgID');
+            var status = obj.attr('data-status');
             $.ajax({
-                url: '/admin/ajaxHandler',
+                url: baseURL + "User/ajaxHandler",
                 type: 'POST',
-                cache: false,
-                contentType: false,
-                processData: false,
-                data: formData,
-                beforeSend: function () {
-                    blockUI({msg: "Creating course, please wait..."});
+                dataType: 'html',
+                data: {
+                    orgID: orgID,
+                    status: status,
+                    method: 'manageStatus'
                 },
-                complete: function () {
-                    unblockUI();
+                beforeSend: function (request) {
+                    request.setRequestHeader('Auth', 'EISecret');
                 },
-                success: function (result) {
-                        $('#createModal').modal('hide');
-                        self.reset();
-                },
-                error: function (result) {
-                    console.log("error");
-                    console.log(result);
+                success: function (data) {
+
                 }
             });
+            console.log(orgID);
+
         });
-  })
-</script>
+        });
+    </script>
 
 @stop
