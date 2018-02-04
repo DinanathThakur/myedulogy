@@ -23,3 +23,4 @@
 
 <!-- Custom Theme Style -->
 <link href="/admin-assets/css/custom.min.css" rel="stylesheet">
+<script src="/admin-assets/plugins/jquery/dist/jquery.min.js"></script>

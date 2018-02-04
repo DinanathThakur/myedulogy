@@ -46,4 +46,9 @@ class Category extends Model
             return $e->getMessage();
         }
     }
+
+    public function getByID($id)
+    {
+        return Category::find($id);
+    }
 }

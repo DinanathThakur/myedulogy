@@ -1,5 +1,5 @@
 <!-- jQuery -->
-<script src="/admin-assets/plugins/jquery/dist/jquery.min.js"></script>
+
 <!-- Bootstrap -->
 <script src="/admin-assets/plugins/bootstrap/dist/js/bootstrap.min.js"></script>
 <!-- FastClick -->
@@ -38,3 +38,4 @@
 
 <!-- Custom Theme Scripts -->
 <script src="/admin-assets/js/custom.min.js"></script>
+<script src="/assets/js/blockUI.js"></script>
