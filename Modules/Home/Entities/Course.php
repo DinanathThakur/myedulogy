@@ -57,4 +57,8 @@ class Course extends Model
         }
     }
 
+    public function getByID($id)
+    {
+        return Category::find($id);
+    }
 }
