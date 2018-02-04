@@ -37,8 +37,7 @@ class Category extends Model
         return $result;
     }
 
-public
-function updateUserWhere($data, $where)
+public function updateUserWhere($data, $where)
 {
     try {
         $updatedResult = DB::table($this->table)
