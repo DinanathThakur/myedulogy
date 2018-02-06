@@ -3,6 +3,8 @@
 namespace App\Http;
 
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
+use Modules\Admin\Http\Middleware\AdminAuth;
+use Modules\Home\Http\Middleware\UserAuth;
 
 class Kernel extends HttpKernel
 {
@@ -52,6 +54,8 @@ class Kernel extends HttpKernel
      */
     protected $routeMiddleware = [
         'auth' => \Illuminate\Auth\Middleware\Authenticate::class,
+        'adminAuth' => AdminAuth::class,
+        'userAuth' => UserAuth::class,
         'auth.basic' => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
         'bindings' => \Illuminate\Routing\Middleware\SubstituteBindings::class,
         'can' => \Illuminate\Auth\Middleware\Authorize::class,

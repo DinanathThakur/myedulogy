@@ -261,13 +261,12 @@ class HomeController extends Controller
 
 
             case 'removeFromCart':
-                $cid = $request['cid'];
-
+                $cid = 'c-' . $request['cid'];
                 $cartDetails = isset($_COOKIE[$this->cookieName]) ? json_decode($_COOKIE[$this->cookieName], true) : [];
-
-                unset($cartDetails[$cid]);
-                setcookie($this->cookieName, json_encode($cartDetails), time() + (86400 * 30), "/");
-
+                if (isset($cartDetails[$cid])) {
+                    unset($cartDetails[$cid]);
+                    setcookie($this->cookieName, json_encode($cartDetails), time() + (86400 * 30), "/");
+                }
                 $response = ['status' => 'success', 'msg' => 'Removed from cart', 'data' => array_sum($cartDetails)];
 
                 break;

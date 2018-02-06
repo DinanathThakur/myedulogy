@@ -11,12 +11,12 @@ Route::group(['middleware' => 'web', 'prefix' => 'admin', 'namespace' => 'Module
 
     Route::any('/ajaxHandler', 'AdminController@ajaxHandler');
 
-    Route::get('/dashboard', 'AdminController@dashboard');
-    Route::get('/manage-categories', 'AdminController@manageCategory');
-    Route::get('/manage-courses', 'AdminController@manageCourse');
-    Route::get('/create-course', 'AdminController@createCourse');
-    Route::get('/manage-classes', 'AdminController@manageClasses');
-    Route::group(['middleware' => 'auth'], function () {
+    Route::group(['middleware' => ['adminAuth']], function () {
         Route::get('/my-profile', 'AdminController@myProfile');
+        Route::get('/dashboard', 'AdminController@dashboard');
+        Route::get('/manage-categories', 'AdminController@manageCategory');
+        Route::get('/manage-courses', 'AdminController@manageCourse');
+        Route::get('/create-course', 'AdminController@createCourse');
+        Route::get('/manage-classes', 'AdminController@manageClasses');
     });
 });
