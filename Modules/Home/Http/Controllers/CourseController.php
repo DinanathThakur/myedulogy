@@ -2,15 +2,9 @@
 
 namespace Modules\Home\Http\Controllers;
 
-use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Redirect;
-use Illuminate\Support\Facades\Session;
 use Modules\Home\Entities\Course;
-use Modules\Home\Entities\SubCourse;
-use Modules\Home\Entities\User;
-use Validator;
+use Modules\Home\Entities\Classes;
 
 class CourseController extends Controller
 {
@@ -22,23 +16,18 @@ class CourseController extends Controller
 
     public function index($courseID)
     {
-        $courseDetails = [];
         $returnData = [];
         if ($courseID) {
-            $returnData['courseDetails'] = $courseDetails= Course::getInstance()->getRecordWhere(['id' => $courseID, 'status' => 'A']);
+            $returnData['courseDetails'] = $courseDetails = Course::getInstance()->getRecordWhere(['id' => $courseID, 'status' => 'A']);
             if (!empty($courseDetails)) {
-            $courses = SubCourse::getInstance()->getRecordsWhere(['courseID' => $courseID, 'status' => 'A'])->all();
-            $courseTypeWise = [];
-            array_walk($courses, function ($course) use (&$courseTypeWise) {
-                $courseTypeWise[$course->type][] = $course;
-            });
-            $returnData['courses'] = $courseTypeWise;
-            $returnData['otherDescription'] = $returnData['courseDetails']->otherDescription ? json_decode($returnData['courseDetails']->otherDescription, true) : [];
+                $courses = Classes::getInstance()->getRecordsWhere(['courseID' => $courseID, 'status' => 'A'])->all();
+                $courseTypeWise = [];
+                array_walk($courses, function ($course) use (&$courseTypeWise) {$courseTypeWise[$course->type][] = $course;});
+                $returnData['courses'] = $courseTypeWise;
+                $returnData['otherDescription'] = $returnData['courseDetails']->otherDescription ? json_decode($returnData['courseDetails']->otherDescription, true) : [];
+            }
         }
-        }
-//        dd($returnData);
         return view('home::course.index', $returnData);
     }
-
 
 }

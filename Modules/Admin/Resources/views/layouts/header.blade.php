@@ -27,6 +27,7 @@
                 <ul class="nav side-menu">
                     <li><a href="/admin/manage-categories"><i class="fa fa-home"></i> Manage Category</a></li>
                     <li><a href="/admin/manage-courses"><i class="fa fa-list"></i> Manage Courses</a></li>
+                    <li><a href="/admin/manage-classes"><i class="fa fa-list"></i> Manage Classes</a></li>
                     <li><a href="/admin/manage-users"><i class="fa fa-users"></i> Manage Users</a></li>
 <!--                     <li><a><i class="fa fa-edit"></i> Course <span class="fa fa-chevron-down"></span></a>
                         <ul class="nav child_menu">

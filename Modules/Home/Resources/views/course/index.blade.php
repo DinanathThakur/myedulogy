@@ -67,9 +67,11 @@
                                     <!-- Nav tabs -->
                                     <ul class="nav nav-justified nav-list-tabs" role="tablist">
                                         <li role="presentation" class="active">
-                                            <a href="#classroom" aria-controls="home" role="tab" data-toggle="tab" aria-expanded="true">Classroom</a> </li>
+                                            <a href="#classroom" aria-controls="home" role="tab" data-toggle="tab"
+                                               aria-expanded="true">Classroom</a></li>
                                         <li role="presentation" class="">
-                                            <a href="#virtual" aria-controls="profile" role="tab" data-toggle="tab" aria-expanded="false">Online Classes</a>
+                                            <a href="#virtual" aria-controls="profile" role="tab" data-toggle="tab"
+                                               aria-expanded="false">Online Classes</a>
                                         </li>
 
                                     </ul>
@@ -80,11 +82,21 @@
                                             <div class="bg-white-rounded border-round" id="schedule_div">
                                                 @if(isset($courses['C']) && !empty($courses['C']))
                                                     <div class="clearfix table-head text-uppercase hidden-xs">
-                                                        <div class="col-sm-3 table-caption"><i class="fa fa-calendar"></i> Date </div>
-                                                        <div class="col-sm-3 table-caption"><i class="fa fa-clock-o fa-low-size"></i> time </div>
-                                                        <div class="col-sm-2 table-caption type-course"><i class="fa fa-th-list"></i> course type </div>
-                                                        <div class="col-sm-2 table-caption"><i class="fa fa-tags"></i> price </div>
-                                                        <div class="col-sm-2 table-caption"><i class="fa fa-user"></i> register </div>
+                                                        <div class="col-sm-3 table-caption"><i
+                                                                    class="fa fa-calendar"></i> Date
+                                                        </div>
+                                                        <div class="col-sm-3 table-caption"><i
+                                                                    class="fa fa-clock-o fa-low-size"></i> time
+                                                        </div>
+                                                        <div class="col-sm-2 table-caption type-course"><i
+                                                                    class="fa fa-th-list"></i> course type
+                                                        </div>
+                                                        <div class="col-sm-2 table-caption"><i class="fa fa-tags"></i>
+                                                            price
+                                                        </div>
+                                                        <div class="col-sm-2 table-caption"><i class="fa fa-user"></i>
+                                                            register
+                                                        </div>
                                                     </div>
 
                                                     <div itemscope="" itemtype="http://schema.org/Product">
@@ -93,20 +105,27 @@
                                                             <div class="clearfix table-body Classroom schedule_toggle">
                                                                 <div class="col-sm-3 table-caption">
                                                                     <div class="clearfix">
-                                                                        <div class="visible-xs xs-title"><i class="fa fa-calendar fa-low-size"></i>&nbsp; Date : </div>
+                                                                        <div class="visible-xs xs-title"><i
+                                                                                    class="fa fa-calendar fa-low-size"></i>&nbsp;
+                                                                            Date :
+                                                                        </div>
                                                                         <div class="xs-caption">
                                                                             <div class="text-capitalize schedule-date">
                                                                                 {{date('M d', strtotime($course->startDate)).' - '. date('M d', strtotime($course->endDate))}}
                                                                             </div>
                                                                             <div class="color-gray text-capitalize">
-                                                                                ( {{date_diff(date_create($course->startDate),date_create($course->endDate),true)->format("%a Days")}} )
+                                                                                ( {{date_diff(date_create($course->startDate),date_create($course->endDate),true)->format("%a Days")}}
+                                                                                )
                                                                             </div>
                                                                         </div>
                                                                     </div>
                                                                 </div>
                                                                 <div class="col-sm-3 table-caption">
                                                                     <div class="clearfix">
-                                                                        <div class="visible-xs xs-title"><i class="fa fa-clock-o fa-low-size"></i>&nbsp; time : </div>
+                                                                        <div class="visible-xs xs-title"><i
+                                                                                    class="fa fa-clock-o fa-low-size"></i>&nbsp;
+                                                                            time :
+                                                                        </div>
                                                                         <div class="xs-caption"> {{date('h:i A', strtotime($course->startTime)).' - '.date('h:i A', strtotime($course->endTime))}}
                                                                         </div>
                                                                     </div>
@@ -121,14 +140,25 @@
                                                                     <div class="clearfix">
                                                                         <div class="visible-xs xs-title"> price :</div>
                                                                         <div class="xs-caption">
-                                                                            <strike class="color-gray"> USD {{number_format($course->price,2)}} </strike>
-                                                                            <div class="schedule-price"> USD {{number_format($course->price-$course->offerPrice,2)}} </div>
-                                                                            <div> <span class="color-gray">valid till :</span> {{date('d M', strtotime($course->offerExpireOn))}} </div>
+                                                                            @if( time() <= strtotime($course->offerExpireOn) && $course->discountValue )
+                                                                                <strike class="color-gray">
+                                                                                    USD {{number_format($course->price,2)}} </strike>
+                                                                                <div class="schedule-price">
+                                                                                    USD {{number_format(($course->discountType=='F'?$course->price-$course->discountValue:($course->price-($course->price*$course->discountValue/100))),2)}} </div>
+                                                                                <div><span class="color-gray">valid till :</span> {{date('d M', strtotime($course->offerExpireOn))}}
+                                                                                </div>
+                                                                            @else
+                                                                                <div class="schedule-price">
+                                                                                    USD {{number_format($course->price,2)}} </div>
+                                                                            @endif
                                                                         </div>
                                                                     </div>
                                                                 </div>
                                                                 <div class="col-sm-2 table-caption text-center ">
-                                                                    <button type="button"class="btn btn-danger enroll-now"data-id="{{$course->id}}">ENROLL NOW </button>
+                                                                    <button type="button"
+                                                                            class="btn btn-danger enroll-now"
+                                                                            data-id="{{$course->id}}">ENROLL NOW
+                                                                    </button>
                                                                 </div>
                                                             </div>
                                                         @endforeach
@@ -144,31 +174,48 @@
                                             <div class="bg-white-rounded border-round">
                                                 @if(isset($courses['O']) && !empty($courses['O']))
                                                     <div class="clearfix table-head text-uppercase hidden-xs">
-                                                        <div class="col-sm-3 table-caption"><i class="fa fa-calendar"></i> Date </div>
-                                                        <div class="col-sm-3 table-caption"><i class="fa fa-clock-o fa-low-size"></i> time </div>
-                                                        <div class="col-sm-2 table-caption type-course"><i class="fa fa-th-list"></i> course type </div>
-                                                        <div class="col-sm-2 table-caption"><i class="fa fa-tags"></i> price </div>
-                                                        <div class="col-sm-2 table-caption"><i class="fa fa-user"></i> register </div>
+                                                        <div class="col-sm-3 table-caption"><i
+                                                                    class="fa fa-calendar"></i> Date
+                                                        </div>
+                                                        <div class="col-sm-3 table-caption"><i
+                                                                    class="fa fa-clock-o fa-low-size"></i> time
+                                                        </div>
+                                                        <div class="col-sm-2 table-caption type-course"><i
+                                                                    class="fa fa-th-list"></i> course type
+                                                        </div>
+                                                        <div class="col-sm-2 table-caption"><i class="fa fa-tags"></i>
+                                                            price
+                                                        </div>
+                                                        <div class="col-sm-2 table-caption"><i class="fa fa-user"></i>
+                                                            register
+                                                        </div>
                                                     </div>
                                                     <div itemscope="" itemtype="http://schema.org/Product">
                                                         @foreach($courses['O'] as $course)
                                                             <div class="clearfix table-body Classroom schedule_toggle">
                                                                 <div class="col-sm-3 table-caption">
                                                                     <div class="clearfix">
-                                                                        <div class="visible-xs xs-title"><i class="fa fa-calendar fa-low-size"></i>&nbsp; Date : </div>
+                                                                        <div class="visible-xs xs-title"><i
+                                                                                    class="fa fa-calendar fa-low-size"></i>&nbsp;
+                                                                            Date :
+                                                                        </div>
                                                                         <div class="xs-caption">
                                                                             <div class="text-capitalize schedule-date">
                                                                                 {{date('M d', strtotime($course->startDate)).' - '. date('M d', strtotime($course->endDate))}}
                                                                             </div>
                                                                             <div class="color-gray text-capitalize">
-                                                                                ( {{date_diff(date_create($course->startDate),date_create($course->endDate),true)->format("%a Days")}} )
+                                                                                ( {{date_diff(date_create($course->startDate),date_create($course->endDate),true)->format("%a Days")}}
+                                                                                )
                                                                             </div>
                                                                         </div>
                                                                     </div>
                                                                 </div>
                                                                 <div class="col-sm-3 table-caption">
                                                                     <div class="clearfix">
-                                                                        <div class="visible-xs xs-title"><i class="fa fa-clock-o fa-low-size"></i>&nbsp; time : </div>
+                                                                        <div class="visible-xs xs-title"><i
+                                                                                    class="fa fa-clock-o fa-low-size"></i>&nbsp;
+                                                                            time :
+                                                                        </div>
                                                                         <div class="xs-caption"> {{date('h:i A', strtotime($course->startTime)).' - '.date('h:i A', strtotime($course->endTime))}}
                                                                         </div>
                                                                     </div>
@@ -183,14 +230,25 @@
                                                                     <div class="clearfix">
                                                                         <div class="visible-xs xs-title"> price :</div>
                                                                         <div class="xs-caption">
-                                                                            <strike class="color-gray"> USD {{number_format($course->price,2)}} </strike>
-                                                                            <div class="schedule-price"> USD {{number_format($course->price-$course->offerPrice,2)}} </div>
-                                                                            <div> <span class="color-gray">valid till :</span> {{date('d M', strtotime($course->offerExpireOn))}} </div>
+                                                                            @if( time() <= strtotime($course->offerExpireOn) && $course->discountValue )
+                                                                                <strike class="color-gray">
+                                                                                    USD {{number_format($course->price,2)}} </strike>
+                                                                                <div class="schedule-price">
+                                                                                    USD {{number_format(($course->discountType=='F'?$course->price-$course->discountValue:($course->price-($course->price*$course->discountValue/100))),2)}} </div>
+                                                                                <div><span class="color-gray">valid till :</span> {{date('d M', strtotime($course->offerExpireOn))}}
+                                                                                </div>
+                                                                            @else
+                                                                                <div class="schedule-price">
+                                                                                    USD {{number_format($course->price,2)}} </div>
+                                                                            @endif
                                                                         </div>
                                                                     </div>
                                                                 </div>
                                                                 <div class="col-sm-2 table-caption text-center ">
-                                                                    <button type="button"class="btn btn-danger enroll-now"data-id="c-1">ENROLL NOW </button>
+                                                                    <button type="button"
+                                                                            class="btn btn-danger enroll-now"
+                                                                            data-id="c-1">ENROLL NOW
+                                                                    </button>
                                                                 </div>
                                                             </div>
                                                         @endforeach
@@ -207,25 +265,28 @@
                             </div>
                             @if(isset($otherDescription)&& !empty($otherDescription))
                                 <div class="section_description" id="description">
-                                <h3>Description</h3>
-                                <div role="tabpanel" class="bg-white-rounded border-round">
-                                    <!-- Nav tabs -->
-                                    <ul class="nav nav-justified nav-list-tabs" role="tablist">
-                                        @foreach($otherDescription as $key => $description)
-                                        <li role="presentation" class="{{$key==0 ? 'active':''}}">
-                                            <a href="#desc-{{$key}}" aria-controls="home" role="tab" data-toggle="tab" aria-expanded="true">{{$description['tab']}}</a>
-                                        </li>
-                                        @endforeach
-                                    </ul>
-                                    <!-- Tab panes -->
-                                    <div class="tab-content col-text">
-                                        @foreach($otherDescription as $key => $description)
-                                            <div role="tabpanel" class="tab-pane fade {{$key==0 ? 'active in':''}} " id="desc-{{$key}}">{!!html_entity_decode($description['description'])!!}</div>
-                                        @endforeach
+                                    <h3>Description</h3>
+                                    <div role="tabpanel" class="bg-white-rounded border-round">
+                                        <!-- Nav tabs -->
+                                        <ul class="nav nav-justified nav-list-tabs" role="tablist">
+                                            @foreach($otherDescription as $key => $description)
+                                                <li role="presentation" class="{{$key==0 ? 'active':''}}">
+                                                    <a href="#desc-{{$key}}" aria-controls="home" role="tab"
+                                                       data-toggle="tab"
+                                                       aria-expanded="true">{{$description['tab']}}</a>
+                                                </li>
+                                            @endforeach
+                                        </ul>
+                                        <!-- Tab panes -->
+                                        <div class="tab-content col-text">
+                                            @foreach($otherDescription as $key => $description)
+                                                <div role="tabpanel" class="tab-pane fade {{$key==0 ? 'active in':''}} "
+                                                     id="desc-{{$key}}">{!!html_entity_decode($description['description'])!!}</div>
+                                            @endforeach
+                                        </div>
+                                        <!--tabs panel end-->
                                     </div>
-                                    <!--tabs panel end-->
                                 </div>
-                            </div>
                             @endif
                         </div>
                     </div>

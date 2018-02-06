@@ -119,7 +119,6 @@ var categoryTable = $('#category-table').DataTable({
                     method: 'manageStatus'
                 },
                 beforeSend: function (request) {
-                    request.setRequestHeader('Auth', 'EISecret');
                 },
                 success: function (data) {
 

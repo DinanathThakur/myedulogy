@@ -5,17 +5,17 @@ namespace Modules\Home\Entities;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
 
-class SubCourse extends Model
+class Classes extends Model
 {
     private static $_instance = null;
 
-    protected $table = 'sub_courses';
-    protected $fillable = ['name', 'startDate', 'endDate', 'startTime', 'endTime', 'type', 'price', 'offerType', 'offerPrice', 'offerExpireOn','status'];
+    protected $table = 'classes';
+    protected $fillable = ['name', 'courseID', 'startDate', 'endDate', 'startTime', 'endTime', 'type', 'price', 'discountType', 'discountValue', 'offerExpireOn', 'status'];
 
     public static function getInstance()
     {
         if (!is_object(self::$_instance))  //or if( is_null(self::$_instance) ) or if( self::$_instance == null )
-            self::$_instance = new SubCourse();
+            self::$_instance = new Classes();
         return self::$_instance;
     }
 
@@ -55,6 +55,11 @@ class SubCourse extends Model
         } catch (\Exception $e) {
             return $e->getMessage();
         }
+    }
+
+    public function getByID($id)
+    {
+        return Classes::find($id);
     }
 
 }
