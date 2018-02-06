@@ -31,8 +31,10 @@ class CourseController extends Controller
             $otherDescriptions = $courseDetails->otherDescription;
             unset($courseDetails->otherDescription);
             $returnData['courseDetails'] = json_encode($courseDetails);
-            $returnData['otherDescriptions'] = $otherDescriptions;
+            $otherDescription = $otherDescriptions ? json_decode($otherDescriptions, true) : [];
+            $returnData['otherDescriptions'] = $otherDescription = !is_array($otherDescription) ? json_decode($otherDescription, true) : $otherDescription;;
         }
+//        dd($returnData['otherDescriptions']);
         return view('admin::course.edit', $returnData);
     }
 

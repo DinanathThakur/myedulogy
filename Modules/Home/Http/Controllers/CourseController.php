@@ -20,7 +20,7 @@ class CourseController extends Controller
         if ($courseID) {
             $returnData['courseDetails'] = $courseDetails = Course::getInstance()->getRecordWhere(['id' => $courseID, 'status' => 'A']);
             $otherDescription = $returnData['courseDetails']->otherDescription ? json_decode($returnData['courseDetails']->otherDescription, true) : [];
-            $otherDescription = !is_array($otherDescription) ? json_decode($otherDescription, true) : [];
+            $otherDescription = !is_array($otherDescription) ? json_decode($otherDescription, true) : $otherDescription;
             if (!empty($courseDetails)) {
                 $courses = Classes::getInstance()->getAllClasses(['classes.courseID' => $courseID, 'classes.status' => 'A'])->all();
                 $courseTypeWise = [];
