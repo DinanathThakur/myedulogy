@@ -270,18 +270,23 @@
                                         <!-- Nav tabs -->
                                         <ul class="nav nav-justified nav-list-tabs" role="tablist">
                                             @foreach($otherDescription as $key => $description)
-                                                <li role="presentation" class="{{$key==0 ? 'active':''}}">
-                                                    <a href="#desc-{{$key}}" aria-controls="home" role="tab"
-                                                       data-toggle="tab"
-                                                       aria-expanded="true">{{$description['tab']}}</a>
-                                                </li>
+                                                @if($description['visibility']=='on')
+                                                    <li role="presentation" class="{{$key==0 ? 'active':''}}">
+                                                        <a href="#desc-{{$key}}" aria-controls="home" role="tab"
+                                                           data-toggle="tab"
+                                                           aria-expanded="true">{{$description['tab']}}</a>
+                                                    </li>
+                                                @endif
                                             @endforeach
                                         </ul>
                                         <!-- Tab panes -->
                                         <div class="tab-content col-text">
                                             @foreach($otherDescription as $key => $description)
-                                                <div role="tabpanel" class="tab-pane fade {{$key==0 ? 'active in':''}} "
-                                                     id="desc-{{$key}}">{!!html_entity_decode($description['description'])!!}</div>
+                                                @if($description['visibility']=='on')
+                                                    <div role="tabpanel"
+                                                         class="tab-pane fade {{$key==0 ? 'active in':''}} "
+                                                         id="desc-{{$key}}">{!!html_entity_decode($description['description'])!!}</div>
+                                                @endif
                                             @endforeach
                                         </div>
                                         <!--tabs panel end-->
