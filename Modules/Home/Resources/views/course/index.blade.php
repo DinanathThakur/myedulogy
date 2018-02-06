@@ -270,7 +270,7 @@
                                         <!-- Nav tabs -->
                                         <ul class="nav nav-justified nav-list-tabs" role="tablist">
                                             @foreach($otherDescription as $key => $description)
-                                                @if($description['visibility']=='on')
+                                                @if(isset($description['visibility'])&&$description['visibility']=='on')
                                                     <li role="presentation" class="{{$key==0 ? 'active':''}}">
                                                         <a href="#desc-{{$key}}" aria-controls="home" role="tab"
                                                            data-toggle="tab"
@@ -282,7 +282,7 @@
                                         <!-- Tab panes -->
                                         <div class="tab-content col-text">
                                             @foreach($otherDescription as $key => $description)
-                                                @if($description['visibility']=='on')
+                                                @if(isset($description['visibility'])&&$description['visibility']=='on')
                                                     <div role="tabpanel"
                                                          class="tab-pane fade {{$key==0 ? 'active in':''}} "
                                                          id="desc-{{$key}}">{!!html_entity_decode($description['description'])!!}</div>

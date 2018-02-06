@@ -18,5 +18,6 @@ Route::group(['middleware' => 'web', 'prefix' => 'admin', 'namespace' => 'Module
         Route::get('/manage-courses', 'AdminController@manageCourse');
         Route::get('/create-course', 'AdminController@createCourse');
         Route::get('/manage-classes', 'AdminController@manageClasses');
+        Route::get('/edit-course/{courseID}', 'CourseController@editCourse');
     });
 });

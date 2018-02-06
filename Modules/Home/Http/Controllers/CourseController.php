@@ -19,12 +19,16 @@ class CourseController extends Controller
         $returnData = [];
         if ($courseID) {
             $returnData['courseDetails'] = $courseDetails = Course::getInstance()->getRecordWhere(['id' => $courseID, 'status' => 'A']);
+            $otherDescription = $returnData['courseDetails']->otherDescription ? json_decode($returnData['courseDetails']->otherDescription, true) : [];
+            $otherDescription = !is_array($otherDescription) ? json_decode($otherDescription, true) : [];
             if (!empty($courseDetails)) {
                 $courses = Classes::getInstance()->getAllClasses(['classes.courseID' => $courseID, 'classes.status' => 'A'])->all();
                 $courseTypeWise = [];
-                array_walk($courses, function ($course) use (&$courseTypeWise) {$courseTypeWise[$course->type][] = $course;});
+                array_walk($courses, function ($course) use (&$courseTypeWise) {
+                    $courseTypeWise[$course->type][] = $course;
+                });
                 $returnData['courses'] = $courseTypeWise;
-                $returnData['otherDescription'] = $returnData['courseDetails']->otherDescription ? json_decode($returnData['courseDetails']->otherDescription, true) : [];
+                $returnData['otherDescription'] = $otherDescription;
             }
         }
         return view('home::course.index', $returnData);

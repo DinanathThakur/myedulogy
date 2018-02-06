@@ -193,7 +193,7 @@ class AdminController extends Controller
                                 '<span class="btn btn-xs btn-success change-status" data-id="' . $record->id . '" data-status="' . $record->status . '">Active</span>' :
                                 '<span class="btn btn-xs btn-danger change-status" data-id="' . $record->id . '" data-status="' . $record->status . '">In-Active</span>',
                             'createdAt' => $record->created_at,
-                            'action' => '<a href="javascript:;" class="edit-course" data-id="' . $record->id . '"><span class="btn btn-xs btn-default"><i class="fa fa-edit"></i></span></a>',
+                            'action' => '<a href="/admin/edit-course/' . $record->id . '" class="edit-course" data-id="' . $record->id . '"><span class="btn btn-xs btn-default"><i class="fa fa-edit"></i></span></a>',
                         ];
                     }
                 }
@@ -287,7 +287,41 @@ class AdminController extends Controller
                         $courseDetails = Course::getInstance()->getByID($courseDetails['id']);
                         $response = ['status' => 'success', 'msg' => 'Course has been created.', 'data' => $courseDetails];
                     } catch (\Exception $ex) {
+                        $response = ['status' => 'error', 'msg' => $ex->getMessage(), 'data' => []];
+                    }
+                }
 
+                break;
+
+            case 'editCourse':
+
+                $courseID = $request['id'];
+                $courseData = $request['root'];
+                $courseData['otherDescription'] = json_encode($courseData['otherDescription']);
+
+                $rules = array(
+                    'courseName' => 'required|max:255',
+                );
+
+                $validator = Validator::make($courseData, $rules);
+
+                if ($validator->fails()) {
+                    $response['data'] = $validator->messages();
+                    $response['msg'] = 'Validation error';
+                } else {
+                    try {
+                        $updateData = [
+                            'category' => $courseData['category'],
+                            'courseName' => $courseData['courseName'],
+                            'courseName' => $courseData['courseName'],
+                            'mainDescription' => $courseData['mainDescription'],
+                            'otherDescription' => json_encode($courseData['otherDescription'])
+                        ];
+                        $courseDetails = Course::getInstance()->updateUserWhere($updateData, ['id' => $courseID]);
+                        $courseDetails = Course::getInstance()->getByID($courseID);
+                        $response = ['status' => 'success', 'msg' => 'Course has been created.', 'data' => $courseDetails];
+                    } catch (\Exception $ex) {
+                        $response = ['status' => 'error', 'msg' => $ex->getMessage(), 'data' => []];
                     }
                 }
 
@@ -313,8 +347,8 @@ class AdminController extends Controller
                             'courseID' => intval($request['courseID']),
                             'startDate' => date_format(date_create($request['startDate']), 'Y-m-d H:i:s'),
                             'endDate' => date_format(date_create($request['endDate']), 'Y-m-d H:i:s'),
-                            'startTime' =>date('H:i:s',strtotime($request['startTime'])),
-                            'endTime' =>date('H:i:s',strtotime($request['endTime'])),
+                            'startTime' => date('H:i:s', strtotime($request['startTime'])),
+                            'endTime' => date('H:i:s', strtotime($request['endTime'])),
                             'type' => $request['type'],
                             'price' => $request['price'],
                             'discountType' => $request['discountType'],
