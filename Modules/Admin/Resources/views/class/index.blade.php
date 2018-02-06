@@ -8,30 +8,32 @@
         <table id="course-table" class="display" cellspacing="0" width="100%">
             <thead>
             <tr>
+                <th>Course</th>
+                <th>Course Type</th>
                 <th>Date</th>
                 <th>Timing</th>
-                <th>Course Type</th>
                 <th>Price</th>
                 <th>Offer</th>
                 <th>Discounted Price</th>
                 <th>Offer Expires On</th>
                 <th>Created At</th>
                 <th>Status</th>
-                <th>Action</th>
+                <!-- <th>Action</th> -->
             </tr>
             </thead>
             <tfoot>
             <tr>
+                <th>Course</th>
+                <th>Course Type</th>
                 <th>Date</th>
                 <th>Timing</th>
-                <th>Course Type</th>
                 <th>Price</th>
                 <th>Offer</th>
                 <th>Discounted Price</th>
                 <th>Offer Expires On</th>
                 <th>Created At</th>
                 <th>Status</th>
-                <th>Action</th>
+                <!-- <th>Action</th> -->
             </tr>
             </tfoot>
         </table>
@@ -179,16 +181,17 @@
                     }
                 },
                 "columns": [
+                    {"data": "courseName"},
+                    {"data": "type"},
                     {"data": "date"},
                     {"data": "time"},
-                    {"data": "type"},
                     {"data": "price"},
                     {"data": "offer"},
                     {"data": "discountedPrice"},
                     {"data": "offerExpiresOn"},
                     {"data": "createdAt"},
                     {"data": "status"},
-                    {"data": "action"}
+                    // {"data": "action"}
                 ]
             });
             new $.fn.dataTable.Buttons(courseTable, {
@@ -276,6 +279,7 @@
                             if (typeof (result.data != 'undefined' && result.data.length)) {
                                 toastr["success"]('Course creation done.');
                                 self.reset();
+                                courseTable.draw();
                             } else {
                                 toastr["error"]('Something went wrong, please try again...');
                             }

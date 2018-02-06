@@ -11,7 +11,7 @@
                                     <th>Category</th>
                                     <th>Created At</th>
                                     <th>Status</th>
-                                    <th>Action</th>
+                                   <!--  <th>Action</th> -->
                                 </tr>
 
                             </thead>
@@ -20,7 +20,7 @@
                                     <th>Category</th>
                                     <th>Created At</th>
                                     <th>Status</th>
-                                    <th>Action</th>
+                                   <!--  <th>Action</th> -->
                                 </tr>
                             </tfoot>
                         </table>
@@ -82,7 +82,7 @@ var categoryTable = $('#category-table').DataTable({
                 {"data": "category"},
                 {"data": "createdAt"},
                 {"data": "status"},
-                {"data": "action"}
+                // {"data": "action"}
             ]
         });
         new $.fn.dataTable.Buttons(categoryTable, {

@@ -12,7 +12,7 @@
                                     <th>Category</th>
                                     <th>Created At</th>
                                     <th>Status</th>
-                                    <th>Action</th>
+                                    <!-- <th>Action</th> -->
                                 </tr>
                                 <!-- <tr class="filter-data">
                                     <th><input type="text" name="courseName" data-column="2" class="filter-column"></th>
@@ -44,7 +44,7 @@
                                     <th>Category</th>
                                     <th>Created At</th>
                                     <th>Status</th>
-                                    <th>Action</th>
+                                    <!-- <th>Action</th> -->
                                 </tr>
                             </tfoot>
                         </table>
@@ -105,7 +105,7 @@
                 {"data": "category"},
                 {"data": "createdAt"},
                 {"data": "status"},
-                {"data": "action"}
+                // {"data": "action"}
             ]
         });
         new $.fn.dataTable.Buttons(courseTable, {

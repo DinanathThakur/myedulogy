@@ -35,6 +35,26 @@ class Classes extends Model
         return $result;
     }
 
+    public function getAllClasses($where = [])
+    {
+        $result = DB::table($this->table)
+            ->join('courses', 'classes.courseID', '=', 'courses.id')
+            ->where($where)
+            ->select('classes.*', 'courses.courseName')
+            ->get();
+        return $result;
+    }
+
+    public function getAllClassesWhereIdIn($classIDs = [])
+    {
+        $result = DB::table($this->table)
+            ->join('courses', 'classes.courseID', '=', 'courses.id')
+            ->whereIn('classes.id', $classIDs)
+            ->select('classes.*', 'courses.courseName')
+            ->get();
+        return $result;
+    }
+
 
     /**
      * Update user data

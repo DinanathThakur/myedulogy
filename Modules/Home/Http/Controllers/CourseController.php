@@ -20,7 +20,7 @@ class CourseController extends Controller
         if ($courseID) {
             $returnData['courseDetails'] = $courseDetails = Course::getInstance()->getRecordWhere(['id' => $courseID, 'status' => 'A']);
             if (!empty($courseDetails)) {
-                $courses = Classes::getInstance()->getRecordsWhere(['courseID' => $courseID, 'status' => 'A'])->all();
+                $courses = Classes::getInstance()->getAllClasses(['classes.courseID' => $courseID, 'classes.status' => 'A'])->all();
                 $courseTypeWise = [];
                 array_walk($courses, function ($course) use (&$courseTypeWise) {$courseTypeWise[$course->type][] = $course;});
                 $returnData['courses'] = $courseTypeWise;

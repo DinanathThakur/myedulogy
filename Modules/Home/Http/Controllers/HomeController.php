@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Storage;
+use Modules\Home\Entities\Classes;
 use Modules\Home\Entities\User;
 use Validator;
 
@@ -49,15 +50,24 @@ class HomeController extends Controller
         $cartDetails = isset($_COOKIE[$this->cookieName]) ? json_decode($_COOKIE[$this->cookieName], true) : [];
         $finalData = [];
         $finalPrice = $price = 0;
-        foreach ($cartDetails as $courseID => $quantity) {
-            if (isset($this->courses[$courseID])) {
-                $price = intval($this->courses[$courseID]['price'] * $quantity);
-                $finalPrice += $price;
-                $finalData[$courseID] = [
-                    'quantity' => $quantity,
-                    'name' => $this->courses[$courseID]['name'],
-                    'price' => intval($this->courses[$courseID]['price'] * $quantity)
-                ];
+        if (!empty($cartDetails)) {
+            $courseIDs = array_keys($cartDetails);
+            $classList = Classes::getInstance()->getAllClassesWhereIdIn($courseIDs)->all();
+            $classList = array_combine(array_column($classList, 'id'), $classList);
+
+            foreach ($cartDetails as $courseID => $quantity) {
+                if (isset($classList[$courseID])) {
+                    $price = $classList[$courseID]->price;
+                    $price = $classList[$courseID]->discountType && time() <= strtotime($classList[$courseID]->offerExpireOn) ? ($classList[$courseID]->discountType == 'F' ? ($classList[$courseID]->price - $classList[$courseID]->discountValue) : ($classList[$courseID]->price - ($classList[$courseID]->price * $classList[$courseID]->discountValue / 100))) : $classList[$courseID]->price;
+                    $subTotal = intval($price * $quantity);
+                    $finalPrice += $subTotal;
+                    $finalData[$courseID] = [
+                        'quantity' => $quantity,
+                        'name' => $classList[$courseID]->courseName . ' (' . date_diff(date_create($classList[$courseID]->startDate), date_create($classList[$courseID]->endDate), true)->format("%a Days") . ')',
+                        'price' => $price,
+                        'subTotal' => $subTotal
+                    ];
+                }
             }
         }
 
@@ -217,14 +227,19 @@ class HomeController extends Controller
                 $finalData = [];
                 $finalPrice = $price = 0;
                 if (!empty($cartDetails)) {
+                    $courseIDs = array_keys($cartDetails);
+                    $classList = Classes::getInstance()->getAllClassesWhereIdIn($courseIDs)->all();
+                    $classList = array_combine(array_column($classList, 'id'), $classList);
+
                     foreach ($cartDetails as $courseID => $quantity) {
-                        if (isset($this->courses[$courseID])) {
-                            $price = $this->courses[$courseID]['price'];
+                        if (isset($classList[$courseID])) {
+                            $price = $classList[$courseID]->price;
+                            $price = $classList[$courseID]->discountType && time() <= strtotime($classList[$courseID]->offerExpireOn) ? ($classList[$courseID]->discountType == 'F' ? ($classList[$courseID]->price - $classList[$courseID]->discountValue) : ($classList[$courseID]->price - ($classList[$courseID]->price * $classList[$courseID]->discountValue / 100))) : $classList[$courseID]->price;
                             $subTotal = intval($price * $quantity);
                             $finalPrice += $subTotal;
                             $finalData[$courseID] = [
                                 'quantity' => $quantity,
-                                'name' => $this->courses[$courseID]['name'],
+                                'name' => $classList[$courseID]->courseName . ' (' . date_diff(date_create($classList[$courseID]->startDate), date_create($classList[$courseID]->endDate), true)->format("%a Days") . ')',
                                 'price' => $price,
                                 'subTotal' => $subTotal
                             ];

@@ -209,19 +209,19 @@ class AdminController extends Controller
                 $category = isset($data['category']) ? $data['category'] : '';
                 $status = isset($data['status']) ? $data['status'] : '';
 
-                $allRecord = $filteredRecord = Classes::getInstance()->getRecordsWhere()->all();
+                $allRecord = $filteredRecord = Classes::getInstance()->getAllClasses()->all();
 
                 $where = [];
                 if ($category || $status) {
-                    $where['category'] = $category;
-                    $where['status'] = $status;
-                    $filteredRecord = Classes::getInstance()->getRecordsWhere($where)->all();
+                    $where['classes.category'] = $category;
+                    $where['classes.status'] = $status;
+                    $filteredRecord = Classes::getInstance()->getAllClasses($where)->all();
                 }
 
                 $options['limit'] = $data['length'];
                 $options['page'] = ($data['start'] ? ($data['start'] / $data['length']) + 1 : 1);
 
-                $records = Classes::getInstance()->getRecordsWhere($where, $options)->all();
+                $records = Classes::getInstance()->getAllClasses($where, $options)->all();
 
                 $dataForTable = [];
                 if (!empty($records)) {
@@ -232,6 +232,7 @@ class AdminController extends Controller
                             'date' => date('M d', strtotime($record->startDate)) . ' - ' . date('M d', strtotime($record->endDate)) . ' ( ' . date_diff(date_create($record->startDate), date_create($record->endDate), true)->format("%a Days") . ' )',
                             'time' => date('h:i A', strtotime($record->startTime)) . ' - ' . date('h:i A', strtotime($record->endTime)),
                             'type' => $record->type == 'C' ? 'Classroom' : 'Online',
+                            'courseName' => $record->courseName,
                             'price' => number_format($record->price, 2),
                             'offer' => $record->discountType ? ($record->discountType == 'F' ? 'Flat ' . $record->discountValue : $record->discountValue . '%') : '',
                             'discountedPrice' => number_format($discountedPrice, 2),
