@@ -23,13 +23,13 @@ array_walk($allCourse, function ($c) use (&$courseCategoryWise) {
                 </div>
                 <div class="col-sm-6 col-xs-12 header-top-right">
                     <ul class="list-unstyled">
-                        @if (!Auth::check())
-                            {{--@if (!Auth::check() || !\Illuminate\Support\Facades\Session::has('user'))--}}
-                            <li><a href="/register">Register</a></li>
-                            <li><a href="/login" class="apply-btn">Login</a></li>
-                        @else
+                        @if (Auth::check()&& \Illuminate\Support\Facades\Session::has('user'))
                             <li><a href="/my-profile" class="apply-btn">My Profile</a></li>
                             <li><a href="/logout">Logout</a></li>
+                        @else
+
+                            <li><a href="/register">Register</a></li>
+                            <li><a href="/login" class="apply-btn">Login</a></li>
                         @endif
                         <li><a href="javascript:;" id="get-cart-details">Cart (<span id="cart-count">0</span>)</a></li>
                     </ul>

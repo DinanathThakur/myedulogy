@@ -336,10 +336,10 @@ array_walk($allCourse, function ($c) use (&$courseCategoryWise) {
                                         <li><a href="/accreditation">Accreditation</a></li>
                                         <li><a href="#">Blog</a></li>
                                         <li><a href="/contact-us">Contact</a></li><!-- End Contact -->
-                                        @if (!Auth::check())
-                                            <li><a href="/login">Login</a></li>
-                                        @else
+                                        @if (Auth::check()&& \Illuminate\Support\Facades\Session::has('user'))
                                             <li><a href="/my-profile">My Profile</a></li>
+                                        @else
+                                            <li><a href="/login">Login</a></li>
                                         @endif
 
                                     </ul>
