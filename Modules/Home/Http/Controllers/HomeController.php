@@ -52,10 +52,14 @@ class HomeController extends Controller
         $finalPrice = $price = 0;
         if (!empty($cartDetails)) {
             $courseIDs = array_keys($cartDetails);
+            array_walk($courseIDs, function (&$c) {
+                $c = str_replace('c-', '', $c);
+            });
             $classList = Classes::getInstance()->getAllClassesWhereIdIn($courseIDs)->all();
             $classList = array_combine(array_column($classList, 'id'), $classList);
 
             foreach ($cartDetails as $courseID => $quantity) {
+                $courseID = str_replace('c-', '', $courseID);
                 if (isset($classList[$courseID])) {
                     $price = $classList[$courseID]->price;
                     $price = $classList[$courseID]->discountType && time() <= strtotime($classList[$courseID]->offerExpireOn) ? ($classList[$courseID]->discountType == 'F' ? ($classList[$courseID]->price - $classList[$courseID]->discountValue) : ($classList[$courseID]->price - ($classList[$courseID]->price * $classList[$courseID]->discountValue / 100))) : $classList[$courseID]->price;
@@ -200,8 +204,9 @@ class HomeController extends Controller
             case 'addToCart':
                 $courseID = $request['id'];
                 $cartDetails = isset($_COOKIE[$this->cookieName]) ? json_decode($_COOKIE[$this->cookieName], true) : [];
+                $newCourseID = 'c-' . $courseID;
 
-                $cartDetails = array_merge($cartDetails, [$courseID => isset($cartDetails[$courseID]) ? ($cartDetails[$courseID] + 1) : 1]);
+                $cartDetails = array_merge($cartDetails, [$newCourseID => isset($cartDetails[$newCourseID]) ? ($cartDetails[$newCourseID] + 1) : 1]);
                 setcookie($this->cookieName, json_encode($cartDetails), time() + (86400 * 30), "/");
                 $response = ['status' => 'success', 'msg' => 'Cart count', 'data' => array_sum($cartDetails)];
                 break;
@@ -228,10 +233,14 @@ class HomeController extends Controller
                 $finalPrice = $price = 0;
                 if (!empty($cartDetails)) {
                     $courseIDs = array_keys($cartDetails);
+                    array_walk($courseIDs, function (&$c) {
+                        $c = str_replace('c-', '', $c);
+                    });
                     $classList = Classes::getInstance()->getAllClassesWhereIdIn($courseIDs)->all();
                     $classList = array_combine(array_column($classList, 'id'), $classList);
 
                     foreach ($cartDetails as $courseID => $quantity) {
+                        $courseID = str_replace('c-', '', $courseID);
                         if (isset($classList[$courseID])) {
                             $price = $classList[$courseID]->price;
                             $price = $classList[$courseID]->discountType && time() <= strtotime($classList[$courseID]->offerExpireOn) ? ($classList[$courseID]->discountType == 'F' ? ($classList[$courseID]->price - $classList[$courseID]->discountValue) : ($classList[$courseID]->price - ($classList[$courseID]->price * $classList[$courseID]->discountValue / 100))) : $classList[$courseID]->price;
